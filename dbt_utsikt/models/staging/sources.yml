@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+    - name: venteregister_name
+      description: .
+      database: 
+      schema: venteregister
+      tables:
+          - name: t_faggruppe
+            description: .
+          - name: t_fagomraade
+            description: .
+          - name: t_vent_beregning
+            description: .

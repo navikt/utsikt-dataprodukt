@@ -6,6 +6,12 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 
+[manifest]
+members = [
+    "dbt-utsikt",
+    "utsikt-dataprodukt",
+]
+
 [[package]]
 name = "agate"
 version = "1.9.1"
@@ -312,6 +318,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/f5/f7/e9e35bb9cfadaef69
 wheels = [
     { url = "https://files.pythonhosted.org/packages/24/ac/299739f71352dd643cdb47687cb92dc71532f93255c57945bf5a28e401a6/dbt_semantic_interfaces-0.8.5-py3-none-any.whl", hash = "sha256:6c595de97b4fde8fcbd6286c2d811429da05b6c6f2fa172a2af4424f8063d155", size = 146571, upload-time = "2025-06-24T20:06:16.804Z" },
 ]
+
+[[package]]
+name = "dbt-utsikt"
+version = "0.1.0"
+source = { virtual = "dbt_utsikt" }
 
 [[package]]
 name = "deepdiff"
