@@ -4,7 +4,7 @@ beregnings_id as beregning_id
 ,oppdrags_id as oppdrag_id
 ,fagsystem_id 
 ,type_skatt 
-,kode_fagomraade as fagomrade_id
+,trim(kode_fagomraade) as fagomrade_id
 ,dato_periode_fom as periode_fom_dato
 ,dato_periode_tom as periode_tom_dato
 ,dato_forfall as forfall_dato

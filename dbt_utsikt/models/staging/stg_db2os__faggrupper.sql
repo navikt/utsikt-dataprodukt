@@ -1,4 +1,4 @@
 select 
-kode_faggruppe as faggruppe_id
-,navn_faggruppe as faggruppe
+trim(kode_faggruppe) as faggruppe_id
+,trim(navn_faggruppe) as faggruppe
 from {{ source('venteregister_name', 't_faggruppe')}}
