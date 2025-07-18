@@ -14,3 +14,7 @@ sources:
             description: .
           - name: t_vent_stoppnivaa
             description: .
+          - name: t_vent_stoppstatus
+            description: .
+          - name: t_vent_statuskode
+            description: .

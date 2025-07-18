@@ -2,7 +2,7 @@ with dist_beregning_fagomrade as (
 select 
 distinct beregning_id
 ,fagomrade_id
-from {{ ref('stg_db2os__venteregister_stoppniva') }}
+from {{ ref('stg_db2os__venteregister_stoppnivaer') }}
 group by beregning_id, fagomrade_id
 ),
 
