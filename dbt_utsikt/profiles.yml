@@ -1,0 +1,9 @@
+dbt_utsikt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: 	utsikt-dev-3609
+      dataset: venteregister 
+      threads: 4 
