@@ -32,9 +32,16 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_utsikt:
     # Config indicated by + and applies to all files under models/example/
+    # Farger valgt fra her: https://aksel.nav.no/grunnleggende/styling/design-tokens#h042525372dcd
     staging:
-      +materialized: view
+      +materialized: ephemeral
+      +docs:
+        node_color: '#99DEAD' #green 200
     intermediate:
       +materialized: view
+      +docs:
+        node_color: '#3380A5' #deepblue 400      
     marts:
       +materialized: table
+      +docs:
+        node_color: '#8269A2' #Purple 400
