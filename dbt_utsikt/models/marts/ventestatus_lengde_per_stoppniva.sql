@@ -38,7 +38,10 @@ beregning_id
 ,lopenummer
 ,sts.ventestatus_id
 ,ventestatus
-,ma_handteres_manuelt
+,case
+    when handteres_manuelt = 1 then 'Håndteres manuelt'
+    else 'Ingen manuell håndtering'
+end as handteres_manuelt
 ,registrert_tidspunkt
 ,lengde_lopenummer
 ,round((EXTRACT(HOUR FROM lengde_lopenummer) + (EXTRACT(MINUTE FROM lengde_lopenummer) / 60) + (EXTRACT(SECOND FROM lengde_lopenummer) / 3600)),3) as lengde_antall_timer --antar at ingen intervals har registrert noe større enn timer
