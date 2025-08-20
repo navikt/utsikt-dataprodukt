@@ -26,7 +26,7 @@ models:
     staging:
       +materialized: ephemeral
       +docs:
-        node_color: '#99DEAD' #green 200
+        node_color: '#C1CB33' #limegreen 200
     intermediate:
       +materialized: view
       +docs:
