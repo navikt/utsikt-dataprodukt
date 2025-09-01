@@ -4,4 +4,4 @@ beregnings_id as beregning_id
 ,kode_ventestatus as ventestatus_id
 ,lopenr as lopenummer
 ,cast(tidspkt_reg as TIMESTAMP) as registrert_tidspunkt
-from {{ source('venteregister', 't_vent_stoppstatus')}}
+from {{ source('OS_Q2', 't_vent_stoppstatus')}}

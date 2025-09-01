@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-    - name: venteregister
+    - name: OS_Q2
       description: .
-      database: 
-      schema: venteregister
+      database:
+      schema: OS_Q2
       tables:
           - name: t_faggruppe
             description: .

@@ -9,4 +9,4 @@ beregnings_id as beregning_id
 ,dato_periode_tom as periode_tom_dato
 ,dato_forfall as forfall_dato
 ,dato_overfores as overfort_dato
-from {{ source('venteregister', 't_vent_stoppnivaa')}}
+from {{ source('OS_Q2', 't_vent_stoppnivaa')}}
