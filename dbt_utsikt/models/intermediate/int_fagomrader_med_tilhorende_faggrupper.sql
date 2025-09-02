@@ -1,3 +1,4 @@
+-- int_fagomrader_med_tilhorende_faggrupper
 select 
 fagomrade_id
 ,fagomrade

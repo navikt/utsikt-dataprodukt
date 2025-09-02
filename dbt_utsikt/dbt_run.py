@@ -4,7 +4,7 @@ from dbt.cli.main import dbtRunner, dbtRunnerResult
 dbt = dbtRunner()
 
 # create CLI args as a list of strings
-cli_args = ["run", "--select", "tag:my_tag"]
+cli_args = ["run", "--select", "int_fagomrader_med_tilhorende_faggrupper"]
 
 # run the command
 res: dbtRunnerResult = dbt.invoke(cli_args)
