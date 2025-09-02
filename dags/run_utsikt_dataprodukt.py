@@ -24,6 +24,7 @@ with DAG(
         repo="navikt/utsikt-dataprodukt",
         script_path="dbt_utsikt/dbt_run.py",
         retries=1,
+        use_uv_pip_install=True,
     )
 
 run_dbt
