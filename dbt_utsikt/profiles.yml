@@ -4,6 +4,6 @@ dbt_utsikt:
     dev:
       type: bigquery
       method: oauth
-      project: 	utsikt-dev-3609
+      project: utsikt-dev-3609
       dataset: venteregister 
       threads: 4 

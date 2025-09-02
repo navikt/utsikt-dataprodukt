@@ -13,4 +13,9 @@ dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i ti
 `gcloud auth application-default login`
 
 ## dokumentasjon
+For å oppdatere dokumentasjon, kjør først:
+`uv run dbt docs generate`. 
+
+Så kan man kjøre skriptet `publish_docs.py`
+
 [dokumentasjon av dbt-kodebasen](https://dbt.ansatt.nav.no/docs/utsikt/utsikt-dataprodukt/index.html#!/overview)
