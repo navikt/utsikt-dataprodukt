@@ -19,9 +19,11 @@ with DAG(
 
     run_dbt = python_operator(
         dag=dag,
-        name="filter_kafka",
+        name="run_dbt",
         startup_timeout_seconds=60 * 10,
         repo="navikt/utsikt_dataprodukt",
         script_path="dbt_utsikt/dbt_run.py",
         retries=1,
     )
+
+run_dbt
