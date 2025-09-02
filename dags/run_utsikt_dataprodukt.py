@@ -21,7 +21,7 @@ with DAG(
         dag=dag,
         name="run_dbt",
         startup_timeout_seconds=60 * 10,
-        repo="navikt/utsikt_dataprodukt",
+        repo="navikt/utsikt-dataprodukt",
         script_path="dbt_utsikt/dbt_run.py",
         retries=1,
     )
