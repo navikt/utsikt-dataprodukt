@@ -12,6 +12,10 @@ dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i ti
 
 `gcloud auth application-default login`
 
+Airflow krever en `requirements.txt`-fil, og denne kan genereres ved å kjøre 
+
+`uv pip compile pyproject.toml -o requirements.txt`
+
 ## dokumentasjon
 For å oppdatere dokumentasjon, kjør først:
 `uv run dbt docs generate`. 
