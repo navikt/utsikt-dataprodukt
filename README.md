@@ -12,9 +12,16 @@ dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i ti
 
 `gcloud auth application-default login`
 
-Airflow krever en `requirements.txt`-fil, og denne kan genereres ved å kjøre 
+Airflow (og foreløpig dependabot) krever en `requirements.txt`-fil, og denne kan genereres ved å kjøre 
 
 `uv pip compile pyproject.toml -o requirements.txt`
+
+## Oppdatere pakker
+Dependabot støtter enda ikke uv helt, derfor har vi følgende oppskrift dersom man får en pull request av dependabot:
+1. Kjøre `uv sync --upgrade`
+2. Slette `requirements.txt`-filen
+3. Kjøre `uv pip compile pyproject.toml -o requirements.txt`
+
 
 ## dokumentasjon
 For å oppdatere dokumentasjon, kjør først:
