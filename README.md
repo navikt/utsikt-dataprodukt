@@ -14,13 +14,14 @@ dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i ti
 
 Airflow (og foreløpig dependabot) krever en `requirements.txt`-fil, og denne kan genereres ved å kjøre 
 
-`uv pip compile pyproject.toml -o requirements.txt`
+`toml-to-req --toml-file pyproject.toml`
+
+Her bruker vi pakka [toml-to-requirements](https://pypi.org/project/toml-to-requirements/).
 
 ## Oppdatere pakker
 Dependabot støtter enda ikke uv helt, derfor har vi følgende oppskrift dersom man får en pull request av dependabot:
 1. Kjøre `uv sync --upgrade`
-2. Slette `requirements.txt`-filen
-3. Kjøre `uv pip compile pyproject.toml -o requirements.txt`
+2. Kjøre `toml-to-req --toml-file pyproject.toml`
 
 
 ## dokumentasjon
