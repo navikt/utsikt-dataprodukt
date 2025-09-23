@@ -10,5 +10,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "sqlfluff>=3.4.2",
+    "sqlfluff-templater-dbt>=3.4.2",
     "toml-to-requirements>=0.3.0",
 ]

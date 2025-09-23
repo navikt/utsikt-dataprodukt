@@ -1,5 +1,5 @@
-select 
-trim(kode_fagomraade) as fagomrade_id
-,trim(navn_fagomraade) as fagomrade
-,trim(kode_faggruppe) as faggruppe_id
-from {{ source('OS_Q2', 't_fagomraade')}}
+select
+    trim(kode_fagomraade) as fagomrade_id,
+    trim(navn_fagomraade) as fagomrade,
+    trim(kode_faggruppe) as faggruppe_id
+from {{ source('OS_Q2', 't_fagomraade') }}
