@@ -3,7 +3,7 @@ with registrerte_tidsstempler as (
         t1.beregning_id,
         t1.stoppniva_id,
         t1.lopenummer,
-        t1.ventestatus_id,
+        t1.ventestatus_kode,
         t1.registrert_tidspunkt,
         t2.registrert_tidspunkt as registrert_tidspunkt_neste_ventestatus,
         t3.registrert_tidspunkt as registrert_tidspunkt_gjeldende_ventestatus
@@ -25,7 +25,7 @@ lengder_stoppstatuser as (
         beregning_id,
         stoppniva_id,
         lopenummer,
-        ventestatus_id,
+        ventestatus_kode,
         registrert_tidspunkt,
         case
             when
@@ -49,8 +49,8 @@ select
     beregning_id,
     stoppniva_id,
     lopenummer,
-    sts.ventestatus_id,
-    ventestatus,
+    sts.ventestatus_kode,
+    ventestatus_beskrivelse,
     registrert_tidspunkt,
     lengde_lopenummer,
     case
@@ -69,4 +69,4 @@ select
 from
     lengder_stoppstatuser as sts
 left join {{ ref('int_statuskoder_manuell_handtering') }} as stn
-    on sts.ventestatus_id = stn.ventestatus_id
+    on sts.ventestatus_kode = stn.ventestatus_kode

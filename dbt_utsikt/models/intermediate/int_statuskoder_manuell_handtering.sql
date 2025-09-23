@@ -1,9 +1,9 @@
 select
-    ventestatus_id,
-    ventestatus,
+    ventestatus_kode,
+    ventestatus_beskrivelse,
     case
         when
-            ventestatus_id in (
+            ventestatus_kode in (
                 'ADDR',
                 'ANRE',
                 'AVAG',

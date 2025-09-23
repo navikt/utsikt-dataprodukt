@@ -8,5 +8,5 @@ select
     dato_periode_tom as periode_tom_dato,
     dato_forfall as forfall_dato,
     dato_overfores as overfort_dato,
-    trim(kode_fagomraade) as fagomrade_id
+    trim(kode_fagomraade) as fagomrade_kode
 from {{ source('OS_Q2', 't_vent_stoppnivaa') }}
