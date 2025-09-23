@@ -2,7 +2,7 @@ with dist_beregning_fagomrade as (
 select 
 distinct beregning_id
 ,fagomrade_id
-from {{ ref('stg_db2os__venteregister_stoppnivaer') }}
+from {{ ref('stg_db2os__stoppnivaer') }}
 group by beregning_id, fagomrade_id
 ),
 
@@ -14,7 +14,7 @@ stpn.beregning_id
 ,beregnet_dato
 from dist_beregning_fagomrade as stpn 
 left join {{ ref('int_fagomrader_med_tilhorende_faggrupper') }} fag on stpn.fagomrade_id = fag.fagomrade_id
-left join {{ ref('stg_db2os__venteregister_beregninger') }} brg on brg.beregning_id = stpn.beregning_id
+left join {{ ref('stg_db2os__beregninger') }} brg on brg.beregning_id = stpn.beregning_id
 )
 
 select

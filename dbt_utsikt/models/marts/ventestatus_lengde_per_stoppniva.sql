@@ -7,12 +7,12 @@ t1.beregning_id
 ,t1.registrert_tidspunkt
 ,t2.registrert_tidspunkt as registrert_tidspunkt_neste_ventestatus
 ,t3.registrert_tidspunkt as registrert_tidspunkt_gjeldende_ventestatus
-from {{ ref('stg_db2os__venteregister_stoppstatuser') }} t1
-left join {{ ref('stg_db2os__venteregister_stoppstatuser') }} t2
+from {{ ref('stg_db2os__stoppstatuser') }} t1
+left join {{ ref('stg_db2os__stoppstatuser') }} t2
         on t1.beregning_id = t2.beregning_id
         and t1.stoppniva_id = t2.stoppniva_id
         and t2.lopenummer = t1.lopenummer + 1
-left join {{ ref('stg_db2os__venteregister_stoppstatuser') }} t3
+left join {{ ref('stg_db2os__stoppstatuser') }} t3
         on t1.beregning_id = t3.beregning_id
         and t1.stoppniva_id = t3.stoppniva_id
         and t3.lopenummer = 9999
@@ -47,5 +47,5 @@ end as handteres_manuelt
 ,round((EXTRACT(HOUR FROM lengde_lopenummer) + (EXTRACT(MINUTE FROM lengde_lopenummer) / 60) + (EXTRACT(SECOND FROM lengde_lopenummer) / 3600)),3) as lengde_antall_timer --antar at ingen intervals har registrert noe større enn timer
 from
 lengder_stoppstatuser sts
-left join {{ ref('int_venteregister_statuskoder_manuell_handtering') }} stn
+left join {{ ref('int_statuskoder_manuell_handtering') }} stn
 on sts.ventestatus_id = stn.ventestatus_id

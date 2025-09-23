@@ -6,4 +6,4 @@ ventestatus_id
   then 1
   else 0
 end as handteres_manuelt
-from {{ ref('stg_db2os__venteregister_stoppstatuskoder')}}
+from {{ ref('stg_db2os__stoppstatuskoder')}}
