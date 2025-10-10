@@ -11,7 +11,7 @@ def publish_docs(url_suffix="utsikt-dataprodukt"):
         file_name = os.path.basename(file_path)
         with open(file_path, "rb") as file:
             file_contents = file.read()
-            print(f"Gathering {file_path} ({len(file_contents)/1024:.0f} kB)")
+            print(f"Gathering {file_path} ({len(file_contents) / 1024:.0f} kB)")
             multipart_form_data[file_name] = (file_name, file_contents)
     res = requests.put(complete_url, files=multipart_form_data)
     res.raise_for_status()

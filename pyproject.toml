@@ -8,8 +8,15 @@ dependencies = [
     "dbt-bigquery>=1.9.2",
 ]
 
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".sqlfluff"
+    ]
+
 [dependency-groups]
 dev = [
+    "ruff>=0.14.0",
     "sqlfluff>=3.4.2",
     "sqlfluff-templater-dbt>=3.4.2",
     "toml-to-requirements>=0.3.0",
