@@ -18,3 +18,11 @@ sources:
             description: .
           - name: t_vent_statuskode
             description: .
+
+    - name: venteregister
+      description: .
+      database:
+      schema: venteregister
+      tables:
+          - name: int_min_kombo_til_snapshot
+            description: .

@@ -1,0 +1,8 @@
+snapshots:
+  - name: 'stoppstatus_snapshot'
+    relation: source('venteregister','int_min_kombo_til_snapshot')
+    description:  markdown_string
+    config:
+      strategy: timestamp
+      unique_key: [beregning_id, stoppniva_id]
+      updated_at: registrert_tidspunkt
