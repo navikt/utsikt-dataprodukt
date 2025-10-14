@@ -40,17 +40,14 @@ stoppstatus_snapshot as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        lopenummer,
         registrert_tidspunkt
     from {{ ref('stg_db2os__stoppstatuser') }}
-    where lopenummer = 1
+    -- this means there will be zero rows
+    where false
+
 ),
 
 {% endif %}
-
-
-
-
 
 nye_stoppstatuser as (
     select
@@ -60,11 +57,10 @@ nye_stoppstatuser as (
         stoppstatuser.registrert_tidspunkt
     from stoppstatuser
     left join stoppstatus_snapshot
-        on
-             stoppstatus_snapshot.beregning_id = stoppstatuser.beregning_id
-            and  stoppstatus_snapshot.stoppniva_id = stoppstatuser.stoppniva_id
-            and  stoppstatus_snapshot.ventestatus_kode = stoppstatuser.ventestatus_kode
-            and  stoppstatus_snapshot.registrert_tidspunkt = stoppstatuser.registrert_tidspunkt
+        on stoppstatus_snapshot.beregning_id = stoppstatuser.beregning_id
+        and  stoppstatus_snapshot.stoppniva_id = stoppstatuser.stoppniva_id
+        and  stoppstatus_snapshot.ventestatus_kode = stoppstatuser.ventestatus_kode
+        and  stoppstatus_snapshot.registrert_tidspunkt = stoppstatuser.registrert_tidspunkt
     where stoppstatus_snapshot.beregning_id is NULL
     --dette skal sikre kun nye rader ikke i snapshot allerede
 
@@ -92,4 +88,4 @@ final as (
     where radnummer = 1
 )
 
-select * from nye_stoppstatuser
+select * from final
