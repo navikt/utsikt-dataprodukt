@@ -4,11 +4,11 @@ from dbt.cli.main import dbtRunner, dbtRunnerResult
 dbt = dbtRunner()
 
 # create CLI args as a list of strings
-cli_args = ["run", "--select", "int_fagomrader_med_tilhorende_faggrupper"]
+cli_args1 = ["run", "--select", "+antall_beregninger_per_faggruppe_per_dag"]
+cli_args2 = ["run", "--select", "+antall_beregninger_per_fagomrade_per_dag"]
+cli_args3 = ["run", "--select", "+antall_beregninger_per_ventestatus_per_dag"]
 
-# run the command
-res: dbtRunnerResult = dbt.invoke(cli_args)
-
-# inspect the results
-for r in res.result:
-    print(f"{r.node.name}: {r.status}")
+if __name__ == "__main__":
+    res1: dbtRunnerResult = dbt.invoke(cli_args1)
+    res2: dbtRunnerResult = dbt.invoke(cli_args2)
+    res3: dbtRunnerResult = dbt.invoke(cli_args3)

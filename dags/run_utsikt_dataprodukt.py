@@ -16,7 +16,17 @@ with DAG(
     catchup=False,
     default_args=default_args,
 ) as dag:
-
+    run_stoppstatus_snapshot = python_operator(
+        dag=dag,
+        name="run_stoppstatus_snapshot",
+        startup_timeout_seconds=60 * 10,
+        repo="navikt/utsikt-dataprodukt",
+        script_path="dbt_utsikt/run_stoppstatus_snapshot.py",
+        retries=1,
+        python_version="3.13",
+        use_uv_pip_install=True,
+        requirements_path="requirements.txt",
+    )
     run_dbt = python_operator(
         dag=dag,
         name="run_dbt",
@@ -29,4 +39,4 @@ with DAG(
         requirements_path="requirements.txt",
     )
 
-run_dbt
+run_stoppstatus_snapshot >> run_dbt
