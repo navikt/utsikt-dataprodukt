@@ -12,7 +12,7 @@ default_args = {
 with DAG(
     dag_id="utsikt_dataprodukt",
     start_date=datetime(2023, 1, 22, tzinfo=pendulum.timezone("Europe/Oslo")),
-    schedule_interval="@once",
+    schedule_interval="@daily",
     catchup=False,
     default_args=default_args,
 ) as dag:
