@@ -6,20 +6,20 @@ def check_if_more_rows(dbt_runner, cli_args):
     test: dbtRunnerResult = dbt_runner.invoke(cli_args)
 
     if test.success:
-        print(f"test success - det er rader igjen!")
+        print("test success - det er rader igjen!")
         return True
     else:
-        print(f"test failed - ingen flere rader!")
+        print("test failed - ingen flere rader!")
         return False
 
 
 def run_int_model(dbt_runner, cli_args):
-    run: dbtRunnerResult = dbt_runner.invoke(cli_args)
+    dbt_runner.invoke(cli_args)
     print("running int model")
 
 
 def run_snapshot(dbt_runner, cli_args):
-    run: dbtRunnerResult = dbt_runner.invoke(cli_args)
+    dbt_runner.invoke(cli_args)
     print("running snapshot model")
 
 
