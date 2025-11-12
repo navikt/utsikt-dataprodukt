@@ -5,8 +5,9 @@
     incremental_strategy='merge',
     partition_by={
       "field": "lastet_tid_kilde",
-      "data_type": "datetime",
-      "granularity": "day"}
+      "data_type": "timestamp",
+      "granularity": "day"},
+    partition_expiration_days=730
   )
 }}
 
