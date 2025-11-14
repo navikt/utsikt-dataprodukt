@@ -68,5 +68,5 @@ select
     ) as lengde_antall_timer
 from
     lengder_stoppstatuser as sts
-left join {{ ref('int_statuskoder_manuell_handtering') }} as stn
+left join {{ ref('int_stoppstatuskoder_manuell_handtering') }} as stn
     on sts.ventestatus_kode = stn.ventestatus_kode

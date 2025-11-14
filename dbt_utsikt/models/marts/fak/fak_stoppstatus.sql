@@ -11,12 +11,12 @@ ref_stoppstatus_snapshot as (
     from {{ ref('stoppstatus_snapshot') }}
 ),
 
-ref_int_statuskoder_manuell_handtering as (
+ref_int_stoppstatuskoder_manuell_handtering as (
     select
         ventestatus_kode,
         ventestatus_beskrivelse,
         handteres_manuelt
-    from {{ ref('int_statuskoder_manuell_handtering') }}
+    from {{ ref('int_stoppstatuskoder_manuell_handtering') }}
 ),
 
 beregne_lengde_stoppstatus as (
@@ -24,15 +24,15 @@ beregne_lengde_stoppstatus as (
         ref_stoppstatus_snapshot.beregning_id,
         ref_stoppstatus_snapshot.stoppniva_id,
         ref_stoppstatus_snapshot.ventestatus_kode,
-        ref_int_statuskoder_manuell_handtering.ventestatus_beskrivelse,
-        ref_int_statuskoder_manuell_handtering.handteres_manuelt as handteres_manuelt_flagg,
+        ref_int_stoppstatuskoder_manuell_handtering.ventestatus_beskrivelse,
+        ref_int_stoppstatuskoder_manuell_handtering.handteres_manuelt as handteres_manuelt_flagg,
         ref_stoppstatus_snapshot.registrert_tidspunkt,
         ref_stoppstatus_snapshot.gyldig_fra_tid,
         ref_stoppstatus_snapshot.gyldig_til_tid,
         coalesce(ref_stoppstatus_snapshot.gyldig_til_tid, current_timestamp()) - ref_stoppstatus_snapshot.gyldig_fra_tid as lengde_stoppstatus
     from ref_stoppstatus_snapshot
-    left join ref_int_statuskoder_manuell_handtering
-        on ref_stoppstatus_snapshot.ventestatus_kode = ref_int_statuskoder_manuell_handtering.ventestatus_kode
+    left join ref_int_stoppstatuskoder_manuell_handtering
+        on ref_stoppstatus_snapshot.ventestatus_kode = ref_int_stoppstatuskoder_manuell_handtering.ventestatus_kode
 ),
 
 final as (
