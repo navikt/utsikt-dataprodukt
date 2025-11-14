@@ -2,7 +2,12 @@
 {{
   config(
     materialized='incremental',
-    incremental_strategy='merge'
+    incremental_strategy='merge',
+    partition_by={
+      "field": "lastet_tid_kilde",
+      "data_type": "timestamp",
+      "granularity": "day"},
+    partition_expiration_days=730
   )
 }}
 
