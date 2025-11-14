@@ -2,7 +2,7 @@ version: 2
 
 sources:
     - name: OS_Q2
-      description: .
+      description: Tabeller fra OppdragZ scehma Q2.
       database:
       schema: OS_Q2
       tables:
@@ -20,7 +20,7 @@ sources:
             description: .
 
     - name: venteregister
-      description: .
+      description: Tabeller som tilhørerer venteregisteret i OppdragZ.
       database:
       schema: venteregister
       tables:
