@@ -1,8 +1,8 @@
-
+.idea
 target/
 dbt_packages/
 logs/
 .user.yml
-.DS_Store
+/.DS_Store
 
 __pycache__

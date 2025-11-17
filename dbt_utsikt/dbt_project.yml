@@ -32,6 +32,11 @@ models:
       +docs:
         node_color: '#3380A5' #deepblue 400      
     marts:
-      +materialized: table
-      +docs:
-        node_color: '#8269A2' #Purple 400
+      agg:
+        +materialized: view
+        +docs:
+          node_color: '#8269A2' #Purple 400
+      fak:
+        +materialized: incremental
+        +docs:
+          node_color: '#8269A2' #Purple 400
