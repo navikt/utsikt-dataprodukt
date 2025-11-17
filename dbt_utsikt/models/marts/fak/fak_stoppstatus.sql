@@ -1,4 +1,16 @@
 --fak_stoppstatus
+{{
+  config(
+    materialized='incremental',
+    incremental_strategy='merge',
+    partition_by={
+      "field": "lastet_tid_kilde",
+      "data_type": "timestamp",
+      "granularity": "day"},
+    partition_expiration_days=730
+  )
+}}
+
 with
 ref_stoppstatus_snapshot as (
     select
@@ -9,6 +21,15 @@ ref_stoppstatus_snapshot as (
         dbt_valid_from as gyldig_fra_tid,
         dbt_valid_to as gyldig_til_tid
     from {{ ref('stoppstatus_snapshot') }}
+    {% if is_incremental() %}
+        where
+            lastet_tid_kilde
+            > (
+                select coalesce(max(lastet_tid_kilde), '1900-01-01') -- noqa: RF02: LT05: 
+                from {{ this }}
+            )
+
+    {% endif %}
 ),
 
 ref_int_stoppstatuskoder_manuell_handtering as (
