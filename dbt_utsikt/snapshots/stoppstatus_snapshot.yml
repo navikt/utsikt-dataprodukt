@@ -5,4 +5,4 @@ snapshots:
     config:
       strategy: timestamp
       unique_key: [beregning_id, stoppniva_id]
-      updated_at: registrert_tidspunkt
+      updated_at: lastet_tid_kilde

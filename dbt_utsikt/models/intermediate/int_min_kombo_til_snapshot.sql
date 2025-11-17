@@ -6,7 +6,7 @@ stoppstatuser as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        registrert_tidspunkt
+        lastet_tid_kilde
     from {{ ref('stg_db2os__stoppstatuser') }}
     -- burde ha noe logikk som kun tar de nyeste stoppstatusene
 ),
@@ -27,7 +27,7 @@ stoppstatus_snapshot as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        dbt_updated_at as registrert_tidspunkt
+        dbt_updated_at as lastet_tid_kilde
     from {{ ref('stoppstatus_snapshot') }}
 ),
 
@@ -40,7 +40,7 @@ stoppstatus_snapshot as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        registrert_tidspunkt
+        lastet_tid_kilde
     from {{ ref('stg_db2os__stoppstatuser') }}
     -- this means there will be zero rows
     where false
@@ -54,13 +54,13 @@ nye_stoppstatuser as (
         stoppstatuser.beregning_id,
         stoppstatuser.stoppniva_id,
         stoppstatuser.ventestatus_kode,
-        stoppstatuser.registrert_tidspunkt
+        stoppstatuser.lastet_tid_kilde
     from stoppstatuser
     left join stoppstatus_snapshot
         on stoppstatus_snapshot.beregning_id = stoppstatuser.beregning_id
         and  stoppstatus_snapshot.stoppniva_id = stoppstatuser.stoppniva_id
         and  stoppstatus_snapshot.ventestatus_kode = stoppstatuser.ventestatus_kode
-        and  stoppstatus_snapshot.registrert_tidspunkt = stoppstatuser.registrert_tidspunkt
+        and  stoppstatus_snapshot.lastet_tid_kilde = stoppstatuser.lastet_tid_kilde
     where stoppstatus_snapshot.beregning_id is NULL
     --dette skal sikre kun nye rader ikke i snapshot allerede
 
@@ -71,9 +71,9 @@ eldste_stoppstatus_ikke_i_snapshot as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        registrert_tidspunkt,
+        lastet_tid_kilde,
         row_number() over (
-            partition by beregning_id, stoppniva_id order by registrert_tidspunkt
+            partition by beregning_id, stoppniva_id order by lastet_tid_kilde
         ) as radnummer
     from nye_stoppstatuser
 ),
@@ -83,7 +83,7 @@ final as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        registrert_tidspunkt
+        lastet_tid_kilde
     from eldste_stoppstatus_ikke_i_snapshot
     where radnummer = 1
 )

@@ -4,9 +4,9 @@ with registrerte_tidsstempler as (
         t1.stoppniva_id,
         t1.lopenummer,
         t1.ventestatus_kode,
-        t1.registrert_tidspunkt,
-        t2.registrert_tidspunkt as registrert_tidspunkt_neste_ventestatus,
-        t3.registrert_tidspunkt as registrert_tidspunkt_gjeldende_ventestatus
+        t1.lastet_tid_kilde,
+        t2.lastet_tid_kilde as lastet_tid_kilde_neste_ventestatus,
+        t3.lastet_tid_kilde as lastet_tid_kilde_gjeldende_ventestatus
     from {{ ref('stg_db2os__stoppstatuser') }} as t1
     left join {{ ref('stg_db2os__stoppstatuser') }} as t2
         on
@@ -26,21 +26,21 @@ lengder_stoppstatuser as (
         stoppniva_id,
         lopenummer,
         ventestatus_kode,
-        registrert_tidspunkt,
+        lastet_tid_kilde,
         case
             when
-                registrert_tidspunkt_neste_ventestatus is not null
+                lastet_tid_kilde_neste_ventestatus is not null
                 then
-                    registrert_tidspunkt_neste_ventestatus
-                    - registrert_tidspunkt
+                    lastet_tid_kilde_neste_ventestatus
+                    - lastet_tid_kilde
             when
                 lopenummer = 9999
                 then
                     cast(current_datetime('Europe/Oslo') as timestamp)
-                    - registrert_tidspunkt
+                    - lastet_tid_kilde
             else
-                registrert_tidspunkt_gjeldende_ventestatus
-                - registrert_tidspunkt
+                lastet_tid_kilde_gjeldende_ventestatus
+                - lastet_tid_kilde
         end as lengde_lopenummer
     from registrerte_tidsstempler
 )
@@ -51,7 +51,7 @@ select
     lopenummer,
     sts.ventestatus_kode,
     ventestatus_beskrivelse,
-    registrert_tidspunkt,
+    lastet_tid_kilde,
     lengde_lopenummer,
     case
         when handteres_manuelt = 1 then 'Håndteres manuelt'

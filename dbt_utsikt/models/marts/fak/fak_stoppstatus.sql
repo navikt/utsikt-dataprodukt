@@ -5,7 +5,7 @@ ref_stoppstatus_snapshot as (
         beregning_id,
         stoppniva_id,
         ventestatus_kode,
-        registrert_tidspunkt,
+        lastet_tid_kilde,
         dbt_valid_from as gyldig_fra_tid,
         dbt_valid_to as gyldig_til_tid
     from {{ ref('stoppstatus_snapshot') }}
@@ -26,7 +26,7 @@ beregne_lengde_stoppstatus as (
         ref_stoppstatus_snapshot.ventestatus_kode,
         ref_int_stoppstatuskoder_manuell_handtering.ventestatus_beskrivelse,
         ref_int_stoppstatuskoder_manuell_handtering.handteres_manuelt as handteres_manuelt_flagg,
-        ref_stoppstatus_snapshot.registrert_tidspunkt,
+        ref_stoppstatus_snapshot.lastet_tid_kilde,
         ref_stoppstatus_snapshot.gyldig_fra_tid,
         ref_stoppstatus_snapshot.gyldig_til_tid,
         coalesce(ref_stoppstatus_snapshot.gyldig_til_tid, current_timestamp()) - ref_stoppstatus_snapshot.gyldig_fra_tid as lengde_stoppstatus
@@ -41,7 +41,7 @@ final as (
         stoppniva_id,
         ventestatus_kode,
         ventestatus_beskrivelse,
-        registrert_tidspunkt,
+        lastet_tid_kilde,
         gyldig_fra_tid,
         gyldig_til_tid,
         handteres_manuelt_flagg,
