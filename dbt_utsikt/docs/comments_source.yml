@@ -1,9 +1,14 @@
 {
     source_column_comments: {
-        beregning_id: "Unik id for beregningen",
     },
 
     source_table_descriptions: {
-        stg_db2os__beregninger: "Staging av venteregister.t_vent_beregning",
+        stg_t_faggruppe: "Staging av OS_Q2.t_faggruppe, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_t_fagomraade: "Staging av OS_Q2.t_fagomraade, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_t_vent_beregning: "Staging av OS_Q2.t_vent_beregning, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_t_vent_stoppnivaa: "Staging av OS_Q2.t_vent_stoppnivaa, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_t_vent_stoppstatus: "Staging av OS_Q2.t_vent_stoppstatus, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_t_vent_statuskode: "Staging av OS_Q2.t_vent_statuskode, med original beskrivelse: Beskrivelse av tabellen t_vent_statuskode.",
+        stg_int_min_kombo_til_snapshot: "Staging av venteregister.int_min_kombo_til_snapshot, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
     }
 }

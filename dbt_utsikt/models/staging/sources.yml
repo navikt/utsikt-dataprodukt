@@ -7,17 +7,11 @@ sources:
       schema: OS_Q2
       tables:
           - name: t_faggruppe
-            description: .
           - name: t_fagomraade
-            description: .
           - name: t_vent_beregning
-            description: .
           - name: t_vent_stoppnivaa
-            description: .
           - name: t_vent_stoppstatus
-            description: .
           - name: t_vent_statuskode
-            description: .
 
     - name: venteregister
       description: Tabeller som tilhørerer venteregisteret i OppdragZ.
@@ -25,4 +19,3 @@ sources:
       schema: venteregister
       tables:
           - name: int_min_kombo_til_snapshot
-            description: .

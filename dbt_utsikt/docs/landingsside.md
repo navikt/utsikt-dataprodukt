@@ -1,6 +1,6 @@
 {% docs __overview__ %}
 
-# dbt docs for [utsikt_dataprodukt (GitHub-link)](https://github.com/navikt/utsikt_dataprodukt)
+# dbt docs for [utsikt_dataprodukt (GitHub-link)](https://github.com/navikt/utsikt-dataprodukt)
 
 Dette er autogenerert dokumentasjon som er ***søkbar og interaktiv***.
 
