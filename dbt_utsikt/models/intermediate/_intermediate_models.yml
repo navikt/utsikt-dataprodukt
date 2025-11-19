@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: int_fagomrader_med_tilhorende_faggrupper
+    description: ''
+    columns:
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_kode
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+  - name: int_min_kombo_til_snapshot
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: stoppniva_id
+        description: ''
+      - name: ventestatus_kode
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+  - name: int_stoppstatuskoder_manuell_handtering
+    description: ''
+    columns:
+      - name: ventestatus_kode
+        description: ''
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: case
+        description: ''
+      - name: when
+        description: ''
+      - name: ventestatus_kode in (
+        description: ''
+      - name: )
+        description: ''
+      - name: then 1
+        description: ''
+      - name: else 0
+        description: ''
+      - name: handteres_manuelt
+        description: ''
+      - name: addr
+        description: ''
+      - name: anre
+        description: ''
+      - name: avag
+        description: ''
+      - name: avav
+        description: ''
+      - name: avrk
+        description: ''
+      - name: avve
+        description: ''
+      - name: avvm
+        description: ''
+      - name: eonk
+        description: ''
+      - name: eopk
+        description: ''
+      - name: krav
+        description: ''
+      - name: ovur
+        description: ''
+      - name: retn
+        description: ''
+      - name: retu
+        description: ''

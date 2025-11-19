@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_db2os__beregninger
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: beregnet_dato
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+      - name: faggruppe_kode
+        description: ''
+  - name: stg_db2os__faggrupper
+    description: ''
+    columns:
+      - name: faggruppe_kode
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+  - name: stg_db2os__fagomrader
+    description: ''
+    columns:
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_kode
+        description: ''
+  - name: stg_db2os__stoppnivaer
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: stoppniva_id
+        description: ''
+      - name: oppdrag_id
+        description: ''
+      - name: fagsystem_id
+        description: ''
+      - name: type_skatt
+        description: ''
+      - name: periode_fom_dato
+        description: ''
+      - name: periode_tom_dato
+        description: ''
+      - name: forfall_dato
+        description: ''
+      - name: overfort_dato
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+      - name: fagomrade_kode
+        description: ''
+  - name: stg_db2os__stoppstatuser
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: stoppniva_id
+        description: ''
+      - name: ventestatus_kode
+        description: ''
+      - name: lopenummer
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+  - name: stg_db2os__stoppstatuskoder
+    description: ''
+    columns:
+      - name: ventestatus_kode
+        description: ''
+      - name: ventestatus_beskrivelse
+        description: ''

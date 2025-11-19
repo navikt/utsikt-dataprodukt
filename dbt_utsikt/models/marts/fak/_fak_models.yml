@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: fak_beregninger
+    description: 'Faktatabell med alle beregningene fra venteregisteret'
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: faggruppe_kode
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+      - name: beregnet_dato
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+  - name: fak_stoppnivaer
+    description: 'Stoppnivaer'
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: stoppniva_id
+        description: ''
+      - name: oppdrag_id
+        description: ''
+      - name: fagsystem_id
+        description: ''
+      - name: type_skatt
+        description: ''
+      - name: periode_fom_dato
+        description: ''
+      - name: periode_tom_dato
+        description: ''
+      - name: forfall_dato
+        description: ''
+      - name: fagomrade_kode
+        description: ''
+      - name: overfort_dato
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+      - name: beregnet_dato
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+  - name: fak_stoppstatus
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Unik id for beregningen'
+      - name: stoppniva_id
+        description: ''
+      - name: ventestatus_kode
+        description: ''
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+      - name: gyldig_fra_tid
+        description: ''
+      - name: gyldig_til_tid
+        description: ''
+      - name: handteres_manuelt_flagg
+        description: ''
+      - name: lengde_stoppstatus
+        description: ''

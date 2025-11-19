@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: antall_beregninger_per_faggruppe_per_dag
+    description: ''
+    columns:
+      - name: faggruppe_kode
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+      - name: beregnet_dato
+        description: ''
+      - name: antall_beregninger
+        description: ''
+  - name: antall_beregninger_per_fagomrade_per_dag
+    description: ''
+    columns:
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+      - name: beregnet_dato
+        description: ''
+      - name: antall_beregninger
+        description: ''
+  - name: antall_beregninger_per_ventestatus_per_dag
+    description: ''
+    columns:
+      - name: ventestatus_kode
+        description: ''
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: antall_beregninger
+        description: ''
+      - name: handteres_manuelt
+        description: ''

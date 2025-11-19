@@ -1,0 +1,13 @@
+{
+custom_table_descriptions:
+        {
+            fak_beregninger: 'Faktatabell med alle beregningene fra venteregisteret',
+            fak_stoppnivaer: 'Stoppnivaer',
+        },
+
+custom_column_comments:
+        {
+            faggruppe_navn: 'Navn på faggruppa, for eksempel Arbeidsytelser',
+        }
+        ,
+}

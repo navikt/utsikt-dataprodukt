@@ -1,0 +1,9 @@
+{
+    source_column_comments: {
+        beregning_id: "Unik id for beregningen",
+    },
+
+    source_table_descriptions: {
+        stg_db2os__beregninger: "Staging av venteregister.t_vent_beregning",
+    }
+}
