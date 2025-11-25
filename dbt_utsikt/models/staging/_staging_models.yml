@@ -5,7 +5,7 @@ models:
     description: ''
     columns:
       - name: beregning_id
-        description: 'Unik id for beregningen'
+        description: ''
       - name: beregnet_dato
         description: ''
       - name: lastet_tid_kilde
@@ -18,7 +18,7 @@ models:
       - name: faggruppe_kode
         description: ''
       - name: faggruppe_navn
-        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+        description: ''
   - name: stg_db2os__fagomrader
     description: ''
     columns:
@@ -32,15 +32,15 @@ models:
     description: ''
     columns:
       - name: beregning_id
-        description: 'Unik id for beregningen'
+        description: ''
       - name: stoppniva_id
         description: ''
       - name: oppdrag_id
         description: ''
       - name: fagsystem_id
-        description: ''
+        description: 'Identifikator fra vedtaksløsningen som har avlevert ett utbetalingsoppdrag'
       - name: type_skatt
-        description: ''
+        description: 'Angir om det er beregnet skatt med prosenttrekk eller tabelltrekk. Med denne kan man oppdage feil hvis skattekort ikke har kunnet blitt innhentet (skjer ikke ofte, men har skjedd) '
       - name: periode_fom_dato
         description: ''
       - name: periode_tom_dato
@@ -57,7 +57,7 @@ models:
     description: ''
     columns:
       - name: beregning_id
-        description: 'Unik id for beregningen'
+        description: ''
       - name: stoppniva_id
         description: ''
       - name: ventestatus_kode

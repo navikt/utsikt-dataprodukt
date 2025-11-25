@@ -2,29 +2,29 @@ version: 2
 
 models:
   - name: antall_beregninger_per_faggruppe_per_dag
-    description: ''
+    description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
       - name: faggruppe_kode
         description: ''
       - name: faggruppe_navn
-        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+        description: ''
       - name: beregnet_dato
         description: ''
       - name: antall_beregninger
         description: ''
   - name: antall_beregninger_per_fagomrade_per_dag
-    description: ''
+    description: 'Antall beregninger per fagområde per beregnet dato'
     columns:
       - name: fagomrade_navn
         description: ''
       - name: faggruppe_navn
-        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+        description: ''
       - name: beregnet_dato
         description: ''
       - name: antall_beregninger
         description: ''
   - name: antall_beregninger_per_ventestatus_per_dag
-    description: ''
+    description: 'Antall beregninger per ventestatus per beregnet dato'
     columns:
       - name: ventestatus_kode
         description: ''
@@ -34,3 +34,4 @@ models:
         description: ''
       - name: handteres_manuelt
         description: ''
+

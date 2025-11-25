@@ -1,13 +1,36 @@
 {
 custom_table_descriptions:
         {
+        # fak models
             fak_beregninger: 'Faktatabell med alle beregningene fra venteregisteret',
-            fak_stoppnivaer: 'Stoppnivaer',
+            fak_stoppnivaer: 'Faktatabell med stoppnivåer fra venteregisteret',
+            fak_stoppstatus: 'Faktatabell med stoppstatuser fra venteregisteret',
+        # agg models
+            antall_beregninger_per_faggruppe_per_dag: 'Antall beregninger per faggruppe per beregnet dato',
+            antall_beregninger_per_fagomrade_per_dag: 'Antall beregninger per fagområde per beregnet dato',
+            antall_beregninger_per_ventestatus_per_dag: 'Antall beregninger per ventestatus per beregnet dato',
+
         },
 
 custom_column_comments:
         {
-            faggruppe_navn: 'Navn på faggruppa, for eksempel Arbeidsytelser',
+            faggruppe_navn: '',
+            faggruppe_kode: '',
+            fagomrade_navn: '',
+            fagomrade_kode: '',
+            ventestatus_kode: '',
+            ventestatus_beskrivelse: '',
+            beregnet_dato: '',
+            antall_beregninger: '',
+            handteres_manuelt: '',
+            lastet_tid_kilde: '',
+            beregning_id: '',
+            stoppniva_id: '',
+            oppdrag_id: '',
+            periode_fom_dato: '',
+            periode_tom_dato: '',
+            forfall_dato: '',
+            overfort_dato: '',
         }
         ,
 }

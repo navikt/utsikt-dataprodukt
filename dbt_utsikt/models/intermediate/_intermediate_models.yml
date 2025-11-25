@@ -11,12 +11,12 @@ models:
       - name: faggruppe_kode
         description: ''
       - name: faggruppe_navn
-        description: 'Navn på faggruppa, for eksempel Arbeidsytelser'
+        description: ''
   - name: int_min_kombo_til_snapshot
     description: ''
     columns:
       - name: beregning_id
-        description: 'Unik id for beregningen'
+        description: ''
       - name: stoppniva_id
         description: ''
       - name: ventestatus_kode
