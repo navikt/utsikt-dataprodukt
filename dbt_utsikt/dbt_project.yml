@@ -27,17 +27,27 @@ models:
     staging:
       +materialized: ephemeral
       +docs:
-        node_color: '#C1CB33' #limegreen 200
+        node_color: '#33aa5f' #grønn
     intermediate:
       +materialized: view
       +docs:
-        node_color: '#3380A5' #deepblue 400      
+        node_color: '#3386E0'  #blå    
     marts:
       agg:
         +materialized: view
         +docs:
-          node_color: '#8269A2' #Purple 400
+          node_color: '#368DA8' # turkis
       fak:
         +materialized: incremental
         +docs:
-          node_color: '#8269A2' #Purple 400
+          node_color: '#8269A2' #lilla
+
+snapshots:
+  dbt_utsikt:
+    +docs:
+      node_color: '#e6b400' #gul
+
+data_tests:
+  dbt_utsikt:
+    +docs:
+      node_color: '#cc79a7' #rosa
