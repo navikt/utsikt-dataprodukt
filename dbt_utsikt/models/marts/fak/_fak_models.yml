@@ -50,6 +50,9 @@ models:
     columns:
       - name: beregning_id
         description: ''
+        data_tests:
+          - unique
+          - not_null
       - name: stoppniva_id
         description: ''
       - name: ventestatus_kode
