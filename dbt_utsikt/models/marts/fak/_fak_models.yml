@@ -5,62 +5,64 @@ models:
     description: 'Faktatabell med alle beregningene fra venteregisteret'
     columns:
       - name: beregning_id
-        description: ''
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
+        data_tests:
+          - unique
+          - not_null
       - name: faggruppe_kode
-        description: ''
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
       - name: faggruppe_navn
-        description: ''
+        description: 'Navn/beskrivelse på faggruppe'
       - name: beregnet_dato
-        description: ''
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: lastet_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:
       - name: beregning_id
-        description: ''
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
       - name: stoppniva_id
-        description: ''
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
       - name: oppdrag_id
-        description: ''
+        description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
       - name: fagsystem_id
         description: 'Identifikator fra vedtaksløsningen som har avlevert ett utbetalingsoppdrag'
       - name: type_skatt
         description: 'Angir om det er beregnet skatt med prosenttrekk eller tabelltrekk. Med denne kan man oppdage feil hvis skattekort ikke har kunnet blitt innhentet (skjer ikke ofte, men har skjedd) '
       - name: periode_fom_dato
-        description: ''
+        description: 'Startdatoen stoppnivået gjelder for. Sammen med dato_periode_tom utgjør dette perioden stoppnivået gjelder for.'
       - name: periode_tom_dato
-        description: ''
+        description: 'Sluttdatoen stoppnivået gjelder for. Sammen med dato_periode_fom utgjør dette perioden stoppnivået gjelder for.'
       - name: forfall_dato
-        description: ''
+        description: 'Dato for når stoppnivået skal utbetales.'
       - name: fagomrade_kode
-        description: ''
-      - name: overfort_dato
-        description: ''
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: overfores_dato
+        description: 'Dato for når stoppnivået er planlagt overført til reskontro'
       - name: fagomrade_navn
-        description: ''
+        description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
-        description: ''
+        description: 'Navn/beskrivelse på faggruppe'
       - name: beregnet_dato
-        description: ''
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: lastet_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: fak_stoppstatus
     description: 'Faktatabell med stoppstatuser fra venteregisteret'
     columns:
       - name: beregning_id
-        description: ''
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
         data_tests:
-          - unique
           - not_null
       - name: stoppniva_id
-        description: ''
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
       - name: ventestatus_kode
-        description: ''
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: ventestatus_beskrivelse
-        description: ''
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
       - name: lastet_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
       - name: gyldig_fra_tid
         description: ''
       - name: gyldig_til_tid

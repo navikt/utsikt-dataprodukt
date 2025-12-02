@@ -1,31 +1,34 @@
 {
     source_table_descriptions: {
-        stg_t_faggruppe: "Staging av OS_Q2.t_faggruppe, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
-        stg_t_fagomraade: "Staging av OS_Q2.t_fagomraade, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
-        stg_t_vent_beregning: "Staging av OS_Q2.t_vent_beregning, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
-        stg_t_vent_stoppnivaa: "Staging av OS_Q2.t_vent_stoppnivaa, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
-        stg_t_vent_stoppstatus: "Staging av OS_Q2.t_vent_stoppstatus, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
-        stg_t_vent_statuskode: "Staging av OS_Q2.t_vent_statuskode, med original beskrivelse: Beskrivelse av tabellen t_vent_statuskode.",
+        stg_t_faggruppe: "Staging av OS_Q2.t_faggruppe, med original beskrivelse: Kodeverk for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. pensjonsrelaterte ytelser.",
+        stg_t_fagomraade: "Staging av OS_Q2.t_fagomraade, med original beskrivelse: Kodeverk for fagområde. Fagområde angir selve ytelsen, f.eks. arbeidsavklaringspenger.",
+        stg_t_vent_beregning: "Staging av OS_Q2.t_vent_beregning, med original beskrivelse: Beregninger i Oppdragssystemet.",
+        stg_t_vent_stoppnivaa: "Staging av OS_Q2.t_vent_stoppnivaa, med original beskrivelse: 
+        Stoppnivå er et begrep i Oppdragssystemet som brukes for nedbryting av beregninger.
+        En beregning kan brytes ned i f.eks. perioder med tilhørende forfallsdato, gjelde forskjellige mottakere, eller kan gjelde ulike saker (f.eks sykepenger til én bruker, men gjelder flere forhold). 
+        Stoppnivå id sammen med beregnings id vil unikt identifisere et stoppnivå for en beregning.",
+        stg_t_vent_stoppstatus: "Staging av OS_Q2.t_vent_stoppstatus, med original beskrivelse: Status for stoppnivå. Stoppstatus er synonymt med ventestatus..",
+        stg_t_vent_statuskode: "Staging av OS_Q2.t_vent_statuskode, med original beskrivelse: Kodeverk for ventestatus/stoppstatus. En ventestatus angir statusen på et stoppnivå i Oppdragssystemet.",
     },
 
     source_column_comments: {
-        beregnings_id: "Unik identifikator for en utført beregning i Oppdrag Z.",
+        beregnings_id: "Identifikator for beregninger i Oppdragssystemet.",
         beskrivelse: "Beskrivelse av ventestatuskode, eks 'Overført til UR'",
-        dato_beregnet: "Datoen beregningen er utført.",
-        dato_forfall: "Dato for når ytelse skal utbetales.",
-        dato_overfores: "Antakeligvis når ytelse overføres til bank?",
-        dato_periode_fom: "Startsdatoen stoppnivået gjelder for. Sammen med dato_periode_tom er utgjør dette perioden det gjelder for. For statistikk og forventningsstyring av utbetalingsforløp ",
-        dato_periode_tom: "Sluttdatoen stoppnivået gjelder for. Sammen med dato_periode_fom er utgjør dette perioden det gjelder for. For statistikk og forventningsstyring av utbetalingsforløp ",
+        dato_beregnet: "Datoen beregningen er utført i Oppdragssystemet.",
+        dato_forfall: "Dato for når stoppnivået skal utbetales.",
+        dato_overfores: "Dato for når stoppnivået er planlagt overført til reskontro",
+        dato_periode_fom: "Startdatoen stoppnivået gjelder for. Sammen med dato_periode_tom utgjør dette perioden stoppnivået gjelder for.",
+        dato_periode_tom: "Sluttdatoen stoppnivået gjelder for. Sammen med dato_periode_fom utgjør dette perioden stoppnivået gjelder for.",
         fagsystem_id: "Identifikator fra vedtaksløsningen som har avlevert ett utbetalingsoppdrag",
-        kode_faggruppe: "Kode for gruppering av fagområder med felles egenskaper, f.eks. 'PEN' for pensjonsrelaterte ytelser",
+        kode_faggruppe: "Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. 'PEN' for pensjonsrelaterte ytelser",
         kode_fagomraade: "En kode som angir selve ytelsen som beregningen gjelder, f.eks. 'AAP' for arbeidsavklaringspenger",
-        kode_ventestatus: "Identifikator for status på stoppnivået i venteregisteret, eks OVFO (for 'Overført til UR')",
-        lopenr: "Tall som er >=1, hopper med steg += 1, 9999 markerer gjeldende ventestatus",
+        kode_ventestatus: "Kode for ventestatus. F.eks OVFO (for 'Overført til UR')",
+        lopenr: "Løpenummer. Tall som er >=1, hopper med steg += 1, 9999 markerer gjeldende ventestatus",
         navn_faggruppe: "Navn/beskrivelse på faggruppe",
         navn_fagomraade: "Navn/beskrivelse på fagområde",
-        oppdrags_id: "Identifikator på utbetalingsoppdraget, unik identifikator som oppdrag Z oppretter når man mottar ett vedtak til utbetaling fra fagsystem.",
-        stoppnivaa_id: "En beregning brytes ned i f.eks. perioder med tilhørende forfallsdato. Stoppnivå er et begrep i Oppdrag Z bruker for en slik nødvendig nebrytning. Stoppnivå id samt beregnings id unikt identifiserer et stoppnivå fra en beregning.",
-        tidspkt_reg: "Tidspunktet for når raden er satt inn i tabellen.",
-        type_skatt: "Angir om det er beregnet skatt med prosenttrekk eller tabelltrekk. Med denne kan man oppdage feil hvis skattekort ikke har kunnet blitt innhentet (skjer ikke ofte, men har skjedd) ",
+        oppdrags_id: "Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.",
+        stoppnivaa_id: "Identifikator for stoppnivå i Oppdragssystemet",
+        tidspkt_reg: "Tidspunktet for når raden er lastet inn i tabellen.",
+        type_skatt: "Angir om det er beregnet skatt med prosenttrekk eller tabelltrekk.",
     }
 }

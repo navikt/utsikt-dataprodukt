@@ -5,33 +5,33 @@ models:
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
       - name: faggruppe_kode
-        description: ''
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
       - name: faggruppe_navn
-        description: ''
+        description: 'Navn/beskrivelse på faggruppe'
       - name: beregnet_dato
-        description: ''
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
-        description: ''
+        description: 'Antall beregninger'
   - name: antall_beregninger_per_fagomrade_per_dag
     description: 'Antall beregninger per fagområde per beregnet dato'
     columns:
       - name: fagomrade_navn
-        description: ''
+        description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
-        description: ''
+        description: 'Navn/beskrivelse på faggruppe'
       - name: beregnet_dato
-        description: ''
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
-        description: ''
+        description: 'Antall beregninger'
   - name: antall_beregninger_per_ventestatus_per_dag
     description: 'Antall beregninger per ventestatus per beregnet dato'
     columns:
       - name: ventestatus_kode
-        description: ''
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: ventestatus_beskrivelse
-        description: ''
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
       - name: antall_beregninger
-        description: ''
+        description: 'Antall beregninger'
       - name: handteres_manuelt
-        description: ''
+        description: 'Flagg som tilsier om statusen må til manuell behandling'
 

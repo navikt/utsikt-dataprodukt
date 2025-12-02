@@ -5,68 +5,30 @@ models:
     description: ''
     columns:
       - name: fagomrade_kode
-        description: ''
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
       - name: fagomrade_navn
-        description: ''
+        description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_kode
-        description: ''
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
       - name: faggruppe_navn
-        description: ''
+        description: 'Navn/beskrivelse på faggruppe'
   - name: int_min_kombo_til_snapshot
     description: ''
     columns:
       - name: beregning_id
-        description: ''
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
       - name: stoppniva_id
-        description: ''
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
       - name: ventestatus_kode
-        description: ''
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: lastet_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: int_stoppstatuskoder_manuell_handtering
     description: ''
     columns:
       - name: ventestatus_kode
-        description: ''
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: ventestatus_beskrivelse
-        description: ''
-      - name: case
-        description: ''
-      - name: when
-        description: ''
-      - name: ventestatus_kode in (
-        description: ''
-      - name: )
-        description: ''
-      - name: then 1
-        description: ''
-      - name: else 0
-        description: ''
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
       - name: handteres_manuelt
-        description: ''
-      - name: addr
-        description: ''
-      - name: anre
-        description: ''
-      - name: avag
-        description: ''
-      - name: avav
-        description: ''
-      - name: avrk
-        description: ''
-      - name: avve
-        description: ''
-      - name: avvm
-        description: ''
-      - name: eonk
-        description: ''
-      - name: eopk
-        description: ''
-      - name: krav
-        description: ''
-      - name: ovur
-        description: ''
-      - name: retn
-        description: ''
-      - name: retu
-        description: ''
+        description: 'Flagg som tilsier om statusen må til manuell behandling'
