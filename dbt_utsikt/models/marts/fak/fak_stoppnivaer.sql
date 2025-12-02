@@ -24,7 +24,7 @@ ref_stg_db2os__stoppnivaer as (
         periode_tom_dato,
         forfall_dato,
         fagomrade_kode,
-        overfort_dato,
+        overfores_dato,
         lastet_tid_kilde
     from {{ ref('stg_db2os__stoppnivaer') }}
     {% if is_incremental() %}
@@ -64,7 +64,7 @@ join_med_beregnet_dato_og_faggruppe as (
         ref_stg_db2os__stoppnivaer.periode_tom_dato,
         ref_stg_db2os__stoppnivaer.forfall_dato,
         ref_stg_db2os__stoppnivaer.fagomrade_kode,
-        ref_stg_db2os__stoppnivaer.overfort_dato,
+        ref_stg_db2os__stoppnivaer.overfores_dato,
         ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_navn,
         ref_int_fagomrader_med_tilhorende_faggrupper.faggruppe_navn,
         ref_stg_db2os__beregninger.beregnet_dato,
@@ -93,7 +93,7 @@ final as (
         periode_tom_dato,
         forfall_dato,
         fagomrade_kode,
-        overfort_dato,
+        overfores_dato,
         fagomrade_navn,
         faggruppe_navn,
         beregnet_dato,

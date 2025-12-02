@@ -7,7 +7,7 @@ select
     dato_periode_fom as periode_fom_dato,
     dato_periode_tom as periode_tom_dato,
     dato_forfall as forfall_dato,
-    dato_overfores as overfort_dato,
+    dato_overfores as overfores_dato,
     timestamp(tidspkt_reg, 'Europe/Oslo') as lastet_tid_kilde,
     trim(kode_fagomraade) as fagomrade_kode
 from {{ source('OS_Q2', 't_vent_stoppnivaa') }}
