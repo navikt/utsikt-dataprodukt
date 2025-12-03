@@ -64,7 +64,8 @@ final as (
         ventestatus_kode,
         ventestatus_beskrivelse,
         antall_beregninger,
-        handteres_manuelt
+        handteres_manuelt,
+        beregnet_dato
     from antall_beregninger_per_ventestatus_per_dag
 )
 
