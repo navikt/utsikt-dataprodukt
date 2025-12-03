@@ -21,6 +21,9 @@ models:
           - not_null
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - not_null
+          - eldre_enn_to_ar_gammelt
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:
@@ -62,6 +65,9 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - not_null
+          - eldre_enn_to_ar_gammelt
   - name: fak_stoppstatus
     description: 'Faktatabell med stoppstatuser fra venteregisteret'
     columns:
@@ -79,6 +85,9 @@ models:
         description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - not_null
+          - eldre_enn_to_ar_gammelt
       - name: gyldig_fra_tid
         description: ''
       - name: gyldig_til_tid
