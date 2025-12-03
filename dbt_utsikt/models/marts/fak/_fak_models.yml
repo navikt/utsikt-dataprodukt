@@ -11,10 +11,14 @@ models:
           - not_null
       - name: faggruppe_kode
         description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+        data_tests:
+          - not_null
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
       - name: beregnet_dato
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
+        data_tests:
+          - not_null
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: fak_stoppnivaer
@@ -22,12 +26,20 @@ models:
     columns:
       - name: beregning_id
         description: 'Identifikator for beregninger i Oppdragssystemet.'
+        data_tests:
+          - not_null
       - name: stoppniva_id
         description: 'Identifikator for stoppnivå i Oppdragssystemet'
+        data_tests:
+          - not_null
       - name: oppdrag_id
         description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
+        data_tests:
+          - not_null
       - name: fagsystem_id
         description: 'Identifikator fra vedtaksløsningen som har avlevert ett utbetalingsoppdrag'
+        data_tests:
+          - not_null
       - name: type_skatt
         description: 'Angir om det er beregnet skatt med prosenttrekk eller tabelltrekk. Med denne kan man oppdage feil hvis skattekort ikke har kunnet blitt innhentet (skjer ikke ofte, men har skjedd) '
       - name: periode_fom_dato
@@ -38,6 +50,8 @@ models:
         description: 'Dato for når stoppnivået skal utbetales.'
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+        data_tests:
+          - not_null
       - name: overfores_dato
         description: 'Dato for når stoppnivået er planlagt overført til reskontro'
       - name: fagomrade_navn
@@ -57,6 +71,8 @@ models:
           - not_null
       - name: stoppniva_id
         description: 'Identifikator for stoppnivå i Oppdragssystemet'
+        data_tests:
+          - not_null
       - name: ventestatus_kode
         description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: ventestatus_beskrivelse
