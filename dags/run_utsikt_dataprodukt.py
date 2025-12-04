@@ -2,6 +2,7 @@ import pendulum
 from datetime import datetime
 from airflow import DAG
 from dataverk_airflow import python_operator
+from airflow_dbt_operator import dbt_operator
 
 default_args = {
     "owner": "utsikt",
@@ -27,16 +28,11 @@ with DAG(
         use_uv_pip_install=True,
         requirements_path="requirements.txt",
     )
-    run_dbt = python_operator(
+    run_dbt = dbt_operator(
         dag=dag,
         name="run_dbt",
-        startup_timeout_seconds=60 * 10,
-        repo="navikt/utsikt-dataprodukt",
-        script_path="dbt_utsikt/dbt_run.py",
+        dbt_command="dbt run",
         retries=1,
-        python_version="3.13",
-        use_uv_pip_install=True,
-        requirements_path="requirements.txt",
     )
 
 run_stoppstatus_snapshot >> run_dbt
