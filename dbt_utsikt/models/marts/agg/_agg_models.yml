@@ -32,6 +32,28 @@ models:
         description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
       - name: antall_beregninger
         description: 'Antall beregninger'
-      - name: handteres_manuelt
-        description: 'Flagg som tilsier om statusen må til manuell behandling'
-
+      - name: beregnet_dato
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
+      - name: handteres_manuelt_flagg
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+  - name: ventestatus_lengde_per_stoppniva
+    description: 'View som baserer seg på fak_stoppstatus og regner ut lengde statusen har vart'
+    columns:
+      - name: beregning_id
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
+      - name: stoppniva_id
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+      - name: gyldig_fra_tid
+        description: 'tidspunkt raden er gyldig fra'
+      - name: gyldig_til_tid
+        description: 'tidspunkt når raden er gyldig til'
+      - name: handteres_manuelt_flagg
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+      - name: lengde_stoppstatus
+        description: 'Varighet for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
