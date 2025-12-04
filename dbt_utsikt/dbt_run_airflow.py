@@ -20,7 +20,7 @@ def dbt_run_airflow(dbt_command) -> None:
     dbt = dbtRunner()
 
     # kjører den gitte dbt-kommandoen, som også gir live logging
-    output: dbtRunnerResult = dbt.invoke(dbt_command)
+    output: dbtRunnerResult = dbt.invoke(DBT_BASE_COMMAND + dbt_command)
 
     # etter kjørt dbt-kommando håndterer vi eventuell feil
     # exit code 2, feil utenfor DBT
@@ -29,5 +29,8 @@ def dbt_run_airflow(dbt_command) -> None:
 
 
 if __name__ == "__main__":
+    DBT_BASE_COMMAND = ["--no-use-colors", "--log-format-file", "json"]
+
+    logging.getLogger().setLevel(logging.INFO)
     dbt_command = os.environ.get("dbt_command", "run --select fak_beregninger")
     dbt_run_airflow(dbt_command)
