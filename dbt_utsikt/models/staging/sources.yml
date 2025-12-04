@@ -9,8 +9,20 @@ sources:
           - name: t_faggruppe
           - name: t_fagomraade
           - name: t_vent_beregning
+            freshness:
+              warn_after: { count: 3, period: day }
+              error_after: { count: 4, period: day }
+            loaded_at_field: tidspkt_reg
           - name: t_vent_stoppnivaa
+            freshness:
+              warn_after: { count: 3, period: day }
+              error_after: { count: 4, period: day }
+            loaded_at_field: tidspkt_reg
           - name: t_vent_stoppstatus
+            freshness:
+              warn_after: { count: 3, period: day }
+              error_after: { count: 4, period: day }
+            loaded_at_field: tidspkt_reg
           - name: t_vent_statuskode
 
     - name: venteregister
