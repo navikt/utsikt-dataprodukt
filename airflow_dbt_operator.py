@@ -12,7 +12,7 @@ def dbt_operator(
     retries: int = 2,
     branch: str = "main",
     startup_timeout_seconds: int = 60 * 10,
-    script_path: str = "dbt_utsikt/airflow_run.py",
+    script_path: str = "dbt_utsikt/dbt_run_airflow.py",
     python_version="3.13",
     use_uv_pip_install=True,
     requirements_path="requirements.txt",
