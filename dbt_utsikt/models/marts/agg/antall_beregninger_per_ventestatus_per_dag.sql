@@ -1,71 +1,56 @@
 with
-ref_stg_db2os__stoppstatuser as (
+
+ref_fak_stoppstatus as (
     select
         beregning_id,
-        ventestatus_kode
-    from {{ ref('stg_db2os__stoppstatuser') }}
-),
-
-ref_int_stoppstatuskoder_manuell_handtering as (
-    select
+        stoppniva_id,
         ventestatus_kode,
         ventestatus_beskrivelse,
-        handteres_manuelt
-    from {{ ref('int_stoppstatuskoder_manuell_handtering') }}
+        lastet_tid_kilde,
+        gyldig_fra_tid,
+        gyldig_til_tid,
+        handteres_manuelt_flagg
+    from {{ ref("fak_stoppstatus") }}
 ),
 
-ref_stg_db2os__beregninger as (
+ref_fak_beregninger as (
     select
         beregning_id,
         beregnet_dato
-    from {{ ref('stg_db2os__beregninger') }}
+    from {{ ref('fak_beregninger') }}
 ),
 
-distinkte_beregninger_per_ventestatus as (
-    select distinct
-        ventestatus_kode,
-        beregning_id
-    from ref_stg_db2os__stoppstatuser
+join_beregnet_dato as (
+    select
+        ref_fak_stoppstatus.*,
+        ref_fak_beregninger.beregnet_dato
+    from ref_fak_stoppstatus
+    left join ref_fak_beregninger on ref_fak_stoppstatus.beregning_id = ref_fak_beregninger.beregning_id
 ),
 
 antall_beregninger_per_ventestatus_per_dag as (
     select
-        ref_int_stoppstatuskoder_manuell_handtering.ventestatus_beskrivelse,
-        distinkte_beregninger_per_ventestatus.ventestatus_kode,
-        ref_stg_db2os__beregninger.beregnet_dato,
-        count(distinkte_beregninger_per_ventestatus.beregning_id)
-            as antall_beregninger,
-        case
-            when
-                ref_int_stoppstatuskoder_manuell_handtering.handteres_manuelt = 1
-                then 'Håndteres manuelt'
-            else 'Ingen manuell håndtering'
-        end as handteres_manuelt
-    from distinkte_beregninger_per_ventestatus
-    left join
-        ref_int_stoppstatuskoder_manuell_handtering
-        on
-            distinkte_beregninger_per_ventestatus.ventestatus_kode
-            = ref_int_stoppstatuskoder_manuell_handtering.ventestatus_kode
-    left join
-        ref_stg_db2os__beregninger
-        on
-            distinkte_beregninger_per_ventestatus.beregning_id
-            = ref_stg_db2os__beregninger.beregning_id
+        ventestatus_beskrivelse,
+        ventestatus_kode,
+        beregnet_dato,
+        handteres_manuelt_flagg,
+        count(beregning_id)
+            as antall_beregninger
+    from join_beregnet_dato
     group by
-        ref_int_stoppstatuskoder_manuell_handtering.ventestatus_beskrivelse,
-        distinkte_beregninger_per_ventestatus.ventestatus_kode,
-        ref_int_stoppstatuskoder_manuell_handtering.handteres_manuelt,
-        ref_stg_db2os__beregninger.beregnet_dato
+        ventestatus_beskrivelse,
+        ventestatus_kode,
+        handteres_manuelt_flagg,
+        beregnet_dato
 ),
 
 final as (
     select
+        beregnet_dato,
         ventestatus_kode,
         ventestatus_beskrivelse,
         antall_beregninger,
-        handteres_manuelt,
-        beregnet_dato
+        handteres_manuelt_flagg
     from antall_beregninger_per_ventestatus_per_dag
 )
 
