@@ -10,6 +10,8 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - eldre_enn_to_ar_gammelt
       - name: faggruppe_kode
         description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
   - name: stg_db2os__faggrupper
@@ -51,6 +53,8 @@ models:
         description: 'Dato for når stoppnivået er planlagt overført til reskontro'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - eldre_enn_to_ar_gammelt
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
   - name: stg_db2os__stoppstatuser
@@ -66,6 +70,8 @@ models:
         description: ''
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+        data_tests:
+          - eldre_enn_to_ar_gammelt
   - name: stg_db2os__stoppstatuskoder
     description: ''
     columns:
