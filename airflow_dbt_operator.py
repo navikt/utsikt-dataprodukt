@@ -28,4 +28,6 @@ def dbt_operator(
         retries=retries,
         branch=branch,
         startup_timeout_seconds=startup_timeout_seconds,
+        python_version=python_version,
+        requirements_path=requirements_path,
     )
