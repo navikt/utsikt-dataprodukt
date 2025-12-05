@@ -20,7 +20,7 @@ with DAG(
     dbt_source_freshness = dbt_operator(
         dag=dag,
         name="dbt_source_freshness",
-        dbt_command="source_freshness",
+        dbt_command="source freshness",
         retries=1,
     )
     run_stoppstatus_snapshot = python_operator(
