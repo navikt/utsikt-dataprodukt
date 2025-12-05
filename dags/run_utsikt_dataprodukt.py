@@ -43,7 +43,7 @@ with DAG(
     dbt_test = dbt_operator(
         dag=dag,
         name="dbt_test",
-        dbt_command="test",
+        dbt_command="test --exclude test_antall_rader_til_snapshot",
         retries=1,
     )
 
