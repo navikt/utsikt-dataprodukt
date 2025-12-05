@@ -17,6 +17,12 @@ with DAG(
     catchup=False,
     default_args=default_args,
 ) as dag:
+    dbt_source_freshness = dbt_operator(
+        dag=dag,
+        name="dbt_source_freshness",
+        dbt_command="source_freshness",
+        retries=1,
+    )
     run_stoppstatus_snapshot = python_operator(
         dag=dag,
         name="run_stoppstatus_snapshot",
@@ -28,11 +34,17 @@ with DAG(
         use_uv_pip_install=True,
         requirements_path="requirements.txt",
     )
-    run_dbt = dbt_operator(
+    dbt_run = dbt_operator(
         dag=dag,
-        name="run_dbt",
+        name="dbt_run",
         dbt_command="run",
         retries=1,
     )
+    dbt_test = dbt_operator(
+        dag=dag,
+        name="dbt_test",
+        dbt_command="test",
+        retries=1,
+    )
 
-run_stoppstatus_snapshot >> run_dbt
+dbt_source_freshness >> run_stoppstatus_snapshot >> dbt_run >> dbt_test

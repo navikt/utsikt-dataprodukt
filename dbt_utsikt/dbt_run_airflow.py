@@ -35,5 +35,5 @@ if __name__ == "__main__":
     DBT_BASE_COMMAND = ["--no-use-colors", "--log-format-file", "json"]
 
     logging.getLogger().setLevel(logging.INFO)
-    dbt_command = os.environ.get("dbt_command", "run --select fak_beregninger")
+    dbt_command = os.environ.get("dbt_command", "test")
     dbt_run_airflow(dbt_command)
