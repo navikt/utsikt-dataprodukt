@@ -31,7 +31,7 @@ with DAG(
     run_dbt = dbt_operator(
         dag=dag,
         name="run_dbt",
-        dbt_command="dbt run",
+        dbt_command="run",
         retries=1,
     )
 
