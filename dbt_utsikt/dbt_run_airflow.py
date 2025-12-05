@@ -24,8 +24,11 @@ def dbt_run_airflow(dbt_command) -> None:
 
     # etter kjørt dbt-kommando håndterer vi eventuell feil
     # exit code 2, feil utenfor DBT
-    if output.success:
-        logging.info("dbt kjørt ok")
+    if output.exception:
+        raise output.exception
+    # exit code 1, feil i dbt (test eller under kjøring)
+    if not output.success:
+        raise Exception(output.result)
 
 
 if __name__ == "__main__":
