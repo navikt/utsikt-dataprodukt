@@ -1,6 +1,5 @@
 --int_min_kombo_til_snapshot
 with
-
 stoppstatuser as (
     select
         beregning_id,
@@ -16,20 +15,20 @@ stoppstatuser as (
       schema=ref('stoppstatus_snapshot').schema,
       identifier=ref('stoppstatus_snapshot').name) -%}
 
-{% set table_exists=source_relation is not none  %}
+{% set table_exists=source_relation is not none %}
 
 {% if table_exists %}
 
-{{ log("Table exists", info=True) }}
+    {{ log("Table exists", info=True) }}
 
-stoppstatus_snapshot as (
-    select
-        beregning_id,
-        stoppniva_id,
-        ventestatus_kode,
-        dbt_updated_at as lastet_tid_kilde
-    from {{ ref('stoppstatus_snapshot') }}
-),
+    stoppstatus_snapshot as (
+        select
+            beregning_id,
+            stoppniva_id,
+            ventestatus_kode,
+            dbt_updated_at as lastet_tid_kilde
+        from {{ ref('stoppstatus_snapshot') }}
+    ),
 
 {% else %}
 
