@@ -57,10 +57,11 @@ nye_stoppstatuser as (
         stoppstatuser.lastet_tid_kilde
     from stoppstatuser
     left join stoppstatus_snapshot
-        on stoppstatus_snapshot.beregning_id = stoppstatuser.beregning_id
-        and  stoppstatus_snapshot.stoppniva_id = stoppstatuser.stoppniva_id
-        and  stoppstatus_snapshot.ventestatus_kode = stoppstatuser.ventestatus_kode
-        and  stoppstatus_snapshot.lastet_tid_kilde = stoppstatuser.lastet_tid_kilde
+        on
+            stoppstatuser.beregning_id = stoppstatus_snapshot.beregning_id
+            and stoppstatuser.stoppniva_id = stoppstatus_snapshot.stoppniva_id
+            and stoppstatuser.ventestatus_kode = stoppstatus_snapshot.ventestatus_kode
+            and stoppstatuser.lastet_tid_kilde = stoppstatus_snapshot.lastet_tid_kilde
     where stoppstatus_snapshot.beregning_id is NULL
     --dette skal sikre kun nye rader ikke i snapshot allerede
 
