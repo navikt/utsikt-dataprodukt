@@ -17,10 +17,16 @@ with DAG(
     catchup=False,
     default_args=default_args,
 ) as dag:
+    dbt_run = dbt_operator(
+        dag=dag,
+        name="dbt_deps",
+        dbt_command="deps",
+        retries=1,
+    )
     dbt_source_freshness = dbt_operator(
         dag=dag,
         name="dbt_source_freshness",
-        dbt_command='["deps", "source freshness"]',
+        dbt_command="source freshness",
         retries=1,
     )
     run_stoppstatus_snapshot = python_operator(
