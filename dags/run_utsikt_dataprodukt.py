@@ -17,7 +17,7 @@ with DAG(
     catchup=False,
     default_args=default_args,
 ) as dag:
-    dbt_run = dbt_operator(
+    dbt_deps = dbt_operator(
         dag=dag,
         name="dbt_deps",
         dbt_command="deps",
@@ -53,4 +53,4 @@ with DAG(
         retries=1,
     )
 
-dbt_source_freshness >> run_stoppstatus_snapshot >> dbt_run >> dbt_test
+dbt_deps >> dbt_source_freshness >> run_stoppstatus_snapshot >> dbt_run >> dbt_test
