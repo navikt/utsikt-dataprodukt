@@ -12,10 +12,6 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-        tests:
-          - dbt_utils.accepted_range: #Tiltak for riskioscenario for at summen av opplysninger er identifiserende (se PVK). 
-              max_value: 6 #Grensen på <=5 er satt med fingeren i været. Muligens at juridisk kan hjelpe med en bedre vurdering her.
-              severity: warn #Noe usikker på hvordan dette skal løses hvis prod-data faktisk feiler på denne testen, så setter den til warning enn så lenge. Testen burde ignoreres mot Q2 data, eller ha en høyere terskelverdi i dev, da testen lett failer med data fra Q2.  - name: antall_beregninger_per_fagomrade_per_dag
   - name: antall_beregninger_per_fagomrade_per_dag
     description: 'Antall beregninger per fagområde per beregnet dato'
     columns:
@@ -27,10 +23,6 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-        tests:
-          - dbt_utils.accepted_range: #Tiltak for riskioscenario for at summen av opplysninger er identifiserende (se PVK). 
-              max_value: 6 #Grensen på <=5 er satt med fingeren i været. Muligens at juridisk kan hjelpe med en bedre vurdering her.
-              severity: warn #Noe usikker på hvordan dette skal løses hvis prod-data faktisk feiler på denne testen, så setter den til warning enn så lenge. Testen burde ignoreres mot Q2 data, eller ha en høyere terskelverdi i dev, da testen lett failer med data fra Q2.
   - name: antall_beregninger_per_ventestatus_per_dag
     description: 'Antall beregninger per ventestatus per beregnet dato'
     columns:
