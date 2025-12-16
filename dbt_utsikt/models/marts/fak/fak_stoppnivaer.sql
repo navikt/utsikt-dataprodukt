@@ -68,7 +68,8 @@ join_med_beregnet_dato_og_faggruppe as (
         ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_navn,
         ref_int_fagomrader_med_tilhorende_faggrupper.faggruppe_navn,
         ref_stg_db2os__beregninger.beregnet_dato,
-        ref_stg_db2os__stoppnivaer.lastet_tid_kilde
+        ref_stg_db2os__stoppnivaer.lastet_tid_kilde,
+        concat(ref_stg_db2os__stoppnivaer.beregning_id, '-', ref_stg_db2os__stoppnivaer.stoppniva_id) as pk_stoppnivaer
     from ref_stg_db2os__stoppnivaer
     left join
         ref_int_fagomrader_med_tilhorende_faggrupper
@@ -84,6 +85,7 @@ join_med_beregnet_dato_og_faggruppe as (
 
 final as (
     select
+        pk_stoppnivaer,
         beregning_id,
         stoppniva_id,
         oppdrag_id,

@@ -27,6 +27,10 @@ models:
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:
+      - name: pk_stoppnivaer
+        description: 'Primærnøkkel for stoppnivå. Kombinasjon av beregning_id og stoppniva_id'
+        data_tests:
+          - unique
       - name: beregning_id
         description: 'Identifikator for beregninger i Oppdragssystemet.'
         data_tests:
