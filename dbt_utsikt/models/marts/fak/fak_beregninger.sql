@@ -23,7 +23,7 @@ ref_stg_db2os__beregninger as (
         where
             lastet_tid_kilde
             > (
-                select coalesce(max(lastet_tid_kilde), '1900-01-01') -- noqa: RF02: LT05: 
+                select coalesce(max(lastet_tid_kilde), '1900-01-01') --noqa: RF02
                 from {{ this }}
             )
 

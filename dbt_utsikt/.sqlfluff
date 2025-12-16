@@ -1,7 +1,6 @@
 [sqlfluff]
 dialect = bigquery
 max_line_length = 0
-exclude_rules = LT05, RF02
 
 [sqlfluff:indentation]
 tab_space_size = 4

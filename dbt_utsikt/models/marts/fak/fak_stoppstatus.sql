@@ -25,7 +25,7 @@ ref_stoppstatus_snapshot as (
         where
             lastet_tid_kilde
             > (
-                select coalesce(max(lastet_tid_kilde), '1900-01-01') -- noqa: RF02: LT05: 
+                select coalesce(max(lastet_tid_kilde), '1900-01-01') -- noqa: RF02
                 from {{ this }}
             )
 

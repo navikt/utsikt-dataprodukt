@@ -19,9 +19,11 @@ Airflow (og foreløpig dependabot) krever en `requirements.txt`-fil, og denne ka
 Her bruker vi pakka [toml-to-requirements](https://pypi.org/project/toml-to-requirements/).
 
 ### sqlfluff
-Vi bruker pakka sqlfluff for å formattere sql-koden. For å installere:
+Vi bruker pakka [sqlfluff](https://docs.sqlfluff.com/en/stable/index.html) for å formattere sql-koden. For å installere:
 
 `uv add --dev sqlfluff sqlfluff-templater-dbt`
+
+For å linte dbt-modeller, kjør `sqlfluff lint models/`
 
 ## Oppdatere pakker
 Dependabot støtter enda ikke uv helt, derfor har vi følgende oppskrift dersom man får en pull request av dependabot:
