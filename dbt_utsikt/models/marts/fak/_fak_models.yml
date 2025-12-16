@@ -24,11 +24,15 @@ models:
         data_tests:
           - not_null
           - eldre_enn_to_ar_gammelt
+      - name: pk_beregning
+        description: ''
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:
       - name: pk_stoppnivaer
-        description: 'Primærnøkkel for stoppnivå. Kombinasjon av beregning_id og stoppniva_id'
+        description: 'Primærnøkkel for stoppnivå. Hash av beregning_id og stoppniva_id'
         data_tests:
           - unique
       - name: beregning_id
@@ -76,7 +80,7 @@ models:
     description: 'Faktatabell med stoppstatuser fra venteregisteret'
     columns:
       - name: pk_stoppstatus
-        description: 'Primærnøkkel for stoppstatus'
+        description: 'Primærnøkkel for stoppstatus. Hash av beregning_id, stoppniva_id og lastet_tid_kilde'
         data_tests:
           - unique
       - name: beregning_id
@@ -102,3 +106,5 @@ models:
         description: 'tidspunkt når raden er gyldig til'
       - name: handteres_manuelt_flagg
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'

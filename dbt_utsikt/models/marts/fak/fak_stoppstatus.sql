@@ -65,7 +65,8 @@ lage_primary_key as (
         gyldig_fra_tid,
         gyldig_til_tid,
         handteres_manuelt_flagg,
-        concat(beregning_id, '-', stoppniva_id, '-', lastet_tid_kilde) as pk_stoppstatus
+        sha256(concat(beregning_id, stoppniva_id, lastet_tid_kilde)) as pk_stoppstatus,
+        current_timestamp() as lastet_tid
     from join_manuell_handtering
 ),
 
@@ -79,7 +80,8 @@ final as (
         lastet_tid_kilde,
         gyldig_fra_tid,
         gyldig_til_tid,
-        handteres_manuelt_flagg
+        handteres_manuelt_flagg,
+        lastet_tid
     from lage_primary_key
 )
 

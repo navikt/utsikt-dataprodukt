@@ -52,14 +52,28 @@ join_beregninger_med_faggruppe as (
             = ref_stg_db2os__faggrupper.faggruppe_kode
 ),
 
-final as (
+lage_primary_key as (
     select
         beregning_id,
         faggruppe_kode,
         faggruppe_navn,
         beregnet_dato,
-        lastet_tid_kilde
+        lastet_tid_kilde,
+        sha256(concat(beregning_id)) as pk_beregning,
+        current_timestamp() as lastet_tid
     from join_beregninger_med_faggruppe
+),
+
+final as (
+    select
+        pk_beregning,
+        beregning_id,
+        faggruppe_kode,
+        faggruppe_navn,
+        beregnet_dato,
+        lastet_tid_kilde,
+        lastet_tid
+    from lage_primary_key
 )
 
 select * from final

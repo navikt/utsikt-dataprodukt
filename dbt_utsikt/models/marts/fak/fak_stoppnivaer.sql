@@ -68,8 +68,7 @@ join_med_beregnet_dato_og_faggruppe as (
         ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_navn,
         ref_int_fagomrader_med_tilhorende_faggrupper.faggruppe_navn,
         ref_stg_db2os__beregninger.beregnet_dato,
-        ref_stg_db2os__stoppnivaer.lastet_tid_kilde,
-        concat(ref_stg_db2os__stoppnivaer.beregning_id, '-', ref_stg_db2os__stoppnivaer.stoppniva_id) as pk_stoppnivaer
+        ref_stg_db2os__stoppnivaer.lastet_tid_kilde
     from ref_stg_db2os__stoppnivaer
     left join
         ref_int_fagomrader_med_tilhorende_faggrupper
@@ -81,6 +80,27 @@ join_med_beregnet_dato_og_faggruppe as (
         on
             ref_stg_db2os__stoppnivaer.beregning_id
             = ref_stg_db2os__beregninger.beregning_id
+),
+
+lage_primary_key as (
+    select
+        beregning_id,
+        stoppniva_id,
+        oppdrag_id,
+        fagsystem_id,
+        type_skatt,
+        periode_fom_dato,
+        periode_tom_dato,
+        forfall_dato,
+        fagomrade_kode,
+        overfores_dato,
+        fagomrade_navn,
+        faggruppe_navn,
+        beregnet_dato,
+        lastet_tid_kilde,
+        sha256(concat(beregning_id, stoppniva_id)) as pk_stoppnivaer,
+        current_timestamp() as lastet_tid
+    from join_med_beregnet_dato_og_faggruppe
 ),
 
 final as (
@@ -100,7 +120,7 @@ final as (
         faggruppe_navn,
         beregnet_dato,
         lastet_tid_kilde
-    from join_med_beregnet_dato_og_faggruppe
+    from lage_primary_key
 )
 
 select * from final
