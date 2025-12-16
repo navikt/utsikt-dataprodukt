@@ -75,6 +75,10 @@ models:
   - name: fak_stoppstatus
     description: 'Faktatabell med stoppstatuser fra venteregisteret'
     columns:
+      - name: pk_stoppstatus
+        description: 'Primærnøkkel for stoppstatus'
+        data_tests:
+          - unique
       - name: beregning_id
         description: 'Identifikator for beregninger i Oppdragssystemet.'
         data_tests:

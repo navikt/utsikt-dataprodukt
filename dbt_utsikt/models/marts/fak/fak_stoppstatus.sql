@@ -55,7 +55,7 @@ join_manuell_handtering as (
         on ref_stoppstatus_snapshot.ventestatus_kode = ref_int_stoppstatuskoder_manuell_handtering.ventestatus_kode
 ),
 
-final as (
+lage_primary_key as (
     select
         beregning_id,
         stoppniva_id,
@@ -64,8 +64,23 @@ final as (
         lastet_tid_kilde,
         gyldig_fra_tid,
         gyldig_til_tid,
-        handteres_manuelt_flagg
+        handteres_manuelt_flagg,
+        concat(beregning_id, '-', stoppniva_id, '-', lastet_tid_kilde) as pk_stoppstatus
     from join_manuell_handtering
+),
+
+final as (
+    select
+        pk_stoppstatus,
+        beregning_id,
+        stoppniva_id,
+        ventestatus_kode,
+        ventestatus_beskrivelse,
+        lastet_tid_kilde,
+        gyldig_fra_tid,
+        gyldig_til_tid,
+        handteres_manuelt_flagg
+    from lage_primary_key
 )
 
 select * from final

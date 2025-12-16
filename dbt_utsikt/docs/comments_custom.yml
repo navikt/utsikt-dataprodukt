@@ -28,6 +28,7 @@ custom_column_comments:
             beregning_id: 'Identifikator for beregninger i Oppdragssystemet.',
             stoppniva_id: 'Identifikator for stoppnivå i Oppdragssystemet',
             pk_stoppnivaer: 'Primærnøkkel for stoppnivå. Kombinasjon av beregning_id og stoppniva_id',
+            pk_stoppstatus: 'Primærnøkkel for stoppstatus. Kombinasjon av beregning_id, stoppniva_id og lastet_tid_kilde',
             oppdrag_id: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.',
             periode_fom_dato: 'Startdatoen stoppnivået gjelder for. Sammen med dato_periode_tom utgjør dette perioden stoppnivået gjelder for.',
             periode_tom_dato: 'Sluttdatoen stoppnivået gjelder for. Sammen med dato_periode_fom utgjør dette perioden stoppnivået gjelder for.',
