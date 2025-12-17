@@ -10,10 +10,10 @@ stoppstatuser as (
     -- burde ha noe logikk som kun tar de nyeste stoppstatusene
 ),
 
-{%- set source_relation = adapter.get_relation( --noqa: TMP
+{% set source_relation = adapter.get_relation( 
       database=ref('stoppstatus_snapshot').database,
       schema=ref('stoppstatus_snapshot').schema,
-      identifier=ref('stoppstatus_snapshot').name) -%}
+      identifier=ref('stoppstatus_snapshot').name) %}
 
 {% set table_exists=source_relation is not none %}
 
