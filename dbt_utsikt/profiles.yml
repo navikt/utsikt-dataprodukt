@@ -1,5 +1,5 @@
 dbt_utsikt:
-  target: dev
+  target: prod
   outputs:
     dev:
       type: bigquery
@@ -7,3 +7,10 @@ dbt_utsikt:
       project: utsikt-dev-3609
       dataset: venteregister 
       threads: 4 
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: utsikt-prod-2dfe
+      dataset: venteregister 
+      threads: 4
