@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: antall_beregninger_per_faggruppe_per_dag
+  - name: antall_beregninger_per_faggruppe_per_beregnet_dato
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
       - name: faggruppe_kode
@@ -12,7 +12,7 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-  - name: antall_beregninger_per_fagomrade_per_dag
+  - name: antall_beregninger_per_fagomrade_per_beregnet_dato
     description: 'Antall beregninger per fagområde per beregnet dato'
     columns:
       - name: fagomrade_navn
@@ -23,7 +23,7 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-  - name: antall_beregninger_per_ventestatus_per_dag
+  - name: antall_beregninger_per_ventestatus_per_beregnet_dato
     description: 'Antall beregninger per ventestatus per beregnet dato'
     columns:
       - name: ventestatus_kode

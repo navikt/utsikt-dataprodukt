@@ -1,4 +1,4 @@
---antall_beregninger_per_fagomrade_per_dag
+--antall_beregninger_per_fagomrade_per_beregnet_dato
 
 with
 

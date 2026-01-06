@@ -28,7 +28,7 @@ join_beregnet_dato as (
     left join ref_fak_beregninger on ref_fak_stoppstatus.beregning_id = ref_fak_beregninger.beregning_id
 ),
 
-antall_beregninger_per_ventestatus_per_dag as (
+antall_beregninger_per_ventestatus_per_beregnet_dato as (
     select
         ventestatus_beskrivelse,
         ventestatus_kode,
@@ -51,7 +51,7 @@ final as (
         ventestatus_beskrivelse,
         antall_beregninger,
         handteres_manuelt_flagg
-    from antall_beregninger_per_ventestatus_per_dag
+    from antall_beregninger_per_ventestatus_per_beregnet_dato
 )
 
 select * from final
