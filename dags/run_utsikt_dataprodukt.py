@@ -1,8 +1,12 @@
 import pendulum
 from datetime import datetime
 from airflow import DAG
+from airflow.models import Variable
 from dataverk_airflow import python_operator
 from airflow_dbt_operator import dbt_operator
+
+# Hent miljøvariabler
+env = Variable.get("ENV")  # "P" for produksjon, "U" for ikke-produksjon
 
 default_args = {
     "owner": "utsikt",
@@ -21,6 +25,7 @@ with DAG(
         dag=dag,
         name="dbt_source_freshness",
         dbt_command="source freshness",
+        env=env,
         retries=1,
     )
     run_stoppstatus_snapshot = python_operator(
@@ -29,6 +34,7 @@ with DAG(
         startup_timeout_seconds=60 * 10,
         repo="navikt/utsikt-dataprodukt",
         script_path="dbt_utsikt/run_stoppstatus_snapshot.py",
+        extra_envs={"TARGET_ENV": env},
         retries=1,
         python_version="3.13",
         use_uv_pip_install=True,
@@ -38,12 +44,14 @@ with DAG(
         dag=dag,
         name="dbt_run",
         dbt_command="run",
+        env=env,
         retries=1,
     )
     dbt_test = dbt_operator(
         dag=dag,
         name="dbt_test",
         dbt_command="test --exclude test_antall_rader_til_snapshot",
+        env=env,
         retries=1,
     )
 

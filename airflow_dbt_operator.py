@@ -7,6 +7,7 @@ def dbt_operator(
     dag: DAG,
     name: str,
     dbt_command: str,
+    env: str,
     repo: str = "navikt/utsikt-dataprodukt",
     slack_channel: str = "#utsikt-ops",
     retries: int = 2,
@@ -17,13 +18,13 @@ def dbt_operator(
     use_uv_pip_install=True,
     requirements_path="requirements.txt",
 ):
-    extra_envs = {"dbt_command": dbt_command}
+    extra_envs = {"dbt_command": dbt_command, "TARGET_ENV": env}
     return python_operator(
         dag=dag,
         name=name,
         repo=repo,
         script_path=script_path,
-        slack_channel=slack_channel,
+        # slack_channel=slack_channel,
         extra_envs=extra_envs,
         retries=retries,
         branch=branch,
