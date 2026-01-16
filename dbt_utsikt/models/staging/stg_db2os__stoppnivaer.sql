@@ -10,4 +10,4 @@ select
     dato_overfores as overfores_dato,
     timestamp(tidspkt_reg, 'Europe/Oslo') as lastet_tid_kilde,
     trim(kode_fagomraade) as fagomrade_kode
-from {{ source('OS_T1', 't_vent_stoppnivaa') }}
+from {{ source('OS', 't_vent_stoppnivaa') }}

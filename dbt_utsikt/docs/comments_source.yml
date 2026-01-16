@@ -1,14 +1,14 @@
 {
     source_table_descriptions: {
-        stg_t_faggruppe: "Staging av OS_T1.t_faggruppe, med original beskrivelse: Kodeverk for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. pensjonsrelaterte ytelser.",
-        stg_t_fagomraade: "Staging av OS_T1.t_fagomraade, med original beskrivelse: Kodeverk for fagområde. Fagområde angir selve ytelsen, f.eks. arbeidsavklaringspenger.",
-        stg_t_vent_beregning: "Staging av OS_T1.t_vent_beregning, med original beskrivelse: Beregninger i Oppdragssystemet.",
-        stg_t_vent_stoppnivaa: "Staging av OS_T1.t_vent_stoppnivaa, med original beskrivelse: 
+        stg_t_faggruppe: "Staging av OS.t_faggruppe, med original beskrivelse: Kodeverk for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. pensjonsrelaterte ytelser.",
+        stg_t_fagomraade: "Staging av OS.t_fagomraade, med original beskrivelse: Kodeverk for fagområde. Fagområde angir selve ytelsen, f.eks. arbeidsavklaringspenger.",
+        stg_t_vent_beregning: "Staging av OS.t_vent_beregning, med original beskrivelse: Beregninger i Oppdragssystemet.",
+        stg_t_vent_stoppnivaa: "Staging av OS.t_vent_stoppnivaa, med original beskrivelse: 
         Stoppnivå er et begrep i Oppdragssystemet som brukes for nedbryting av beregninger.
         En beregning kan brytes ned i f.eks. perioder med tilhørende forfallsdato, gjelde forskjellige mottakere, eller kan gjelde ulike saker (f.eks sykepenger til én bruker, men gjelder flere forhold). 
         Stoppnivå id sammen med beregnings id vil unikt identifisere et stoppnivå for en beregning.",
-        stg_t_vent_stoppstatus: "Staging av OS_T1.t_vent_stoppstatus, med original beskrivelse: Status for stoppnivå. Stoppstatus er synonymt med ventestatus..",
-        stg_t_vent_statuskode: "Staging av OS_T1.t_vent_statuskode, med original beskrivelse: Kodeverk for ventestatus/stoppstatus. En ventestatus angir statusen på et stoppnivå i Oppdragssystemet.",
+        stg_t_vent_stoppstatus: "Staging av OS.t_vent_stoppstatus, med original beskrivelse: Status for stoppnivå. Stoppstatus er synonymt med ventestatus..",
+        stg_t_vent_statuskode: "Staging av OS.t_vent_statuskode, med original beskrivelse: Kodeverk for ventestatus/stoppstatus. En ventestatus angir statusen på et stoppnivå i Oppdragssystemet.",
     },
 
     source_column_comments: {
