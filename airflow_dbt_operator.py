@@ -24,7 +24,7 @@ def dbt_operator(
         name=name,
         repo=repo,
         script_path=script_path,
-        # slack_channel=slack_channel,
+        slack_channel=slack_channel,
         extra_envs=extra_envs,
         retries=retries,
         branch=branch,

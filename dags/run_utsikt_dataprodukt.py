@@ -6,7 +6,7 @@ from dataverk_airflow import python_operator
 from airflow_dbt_operator import dbt_operator
 
 # Hent miljøvariabler
-env = Variable.get("ENV")  # "P" for produksjon, "U" for ikke-produksjon
+env = Variable.get("ENV")
 
 default_args = {
     "owner": "utsikt",
