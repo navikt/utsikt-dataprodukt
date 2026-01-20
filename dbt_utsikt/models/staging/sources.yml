@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-    - name: OS_Q2
-      description: Tabeller fra Oppdragssystemet, Q2.
+    - name: OS
+      description: Tabeller fra OppdragZ scehma Q2 (dev) eller T1 (prod).
       database:
-      schema: OS_Q2
+      schema: OS
       tables:
           - name: t_faggruppe
           - name: t_fagomraade

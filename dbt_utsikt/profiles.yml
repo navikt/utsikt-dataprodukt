@@ -1,5 +1,5 @@
 dbt_utsikt:
-  target: prod
+  target: "{{env_var('TARGET_ENV')}}"
   outputs:
     dev:
       type: bigquery

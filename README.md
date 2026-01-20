@@ -6,6 +6,8 @@ Repoet er ikke åpent grunnet underliggende system er en del av kritisk utbetali
 ## Kjøremiljø
 For å sette opp et lokalt `.venv`-miljø, kjør kommandoen `uv sync`.
 
+For å sette miljø dev eller prod kjør kommandoen `export TARGET_ENV=dev`
+
 For å kjøre dbt-jobben, kjør `uv run dbt run` fra mappa `dbt_utsikt`.
 
 dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i tillegg kjøre:
