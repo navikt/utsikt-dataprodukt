@@ -6,7 +6,7 @@ ref_fak_stoppnivaer as (
         faggruppe_navn,
         belop_brutto,
         lastet_tid_kilde
-    from venteregister.fak_stoppnivaer
+    from {{ ref('fak_stoppnivaer') }}
 ),
 
 final as (
@@ -17,7 +17,7 @@ final as (
         extract(year from lastet_tid_kilde) as ar,
         sum(belop_brutto) as total_belop_brutto
     from ref_fak_stoppnivaer
-    group by fagomrade_navn, faggruppe_navn, mnd, ar
+    group by fagomrade_navn, faggruppe_navn, maned, ar
 )
 
 select * from final
