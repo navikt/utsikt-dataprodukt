@@ -27,6 +27,12 @@ sources:
                 error_after: { count: 4, period: day }
               loaded_at_field: tidspkt_reg
           - name: t_vent_statuskode
+          - name: t_vent_detalj
+            config:
+              freshness:
+                warn_after: { count: 3, period: day }
+                error_after: { count: 4, period: day }
+              loaded_at_field: tidspkt_reg
 
     - name: venteregister
       description: Tabeller som tilhørerer venteregisteret i OppdragZ.
