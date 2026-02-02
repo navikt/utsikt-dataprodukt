@@ -66,7 +66,7 @@ summer_belop as (
     select
         beregning_id,
         stoppniva_id,
-        sum(belop) as brutto_belop
+        sum(belop) as belop_brutto
     from fak_stoppnivaer_detaljer
     where linje_id > 0
     group by
@@ -80,7 +80,7 @@ join_med_beregnet_dato_og_faggruppe as (
         ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_navn,
         ref_int_fagomrader_med_tilhorende_faggrupper.faggruppe_navn,
         ref_stg_db2os__beregninger.beregnet_dato,
-        summer_belop.brutto_belop
+        summer_belop.belop_brutto
     from ref_stg_db2os__stoppnivaer
     left join
         ref_int_fagomrader_med_tilhorende_faggrupper
@@ -125,7 +125,7 @@ final as (
         fagomrade_navn,
         faggruppe_navn,
         beregnet_dato,
-        brutto_belop,
+        belop_brutto,
         lastet_tid_kilde
     from lage_primary_key
 )
