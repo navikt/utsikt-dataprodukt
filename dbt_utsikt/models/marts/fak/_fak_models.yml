@@ -76,6 +76,35 @@ models:
         data_tests:
           - not_null
           - eldre_enn_to_ar_gammelt
+      - name: belop_brutto
+        description: ''
+  - name: fak_stoppnivaer_detaljer
+    description: ''
+    columns:
+      - name: pk_stoppnivaer_detaljer
+        description: ''
+      - name: beregning_id
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
+      - name: stoppniva_id
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
+      - name: linjenr
+        description: ''
+      - name: linje_id
+        description: ''
+      - name: klasse_kode
+        description: ''
+      - name: faktisk_fom_dato
+        description: ''
+      - name: faktisk_tom_dato
+        description: ''
+      - name: trekkvedtak_id
+        description: ''
+      - name: belop
+        description: ''
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppstatus
     description: 'Faktatabell med stoppstatuser fra venteregisteret'
     columns:

@@ -6,9 +6,9 @@ custom_table_descriptions:
             fak_stoppnivaer: 'Faktatabell med stoppnivåer fra venteregisteret',
             fak_stoppstatus: 'Faktatabell med stoppstatuser fra venteregisteret',
         # agg models
-            antall_beregninger_per_faggruppe_per_dag: 'Antall beregninger per faggruppe per beregnet dato',
-            antall_beregninger_per_fagomrade_per_dag: 'Antall beregninger per fagområde per beregnet dato',
-            antall_beregninger_per_ventestatus_per_dag: 'Antall beregninger per ventestatus per beregnet dato',
+            antall_beregninger_per_faggruppe_per_beregnet_dato: 'Antall beregninger per faggruppe per beregnet dato',
+            antall_beregninger_per_fagomrade_per_beregnet_dato: 'Antall beregninger per fagområde per beregnet dato',
+            antall_beregninger_per_ventestatus_per_beregnet_dato: 'Antall beregninger per ventestatus per beregnet dato',
             ventestatus_lengde_per_stoppniva: 'View som baserer seg på fak_stoppstatus og regner ut lengde statusen har vart',
 
         },

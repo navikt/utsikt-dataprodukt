@@ -36,6 +36,19 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: handteres_manuelt_flagg
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+  - name: belop_per_fagomrade_per_maned
+    description: ''
+    columns:
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: maned
+        description: ''
+      - name: ar
+        description: ''
+      - name: total_belop_brutto
+        description: ''
   - name: ventestatus_lengde_per_stoppniva
     description: 'View som baserer seg på fak_stoppstatus og regner ut lengde statusen har vart'
     columns:
