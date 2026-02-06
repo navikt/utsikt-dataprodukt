@@ -16,8 +16,8 @@ ref_agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag as (
 
 ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
     select
-        ventestatus_beskrivelse,
         ventestatus_kode,
+        ventestatus_beskrivelse,
         fagomrade_kode,
         fagomrade_navn,
         faggruppe_navn,
