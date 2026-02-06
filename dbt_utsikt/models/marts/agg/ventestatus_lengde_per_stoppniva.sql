@@ -7,7 +7,7 @@ ref_fak_stoppstatus as (
         ventestatus_kode,
         ventestatus_beskrivelse,
         lastet_tid_kilde,
-        gyldig_fra_tid,
+        gyldig_fom_tid,
         gyldig_til_tid,
         handteres_manuelt_flagg
     from {{ ref("fak_stoppstatus") }}
@@ -16,7 +16,7 @@ ref_fak_stoppstatus as (
 beregne_lengde_stoppstatus as (
     select
         *,
-        coalesce(ref_fak_stoppstatus.gyldig_til_tid, current_timestamp()) - ref_fak_stoppstatus.gyldig_fra_tid as lengde_stoppstatus
+        coalesce(ref_fak_stoppstatus.gyldig_til_tid, current_timestamp()) - ref_fak_stoppstatus.gyldig_fom_tid as lengde_stoppstatus
     from ref_fak_stoppstatus
 ),
 
@@ -27,7 +27,7 @@ final as (
         ventestatus_kode,
         ventestatus_beskrivelse,
         lastet_tid_kilde,
-        gyldig_fra_tid,
+        gyldig_fom_tid,
         gyldig_til_tid,
         handteres_manuelt_flagg,
         lengde_stoppstatus

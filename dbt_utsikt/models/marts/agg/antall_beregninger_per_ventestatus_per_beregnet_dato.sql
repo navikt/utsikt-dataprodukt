@@ -7,7 +7,7 @@ ref_fak_stoppstatus as (
         ventestatus_kode,
         ventestatus_beskrivelse,
         lastet_tid_kilde,
-        gyldig_fra_tid,
+        gyldig_fom_tid,
         gyldig_til_tid,
         handteres_manuelt_flagg
     from {{ ref("fak_stoppstatus") }}

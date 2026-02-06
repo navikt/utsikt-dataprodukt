@@ -37,7 +37,7 @@ custom_column_comments:
             overfores_dato: 'Dato for når stoppnivået er planlagt overført til reskontro',
             lastet_tid: 'Tidsstempel for når raden er lastet inn i tabellen',
             handteres_manuelt_flagg: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke',
-            gyldig_fra_tid: 'tidspunkt raden er gyldig fra',
+            gyldig_fom_tid: 'tidspunkt raden er gyldig fra',
             gyldig_til_tid: 'tidspunkt når raden er gyldig til',
             lengde_stoppstatus: 'Varighet for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå',
         }
