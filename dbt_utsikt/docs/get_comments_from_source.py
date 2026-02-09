@@ -28,7 +28,7 @@ def _find_all_sources_from_yml(sources_yml_path):
 
 
 def _get_table_comments_from_bq(
-    project_id="utsikt-dev-3609", schema="OS_Q2", table="t_vent_beregning"
+    project_id="utsikt-dev-3609", schema="OS", table="t_vent_beregning"
 ):
     # Construct a BigQuery client object.
     client = bigquery.Client()
@@ -76,7 +76,7 @@ def generate_comments_from_bq(sources_yml_path) -> None:
     column_comments_dict = {}
     for schema, table_list in schema_table_dict.items():
         for table in table_list:
-            if schema == "OS_Q2":
+            if schema == "OS":
                 [source_description, source_schema] = _get_table_comments_from_bq(
                     project_id="utsikt-dev-3609", schema=schema, table=table
                 )
