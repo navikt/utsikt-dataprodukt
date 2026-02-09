@@ -25,8 +25,8 @@ calculate_antall_dager as (
         fagomrade_navn,
         faggruppe_navn,
         handteres_manuelt_flagg,
-        timestamp_trunc(lastet_tid_kilde, day) as registrert_dag,
-        date_diff(current_date(), date(gyldig_fom_tid), day) as varighet_dager
+        extract(date from lastet_tid_kilde) as status_registrert_dato,
+        date_diff(current_date(), extract(date from lastet_tid_kilde), day) as varighet_dager
     from ref_fak_stoppstatus
 ),
 
@@ -37,7 +37,7 @@ antall_statuser_per_dag as (
         fagomrade_kode,
         fagomrade_navn,
         faggruppe_navn,
-        registrert_dag,
+        status_registrert_dato,
         handteres_manuelt_flagg,
         varighet_dager,
         count(*) as antall
@@ -49,7 +49,7 @@ antall_statuser_per_dag as (
         fagomrade_navn,
         faggruppe_navn,
         handteres_manuelt_flagg,
-        registrert_dag,
+        status_registrert_dato,
         varighet_dager
 ),
 
@@ -60,7 +60,7 @@ final as (
         fagomrade_kode,
         fagomrade_navn,
         faggruppe_navn,
-        registrert_dag,
+        status_registrert_dato,
         handteres_manuelt_flagg,
         varighet_dager,
         antall
