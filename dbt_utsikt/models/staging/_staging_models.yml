@@ -65,9 +65,9 @@ models:
       - name: stoppniva_id
         description: 'Identifikator for stoppnivå i Oppdragssystemet'
       - name: linjenr
-        description: ''
+        description: 'En del av unik identifikator i tabellen'
       - name: linje_id
-        description: ''
+        description: 'løpenummer på informasjon fra fagsystemet om utbetaling. Skatten vil ikke ha et linjenummer og derfor 0.'
       - name: klasse_kode
         description: ''
       - name: faktisk_fom_dato
@@ -75,9 +75,9 @@ models:
       - name: faktisk_tom_dato
         description: ''
       - name: trekkvedtak_id
-        description: ''
+        description: 'Identifikator for trekktype som beløp gjelder for'
       - name: belop
-        description: ''
+        description: 'Beløp'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: stg_db2os__stoppstatuser
