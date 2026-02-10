@@ -64,7 +64,7 @@ models:
         description: ''
       - name: antall
         description: ''
-  - name: antall_beregninger_per_faggruppe_per_beregnet_dato
+  - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
       - name: faggruppe_kode
@@ -86,19 +86,7 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-  - name: antall_beregninger_per_ventestatus_per_beregnet_dato
-    description: 'Antall beregninger per ventestatus per beregnet dato'
-    columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+ 
   - name: belop_per_fagomrade_per_maned
     description: ''
     columns:
@@ -112,24 +100,4 @@ models:
         description: ''
       - name: total_belop_brutto
         description: ''
-  - name: ventestatus_lengde_per_stoppniva
-    description: 'View som baserer seg på fak_stoppstatus og regner ut lengde statusen har vart'
-    columns:
-      - name: beregning_id
-        description: 'Identifikator for beregninger i Oppdragssystemet.'
-      - name: stoppniva_id
-        description: 'Identifikator for stoppnivå i Oppdragssystemet'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: lastet_tid_kilde
-        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
-      - name: gyldig_fom_tid
-        description: 'tidspunkt raden er gyldig fra'
-      - name: gyldig_til_tid
-        description: 'tidspunkt når raden er gyldig til'
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: lengde_stoppstatus
-        description: 'Varighet for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
+  
