@@ -75,7 +75,7 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-  - name: antall_beregninger_per_fagomrade_per_beregnet_dato
+  - name: agg_beregninger_per_fagomrade_dag
     description: 'Antall beregninger per fagområde per beregnet dato'
     columns:
       - name: fagomrade_navn
