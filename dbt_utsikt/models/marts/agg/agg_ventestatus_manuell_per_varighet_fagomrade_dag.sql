@@ -1,3 +1,4 @@
+--agg_ventestatus_manuell_per_varighet_fagomrade_dag
 with
 ref_agg_ventestatus_avsluttet_per_varighet_fagomrade_dag as (
     select

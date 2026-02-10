@@ -1,5 +1,4 @@
 --agg_ventestatus_avsluttet_per_varighet_fagomrade_dag
---agg_ventestatus_avsluttet_per_varighet_fagomrade_dag
 with
 
 ref_fak_stoppstatus as (
