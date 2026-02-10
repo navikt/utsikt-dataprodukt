@@ -7,6 +7,7 @@ ref_agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag as (
         fagomrade_navn,
         faggruppe_navn,
         status_registrert_dato,
+        status_avsluttet_dato,
         varighet_dager,
         0 as gjeldende_flagg,
         antall
@@ -22,6 +23,7 @@ ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
         fagomrade_navn,
         faggruppe_navn,
         status_registrert_dato,
+        cast(null as date) as status_avsluttet_dato,
         varighet_dager,
         1 as gjeldende_flagg,
         antall
@@ -43,6 +45,7 @@ final as (
         fagomrade_navn,
         faggruppe_navn,
         status_registrert_dato,
+        status_avsluttet_dato,
         varighet_dager,
         gjeldende_flagg,
         antall
