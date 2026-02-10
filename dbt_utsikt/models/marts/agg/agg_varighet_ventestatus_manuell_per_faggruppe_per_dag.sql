@@ -15,7 +15,7 @@ ref_agg_ventestatus_avsluttet_per_varighet_fagomrade_dag as (
     where handteres_manuelt_flagg = 1
 ),
 
-ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
+ref_agg_ventestatus_gjeldende_per_varighet_fagomrade_dag as (
     select
         ventestatus_kode,
         ventestatus_beskrivelse,
@@ -27,14 +27,14 @@ ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
         varighet_dager,
         1 as gjeldende_flagg,
         antall
-    from {{ ref('agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag') }}
+    from {{ ref('agg_ventestatus_gjeldende_per_varighet_fagomrade_dag') }}
     where handteres_manuelt_flagg = 1
 ),
 
 union_all as (
     select * from ref_agg_ventestatus_avsluttet_per_varighet_fagomrade_dag
     union all
-    select * from ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag
+    select * from ref_agg_ventestatus_gjeldende_per_varighet_fagomrade_dag
 ),
 
 final as (

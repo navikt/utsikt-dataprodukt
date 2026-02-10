@@ -22,7 +22,7 @@ models:
         description: ''
       - name: antall
         description: ''
-  - name: agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag
+  - name: agg_ventestatus_gjeldende_per_varighet_fagomrade_dag
     description: ''
     columns:
       - name: ventestatus_beskrivelse
