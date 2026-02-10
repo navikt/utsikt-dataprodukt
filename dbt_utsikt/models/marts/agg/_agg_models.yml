@@ -87,7 +87,7 @@ models:
       - name: antall_beregninger
         description: 'Antall beregninger'
  
-  - name: belop_per_fagomrade_per_maned
+  - name: agg_belop_per_fagomrade_maned
     description: ''
     columns:
       - name: fagomrade_navn

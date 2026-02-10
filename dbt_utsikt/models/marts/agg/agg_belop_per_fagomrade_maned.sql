@@ -1,3 +1,4 @@
+--agg_belop_per_fagomrade_maned
 with
 
 ref_fak_stoppnivaer as (
