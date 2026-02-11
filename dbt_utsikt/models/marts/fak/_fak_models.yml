@@ -79,7 +79,7 @@ models:
       - name: belop_brutto
         description: ''
   - name: fak_stoppnivaer_detaljer
-    description: ''
+    description: 'Stoppnivåer brytt ned med flere detaljer'
     columns:
       - name: pk_stoppnivaer_detaljer
         description: ''

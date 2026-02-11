@@ -1,68 +1,18 @@
 version: 2
 
 models:
-  - name: agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: ''
+  - name: agg_belop_per_fagomrade_maned
+    description: 'Bruttobeløp per fagområde og måned.'
     columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
       - name: fagomrade_navn
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
-      - name: registrert_dag
+      - name: maned
         description: ''
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: varighet_dager
+      - name: ar
         description: ''
-      - name: antall_stoppnivaer
-        description: ''
-  - name: agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: ''
-    columns:
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: registrert_dag
-        description: ''
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: varighet_dager
-        description: ''
-      - name: antall_stoppnivaer
-        description: ''
-  - name: agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: ''
-    columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: registrert_dag
-        description: ''
-      - name: varighet_dager
-        description: ''
-      - name: gjeldende_flagg
-        description: ''
-      - name: antall_stoppnivaer
+      - name: belop_brutto
         description: ''
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
@@ -86,18 +36,83 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
- 
-  - name: agg_belop_per_fagomrade_maned
-    description: ''
+  - name: agg_beregninger_per_ventestatus_dag
+    description: 'Antall beregninger per ventestatus per beregnet dato'
     columns:
+      - name: beregnet_dato
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: antall_beregninger
+        description: 'Antall beregninger'
+      - name: handteres_manuelt_flagg
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+  - name: agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
+    description: 'Antall stoppnivåer med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag'
+    columns:
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
       - name: fagomrade_navn
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
-      - name: maned
+      - name: handteres_manuelt_flagg
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+      - name: varighet_dager
         description: ''
-      - name: ar
+      - name: antall_stoppnivaer
         description: ''
-      - name: total_belop_brutto
+      - name: status_registrert_dato
         description: ''
-  
+      - name: status_avsluttet_dato
+        description: ''
+  - name: agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
+    description: 'Antall stoppnivåer med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag'
+    columns:
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: handteres_manuelt_flagg
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+      - name: varighet_dager
+        description: ''
+      - name: antall_stoppnivaer
+        description: ''
+      - name: status_registrert_dato
+        description: ''
+  - name: agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
+    description: 'Antall stoppnivåer med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag'
+    columns:
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: varighet_dager
+        description: ''
+      - name: gjeldende_flagg
+        description: ''
+      - name: antall_stoppnivaer
+        description: ''
+      - name: status_registrert_dato
+        description: ''
+      - name: status_avsluttet_dato
+        description: ''
