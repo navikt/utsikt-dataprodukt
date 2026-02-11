@@ -5,12 +5,15 @@ custom_table_descriptions:
             fak_beregninger: 'Faktatabell med alle beregningene fra venteregisteret',
             fak_stoppnivaer: 'Faktatabell med stoppnivåer fra venteregisteret',
             fak_stoppstatus: 'Faktatabell med stoppstatuser fra venteregisteret',
+            fak_stoppnivaer_detaljer: 'Stoppnivåer brytt ned med flere detaljer',
         # agg models
-            antall_beregninger_per_faggruppe_per_beregnet_dato: 'Antall beregninger per faggruppe per beregnet dato',
-            antall_beregninger_per_fagomrade_per_beregnet_dato: 'Antall beregninger per fagområde per beregnet dato',
-            antall_beregninger_per_ventestatus_per_beregnet_dato: 'Antall beregninger per ventestatus per beregnet dato',
-            ventestatus_lengde_per_stoppniva: 'View som baserer seg på fak_stoppstatus og regner ut lengde statusen har vart',
-
+            agg_belop_per_fagomrade_maned: 'Bruttobeløp per fagområde og måned.',
+            agg_beregninger_per_faggruppe_dag: 'Antall beregninger per faggruppe per beregnet dato',
+            agg_beregninger_per_fagomrade_dag: 'Antall beregninger per fagområde per beregnet dato',
+            agg_beregninger_per_ventestatus_dag: 'Antall beregninger per ventestatus per beregnet dato',
+            agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag',
+            agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag',
+            agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag',
         },
 
 custom_column_comments:

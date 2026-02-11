@@ -1,5 +1,4 @@
---antall_beregninger_per_faggruppe_per_beregnet_dato
-
+--agg_beregninger_per_faggruppe_dag
 
 with
 ref_fak_beregninger as (
@@ -12,7 +11,7 @@ ref_fak_beregninger as (
     from {{ ref('fak_beregninger') }}
 ),
 
-antall_beregninger_per_faggruppe_per_beregnet_dato as (
+agg_beregninger_per_faggruppe_dag as (
     select
         faggruppe_kode,
         faggruppe_navn,
@@ -32,7 +31,7 @@ final as (
         faggruppe_navn,
         beregnet_dato,
         antall_beregninger
-    from antall_beregninger_per_faggruppe_per_beregnet_dato
+    from agg_beregninger_per_faggruppe_dag
 )
 
 select * from final

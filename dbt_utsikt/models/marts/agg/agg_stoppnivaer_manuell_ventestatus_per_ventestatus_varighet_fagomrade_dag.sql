@@ -1,5 +1,6 @@
+--agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
 with
-ref_agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag as (
+ref_agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag as (
     select
         ventestatus_kode,
         ventestatus_beskrivelse,
@@ -10,12 +11,12 @@ ref_agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag as (
         status_avsluttet_dato,
         varighet_dager,
         0 as gjeldende_flagg,
-        antall
-    from {{ ref('agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag') }}
+        antall_stoppnivaer
+    from {{ ref('agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag') }}
     where handteres_manuelt_flagg = 1
 ),
 
-ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
+ref_agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag as (
     select
         ventestatus_kode,
         ventestatus_beskrivelse,
@@ -26,15 +27,15 @@ ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag as (
         cast(null as date) as status_avsluttet_dato,
         varighet_dager,
         1 as gjeldende_flagg,
-        antall
-    from {{ ref('agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag') }}
+        antall_stoppnivaer
+    from {{ ref('agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag') }}
     where handteres_manuelt_flagg = 1
 ),
 
 union_all as (
-    select * from ref_agg_varighet_ventestatus_avsluttet_per_faggruppe_per_dag
+    select * from ref_agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
     union all
-    select * from ref_agg_varighet_ventestatus_gjeldende_per_faggruppe_per_dag
+    select * from ref_agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
 ),
 
 final as (
@@ -48,7 +49,7 @@ final as (
         status_avsluttet_dato,
         varighet_dager,
         gjeldende_flagg,
-        antall
+        antall_stoppnivaer
     from union_all
 )
 
