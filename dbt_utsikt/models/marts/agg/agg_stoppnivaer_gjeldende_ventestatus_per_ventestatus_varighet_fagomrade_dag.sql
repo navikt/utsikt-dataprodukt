@@ -40,7 +40,7 @@ antall_statuser_per_dag as (
         status_registrert_dato,
         handteres_manuelt_flagg,
         varighet_dager,
-        count(*) as antall
+        count(*) as antall_stoppnivaer
     from calculate_antall_dager
     group by
         ventestatus_beskrivelse,

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: agg_ventestatus_avsluttet_per_varighet_fagomrade_dag
+  - name: agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
     description: ''
     columns:
       - name: ventestatus_kode
@@ -20,9 +20,9 @@ models:
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
       - name: varighet_dager
         description: ''
-      - name: antall
+      - name: antall_stoppnivaer
         description: ''
-  - name: agg_ventestatus_gjeldende_per_varighet_fagomrade_dag
+  - name: agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
     description: ''
     columns:
       - name: ventestatus_beskrivelse
@@ -41,9 +41,9 @@ models:
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
       - name: varighet_dager
         description: ''
-      - name: antall
+      - name: antall_stoppnivaer
         description: ''
-  - name: agg_ventestatus_manuell_per_varighet_fagomrade_dag
+  - name: agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
     description: ''
     columns:
       - name: ventestatus_kode
@@ -62,7 +62,7 @@ models:
         description: ''
       - name: gjeldende_flagg
         description: ''
-      - name: antall
+      - name: antall_stoppnivaer
         description: ''
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
