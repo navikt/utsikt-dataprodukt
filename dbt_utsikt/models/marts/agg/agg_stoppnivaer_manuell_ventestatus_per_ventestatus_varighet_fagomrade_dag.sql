@@ -1,4 +1,4 @@
---agg_ventestatus_manuell_per_varighet_fagomrade_dag
+--agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
 with
 ref_agg_ventestatus_avsluttet_per_varighet_fagomrade_dag as (
     select
@@ -49,7 +49,7 @@ final as (
         status_avsluttet_dato,
         varighet_dager,
         gjeldende_flagg,
-        antall
+        antall_stoppnivaer
     from union_all
 )
 
