@@ -14,8 +14,7 @@ final as (
     select
         fagomrade_navn,
         faggruppe_navn,
-        extract(month from lastet_tid_kilde) as maned,
-        extract(year from lastet_tid_kilde) as ar,
+        date_trunc(lastet_tid_kilde, month) as forste_i_maned,
         sum(belop_brutto) as belop_brutto
     from ref_fak_stoppnivaer
     group by fagomrade_navn, faggruppe_navn, maned, ar
