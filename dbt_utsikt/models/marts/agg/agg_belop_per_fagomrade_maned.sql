@@ -17,7 +17,7 @@ beregne_belop as (
         date_trunc(lastet_tid_kilde, month) as forste_i_maned,
         sum(belop_brutto) as belop_brutto
     from ref_fak_stoppnivaer
-    group by fagomrade_navn, faggruppe_navn, maned, ar
+    group by fagomrade_navn, faggruppe_navn, forste_i_maned
 ),
 
 final as (
