@@ -10,7 +10,7 @@ ref_fak_stoppnivaer as (
     from {{ ref('fak_stoppnivaer') }}
 ),
 
-final as (
+beregne_belop as (
     select
         fagomrade_navn,
         faggruppe_navn,
@@ -18,6 +18,15 @@ final as (
         sum(belop_brutto) as belop_brutto
     from ref_fak_stoppnivaer
     group by fagomrade_navn, faggruppe_navn, maned, ar
+),
+
+final as (
+    select
+        fagomrade_navn,
+        faggruppe_navn,
+        forste_i_maned,
+        belop_brutto
+    from beregne_belop
 )
 
 select * from final
