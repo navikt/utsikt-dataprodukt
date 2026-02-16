@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_fagomrader_med_tilhorende_faggrupper
-    description: ''
+    description: 'Kobling mellom faggrupper og fagområder, med beskrivelser'
     columns:
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
@@ -13,7 +13,7 @@ models:
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
   - name: int_min_kombo_til_snapshot
-    description: ''
+    description: 'minimum kombo til snapshot. Dette består av den "minste" (lavest tidspkt_reg) stoppstatusen som ikke er registrert i stoppstatus_snapshot per stoppnivå'
     columns:
       - name: beregning_id
         description: 'Identifikator for beregninger i Oppdragssystemet.'
@@ -24,7 +24,7 @@ models:
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: int_stoppstatuskoder_manuell_handtering
-    description: ''
+    description: 'Oversikt over stoppstatuser og beskrivelser, med flagg for hvilke som krever manuell innsats'
     columns:
       - name: ventestatus_kode
         description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'

@@ -1,6 +1,10 @@
 {
 custom_table_descriptions:
         {
+        # int models
+            int_fagomrader_med_tilhorende_faggrupper: 'Kobling mellom faggrupper og fagområder, med beskrivelser',
+            int_min_kombo_til_snapshot: 'minimum kombo til snapshot. Dette består av den "minste" (lavest tidspkt_reg) stoppstatusen som ikke er registrert i stoppstatus_snapshot per stoppnivå',
+            int_stoppstatuskoder_manuell_handtering: 'Oversikt over stoppstatuser og beskrivelser, med flagg for hvilke som krever manuell innsats',
         # fak models
             fak_beregninger: 'Faktatabell med alle beregningene fra venteregisteret',
             fak_stoppnivaer: 'Faktatabell med stoppnivåer fra venteregisteret',
@@ -22,6 +26,7 @@ custom_column_comments:
             faggruppe_kode: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser',
             fagomrade_navn: 'Navn/beskrivelse på fagområde',
             fagomrade_kode: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger',
+            klasse_kode: "klassifikasjon av hva utbetalingen gjelder",
             ventestatus_kode: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)',
             ventestatus_beskrivelse: 'Beskrivelse av ventestatuskode, eks Overført til UR',
             beregnet_dato: 'Datoen beregningen er utført i Oppdragssystemet.',
@@ -30,12 +35,16 @@ custom_column_comments:
             lastet_tid_kilde: 'Tidspunktet for når raden er lastet inn i kildetabellen.',
             beregning_id: 'Identifikator for beregninger i Oppdragssystemet.',
             stoppniva_id: 'Identifikator for stoppnivå i Oppdragssystemet',
-            pk_beregninger: 'Primærnøkkel for beregninger. Hash av beregning_id',
+            løpenummer: 'Løpenummer. Tall som er >= 1 hopper med steg += 1, 9999 markerer gjeldende ventestatus',
+            pk_beregning: 'Primærnøkkel for beregninger. Hash av beregning_id',
             pk_stoppnivaer: 'Primærnøkkel for stoppnivå. Hash av beregning_id og stoppniva_id',
             pk_stoppstatus: 'Primærnøkkel for stoppstatus. Hash av beregning_id, stoppniva_id og lastet_tid_kilde',
+            pk_stoppnivaer_detaljer: 'Primærnøkkel for stoppnivaer_detaljer. Hash av beregning_id, stoppniva_id, linjenr',
             oppdrag_id: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.',
             periode_fom_dato: 'Startdatoen stoppnivået gjelder for. Sammen med dato_periode_tom utgjør dette perioden stoppnivået gjelder for.',
             periode_tom_dato: 'Sluttdatoen stoppnivået gjelder for. Sammen med dato_periode_fom utgjør dette perioden stoppnivået gjelder for.',
+            faktisk_fom_dato: 'Startdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_tom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.',
+            faktisk_tom_dato: 'Sluttdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_fom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.',
             forfall_dato: 'Dato for når stoppnivået skal utbetales.',
             overfores_dato: 'Dato for når stoppnivået er planlagt overført til reskontro',
             lastet_tid: 'Tidsstempel for når raden er lastet inn i tabellen',
@@ -43,6 +52,13 @@ custom_column_comments:
             gyldig_fom_tid: 'tidspunkt raden er gyldig fra',
             gyldig_til_tid: 'tidspunkt når raden er gyldig til',
             lengde_stoppstatus: 'Varighet for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå',
+            maned_dato: 'første dato i måneden aggregeringen gjelder for',
+            belop_brutto : 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0',
+            varighet_dager: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå',
+            antall_stoppnivaer: 'Antall stoppnivåer',
+            status_registrert_dato: 'Dato ventestatusen ble registrert',
+            status_avsluttet_dato: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)',
+            gjeldende_flagg: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen',
         }
         ,
 

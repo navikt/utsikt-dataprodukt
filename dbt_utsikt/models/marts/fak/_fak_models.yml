@@ -25,7 +25,7 @@ models:
           - not_null
           - eldre_enn_to_ar_gammelt
       - name: pk_beregning
-        description: ''
+        description: 'Primærnøkkel for beregninger. Hash av beregning_id'
       - name: lastet_tid
         description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppnivaer
@@ -77,12 +77,12 @@ models:
           - not_null
           - eldre_enn_to_ar_gammelt
       - name: belop_brutto
-        description: ''
+        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
   - name: fak_stoppnivaer_detaljer
     description: 'Stoppnivåer brytt ned med flere detaljer'
     columns:
       - name: pk_stoppnivaer_detaljer
-        description: ''
+        description: 'Primærnøkkel for stoppnivaer_detaljer. Hash av beregning_id, stoppniva_id, linjenr'
       - name: beregning_id
         description: 'Identifikator for beregninger i Oppdragssystemet.'
       - name: stoppniva_id
@@ -92,11 +92,11 @@ models:
       - name: linje_id
         description: 'løpenummer på informasjon fra fagsystemet om utbetaling. Skatten vil ikke ha et linjenummer og derfor 0.'
       - name: klasse_kode
-        description: ''
+        description: 'klassifikasjon av hva utbetalingen gjelder'
       - name: faktisk_fom_dato
-        description: ''
+        description: 'Startdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_tom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
       - name: faktisk_tom_dato
-        description: ''
+        description: 'Sluttdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_fom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
       - name: trekkvedtak_id
         description: 'Identifikator for trekktype som beløp gjelder for'
       - name: belop

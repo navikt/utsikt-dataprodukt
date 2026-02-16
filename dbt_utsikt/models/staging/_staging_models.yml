@@ -69,11 +69,11 @@ models:
       - name: linje_id
         description: 'løpenummer på informasjon fra fagsystemet om utbetaling. Skatten vil ikke ha et linjenummer og derfor 0.'
       - name: klasse_kode
-        description: ''
+        description: 'klassifikasjon av hva utbetalingen gjelder'
       - name: faktisk_fom_dato
-        description: ''
+        description: 'Startdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_tom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
       - name: faktisk_tom_dato
-        description: ''
+        description: 'Sluttdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_fom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
       - name: trekkvedtak_id
         description: 'Identifikator for trekktype som beløp gjelder for'
       - name: belop

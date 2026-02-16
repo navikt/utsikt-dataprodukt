@@ -9,9 +9,9 @@ models:
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
       - name: belop_brutto
-        description: ''
+        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
       - name: maned_dato
-        description: 'første dato i måneden aggregeringen gjelder fo'
+        description: 'første dato i måneden aggregeringen gjelder for'
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
@@ -63,13 +63,13 @@ models:
       - name: handteres_manuelt_flagg
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
       - name: varighet_dager
-        description: ''
+        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
       - name: antall_stoppnivaer
-        description: ''
+        description: 'Antall stoppnivåer'
       - name: status_registrert_dato
-        description: ''
+        description: 'Dato ventestatusen ble registrert'
       - name: status_avsluttet_dato
-        description: ''
+        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
   - name: agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
     description: 'Antall stoppnivåer med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag'
     columns:
@@ -86,11 +86,11 @@ models:
       - name: handteres_manuelt_flagg
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
       - name: varighet_dager
-        description: ''
+        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
       - name: antall_stoppnivaer
-        description: ''
+        description: 'Antall stoppnivåer'
       - name: status_registrert_dato
-        description: ''
+        description: 'Dato ventestatusen ble registrert'
   - name: agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
     description: 'Antall stoppnivåer med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag'
     columns:
@@ -105,12 +105,12 @@ models:
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
       - name: varighet_dager
-        description: ''
+        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
       - name: gjeldende_flagg
-        description: ''
+        description: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen'
       - name: antall_stoppnivaer
-        description: ''
+        description: 'Antall stoppnivåer'
       - name: status_registrert_dato
-        description: ''
+        description: 'Dato ventestatusen ble registrert'
       - name: status_avsluttet_dato
-        description: ''
+        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
