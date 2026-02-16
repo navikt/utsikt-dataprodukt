@@ -14,17 +14,17 @@ beregne_belop as (
     select
         fagomrade_navn,
         faggruppe_navn,
-        cast(date_trunc(lastet_tid_kilde, month) as date) as forste_i_maned,
+        cast(date_trunc(lastet_tid_kilde, month) as date) as maned_dato,
         sum(belop_brutto) as belop_brutto
     from ref_fak_stoppnivaer
-    group by fagomrade_navn, faggruppe_navn, forste_i_maned
+    group by fagomrade_navn, faggruppe_navn, maned_dato
 ),
 
 final as (
     select
         fagomrade_navn,
         faggruppe_navn,
-        forste_i_maned,
+        maned_dato,
         belop_brutto
     from beregne_belop
 )
