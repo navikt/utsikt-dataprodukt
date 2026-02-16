@@ -8,12 +8,10 @@ models:
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
-      - name: maned
-        description: ''
-      - name: ar
-        description: ''
       - name: belop_brutto
         description: ''
+      - name: maned_dato
+        description: 'første dato i måneden aggregeringen gjelder fo'
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
