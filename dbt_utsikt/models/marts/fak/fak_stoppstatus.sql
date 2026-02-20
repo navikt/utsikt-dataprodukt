@@ -89,9 +89,9 @@ final as (
         fagomrade_kode,
         fagomrade_navn,
         faggruppe_navn,
-        lastet_tid_kilde,
         gyldig_fom_tid,
         gyldig_til_tid,
+        lastet_tid_kilde,
         lastet_tid
     from join_stoppnivaer
 )
