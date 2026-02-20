@@ -126,7 +126,8 @@ final as (
         faggruppe_navn,
         beregnet_dato,
         belop_brutto,
-        lastet_tid_kilde
+        lastet_tid_kilde,
+        lastet_tid
     from lage_primary_key
 )
 
