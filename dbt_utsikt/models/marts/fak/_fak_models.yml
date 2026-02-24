@@ -78,6 +78,8 @@ models:
           - eldre_enn_to_ar_gammelt
       - name: belop_brutto
         description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppnivaer_detaljer
     description: 'Stoppnivåer brytt ned med flere detaljer'
     columns:

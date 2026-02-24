@@ -15,9 +15,9 @@ custom_table_descriptions:
             agg_beregninger_per_faggruppe_dag: 'Antall beregninger per faggruppe per beregnet dato',
             agg_beregninger_per_fagomrade_dag: 'Antall beregninger per fagområde per beregnet dato',
             agg_beregninger_per_ventestatus_dag: 'Antall beregninger per ventestatus per beregnet dato',
-            agg_stoppnivaer_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag',
-            agg_stoppnivaer_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag',
-            agg_stoppnivaer_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall stoppnivåer med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag',
+            agg_beregninger_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall beregninger med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag',
+            agg_beregninger_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall beregninger med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag',
+            agg_beregninger_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag: 'Antall beregninger med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag',
         },
 
 custom_column_comments:
