@@ -37,6 +37,7 @@ models:
         +materialized: view
         +docs:
           +node_color: '#368DA8' # turkis
+        +dataset: agg
       fak:
         +materialized: incremental
         +docs:
