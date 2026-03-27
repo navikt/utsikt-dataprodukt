@@ -33,11 +33,14 @@ models:
       +docs:
         node_color: '#3386E0'  #blå    
     marts:
+      +persist_docs:
+        relation: true
+        columns: true
       agg:
         +materialized: view
         +docs:
           node_color: '#368DA8' # turkis
-        +dataset: agg
+        +schema: agg
       fak:
         +materialized: incremental
         +docs:
