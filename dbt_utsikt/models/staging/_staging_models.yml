@@ -57,6 +57,29 @@ models:
           - eldre_enn_to_ar_gammelt
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+  - name: stg_db2os__stoppnivaer_detaljer
+    description: ''
+    columns:
+      - name: beregning_id
+        description: 'Identifikator for beregninger i Oppdragssystemet.'
+      - name: stoppniva_id
+        description: 'Identifikator for stoppnivå i Oppdragssystemet'
+      - name: linjenr
+        description: 'En del av unik identifikator i tabellen'
+      - name: linje_id
+        description: 'løpenummer på informasjon fra fagsystemet om utbetaling. Skatten vil ikke ha et linjenummer og derfor 0.'
+      - name: klasse_kode
+        description: 'klassifikasjon av hva utbetalingen gjelder'
+      - name: faktisk_fom_dato
+        description: 'Startdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_tom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
+      - name: faktisk_tom_dato
+        description: 'Sluttdatoen stoppnivået faktisk gjelder for. Sammen med faktisk_fom_dato utgjør dette den faktiske perioden stoppnivået gjelder for.'
+      - name: trekkvedtak_id
+        description: 'Identifikator for trekktype som beløp gjelder for'
+      - name: belop
+        description: 'Beløp'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: stg_db2os__stoppstatuser
     description: ''
     columns:

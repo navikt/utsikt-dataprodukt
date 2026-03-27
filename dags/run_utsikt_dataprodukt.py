@@ -1,4 +1,3 @@
-import pendulum
 from datetime import datetime
 from airflow import DAG
 from airflow.models import Variable
@@ -16,8 +15,8 @@ default_args = {
 
 with DAG(
     dag_id="utsikt_dataprodukt",
-    start_date=datetime(2023, 1, 22, tzinfo=pendulum.timezone("Europe/Oslo")),
-    schedule_interval="0 7 * * 1-5",  # setter jobben til å kjøre kun i ukedager
+    start_date=datetime(2026, 3, 25),
+    schedule_interval="0 7 * * 1-5",  # kl 7 UTC i ukedager
     catchup=False,
     default_args=default_args,
 ) as dag:
@@ -39,6 +38,7 @@ with DAG(
         python_version="3.13",
         use_uv_pip_install=True,
         requirements_path="requirements.txt",
+        slack_channel="#utsikt-ops",
     )
     dbt_run = dbt_operator(
         dag=dag,

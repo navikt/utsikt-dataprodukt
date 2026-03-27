@@ -1,5 +1,4 @@
---antall_beregninger_per_fagomrade_per_beregnet_dato
-
+--agg_beregninger_per_fagomrade_dag
 with
 
 ref_fak_stoppnivaer as (

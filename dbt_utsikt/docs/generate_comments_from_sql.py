@@ -416,6 +416,7 @@ def generate_comments_from_sql(
     table_descriptions.update(custom_table_descriptions)
 
     manglende_kommentarer = []
+    manglende_tabellbeskrivelser = []
     # Parse the files and update comments
     for f in yaml_files:
         # Skip "sources.yml"
@@ -442,6 +443,8 @@ def generate_comments_from_sql(
                         if t_desc.strip() != table_descriptions[t_name].strip():
                             logger.info(f"Endrer beskrivelse for modell {t_name}")
                             yml["models"][i]["description"] = table_descriptions[t_name]
+                        if yml["models"][i]["description"] == "":
+                            manglende_tabellbeskrivelser.append(t_name)
                     # Loop over columns in a model
                     for c in range(len(t_columns)):
                         c_name = t_columns[c]["name"]
@@ -472,10 +475,15 @@ def generate_comments_from_sql(
             logger.info(f"writing:{Path(f).name}")
             file.write(make_yml_string(yml))
 
+    if len(manglende_tabellbeskrivelser) > 0:
+        logger.info("Mangler beskrivelse av følgende tabeller:")
+        for t_name in manglende_tabellbeskrivelser:
+            logger.info(f" {t_name} ")
+
     if len(manglende_kommentarer) > 0:
         logger.info("Mangler følgende kolonner i comments_custom.yml:")
         for c_name in manglende_kommentarer:
-            logger.info("   ", c_name)
+            logger.info(f" {c_name} ")
 
 
 if __name__ == "__main__":
