@@ -16,7 +16,7 @@ default_args = {
 with DAG(
     dag_id="utsikt_dataprodukt",
     start_date=datetime(2026, 3, 25),
-    schedule_interval="0 7 * * 1-5",  # kl 7 UTC i ukedager
+    schedule_interval="0 6 * * 1-5",  # Runs 6am UTC weekdays (7am Oslo time summer and 6am Oslo time winter)
     catchup=False,
     default_args=default_args,
 ) as dag:
