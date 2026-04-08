@@ -1,8 +1,6 @@
 # utsikt-dataprodukt
 Team utsikt sitt dbt-prosjekt for å transformere data i utbetalingsseksjonen.
 
-Repoet er ikke åpent grunnet underliggende system er en del av kritisk utbetalingsinfrastruktur, og vi refererer til databaseskjemaer og tabellnavn i denne koden.
-
 ## Kjøremiljø
 For å sette opp et lokalt `.venv`-miljø, kjør kommandoen `uv sync`.
 
