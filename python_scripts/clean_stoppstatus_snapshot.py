@@ -5,8 +5,9 @@ from google.api_core.exceptions import BadRequest
 
 
 class BQConnector:
-    def __init__(self):
-        self.client: bigquery.Client = self._create_client()
+    def __init__(self, project_id: str):
+        self.project_id = project_id
+        self.client: bigquery.Client = self.create_client()
 
     def _execute_query(self, query: str) -> bigquery.QueryJob:
         return self.client.query(query=query)
@@ -21,24 +22,30 @@ class BQConnector:
         except BadRequest as error:
             raise ValueError(f"Error: {error}. BigQuery script not valid, check the .sql script!")
 
-    @staticmethod
-    def _create_client() -> bigquery.Client:
-        return bigquery.Client()
+    def create_client(self) -> bigquery.Client:
+        return bigquery.Client(project=self.project_id)
 
 
-def get_query(target: str) -> str:
-    if target == "prod":
-        project =  "utsikt-prod-2dfe"
-    else:
-        project = "utsikt-dev-3609"
-    sql = f"""DELETE FROM `{project}.venteregister.stoppstatus_snapshot`
+def get_query(project_id: str) -> str:
+    sql = f"""DELETE FROM `{project_id}.venteregister.stoppstatus_snapshot`
     WHERE lastet_tid_kilde <= TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL -730 DAY)"""
 
     return sql
 
+def get_project_id() -> str:
+    target = os.getenv("TARGET_ENV", "dev")
+    if target == "prod":
+        project_id = "utsikt-prod-2dfe"
+    else:
+        project_id = "utsikt-dev-3609"
+
+    return project_id
+
 def main():
-    client = BQConnector()
-    query = get_query(target=os.getenv("TARGET_ENV", "dev"))
+
+    project_id = get_project_id()
+    client = BQConnector(project_id=project_id)
+    query = get_query(project_id=project_id)
     client.run_query(query)
 
 
