@@ -3,6 +3,8 @@
   config(
     materialized='incremental',
     incremental_strategy='merge',
+    unique_key='pk_stoppnivaer',
+    merge_update_columns=['type_skatt', 'lastet_tid'],
     partition_by={
       "field": "lastet_tid_kilde",
       "data_type": "timestamp",
@@ -109,6 +111,20 @@ lage_primary_key as (
     from join_med_beregnet_dato_og_faggruppe
 ),
 
+dedupliser_stoppnivaer as (
+    select * except (rn)
+    from (
+        select
+            *,
+            row_number() over (
+                partition by pk_stoppnivaer
+                order by lastet_tid_kilde desc
+            ) as rn
+        from lage_primary_key
+    )
+    where rn = 1
+),
+
 final as (
     select
         pk_stoppnivaer,
@@ -128,7 +144,7 @@ final as (
         belop_brutto,
         lastet_tid_kilde,
         lastet_tid
-    from lage_primary_key
+    from dedupliser_stoppnivaer
 )
 
 select * from final
