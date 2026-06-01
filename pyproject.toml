@@ -17,7 +17,7 @@ exclude = [
 [dependency-groups]
 dev = [
     "loguru>=0.7.3",
-    "ruff>=0.15.12",
+    "ruff>=0.15.15",
     "sqlfluff>=4.2.0",
     "sqlfluff-templater-dbt>=4.2.0",
     "toml-to-requirements>=0.3.0",
