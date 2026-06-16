@@ -47,16 +47,13 @@ join_ytelse as (
 final as (
     select
         fagomrade_navn,
+        fagomrade_kode,
         faggruppe_navn,
         beregnet_dato,
         ytelse,
         count(beregning_id) as antall_beregninger
     from join_ytelse
-    group by fagomrade_navn, faggruppe_navn, beregnet_dato, ytelse
+    group by fagomrade_navn, fagomrade_kode, faggruppe_navn, beregnet_dato, ytelse
 )
 
 select * from final
-
-
---legg merke til at en beregning_id kan tilhøre flere fagomrader, 
---så en beregning kan telle i flere antall_beregninger per fagområde per dag
