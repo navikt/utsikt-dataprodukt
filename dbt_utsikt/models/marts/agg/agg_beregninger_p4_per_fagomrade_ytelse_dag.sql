@@ -9,7 +9,7 @@ ref_fak_stoppnivaer as (
         faggruppe_navn,
         beregnet_dato
     from {{ ref('fak_stoppnivaer') }}
-    where fagomrade_kode in ('Arbeidsytelser', 'Arbeidsytelser tilleggsstønad og tiltakspenger', 'Tilleggsstønader')
+    where faggruppe_navn in ('Arbeidsytelser', 'Arbeidsytelser tilleggsstønad og tiltakspenger', 'Tilleggsstønader')
 
 ),
 
