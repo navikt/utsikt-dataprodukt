@@ -28,6 +28,27 @@ models:
         description: 'Primærnøkkel for beregninger. Hash av beregning_id'
       - name: lastet_tid
         description: 'Tidsstempel for når raden er lastet inn i tabellen'
+  - name: fak_oppdrag
+    description: 'Faktatabell med oppdrag fra Oppdragssystemet'
+    columns:
+      - name: pk_oppdrag
+        description: 'Primærnøkkel for oppdrag. Hash av oppdrag_id'
+      - name: oppdrag_id
+        description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_kode
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: kildesystem
+        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:

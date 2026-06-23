@@ -57,7 +57,7 @@ join_oppdrag_med_fagomrade as (
         ref_stg_db2os__oppdrag.lastet_tid_kilde
     from ref_stg_db2os__oppdrag
     left join ref_int_fagomrader_med_tilhorende_faggrupper
-    on ref_stg_db2os__oppdrag.fagomrade_kode = ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_kode
+        on ref_stg_db2os__oppdrag.fagomrade_kode = ref_int_fagomrader_med_tilhorende_faggrupper.fagomrade_kode
 ),
 
 join_oppdrag_med_kildesystem as (
@@ -71,7 +71,7 @@ join_oppdrag_med_kildesystem as (
         join_oppdrag_med_fagomrade.lastet_tid_kilde
     from join_oppdrag_med_fagomrade
     left join ref_stg_db2os__oppdrag_kilde
-    on join_oppdrag_med_fagomrade.oppdrag_id = ref_stg_db2os__oppdrag_kilde.oppdrag_id
+        on join_oppdrag_med_fagomrade.oppdrag_id = ref_stg_db2os__oppdrag_kilde.oppdrag_id
 ),
 
 lage_primary_key as (
@@ -99,6 +99,7 @@ final as (
         kildesystem,
         lastet_tid_kilde,
         lastet_tid
-    from lage_primary_key)
+    from lage_primary_key
+)
 
 select * from final

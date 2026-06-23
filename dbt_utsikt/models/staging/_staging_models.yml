@@ -30,6 +30,24 @@ models:
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_kode
         description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+  - name: stg_db2os__oppdrag
+    description: ''
+    columns:
+      - name: oppdrag_id
+        description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+  - name: stg_db2os__oppdrag_kilde
+    description: ''
+    columns:
+      - name: oppdrag_id
+        description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
+      - name: kildesystem
+        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
   - name: stg_db2os__stoppnivaer
     description: ''
     columns:

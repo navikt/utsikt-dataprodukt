@@ -12,6 +12,19 @@ models:
         description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
+  - name: int_fagomrader_til_ytelser
+    description: 'Kobling mellom fagområder og ytelser'
+    columns:
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_kode
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
   - name: int_min_kombo_til_snapshot
     description: 'minimum kombo til snapshot. Dette består av den "minste" (lavest tidspkt_reg) stoppstatusen som ikke er registrert i stoppstatus_snapshot per stoppnivå'
     columns:

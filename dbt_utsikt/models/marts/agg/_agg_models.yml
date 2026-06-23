@@ -79,6 +79,21 @@ models:
         description: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen'
       - name: antall_beregninger
         description: 'Antall beregninger'
+  - name: agg_beregninger_p4_per_fagomrade_ytelse_dag
+    description: 'Antall beregninger hvor faggruppen er relatert til P4. Gruppert på fagområde, ytelse og dag'
+    columns:
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: beregnet_dato
+        description: 'Datoen beregningen er utført i Oppdragssystemet.'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
+      - name: antall_beregninger
+        description: 'Antall beregninger'
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
@@ -114,3 +129,22 @@ models:
         description: 'Antall beregninger'
       - name: handteres_manuelt_flagg
         description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+  - name: agg_oppdrag_per_ytelse_kilde_dag
+    description: 'Antall oppdrag per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.'
+    columns:
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_kode
+        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
+      - name: kildesystem
+        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+      - name: dato_oppdrag_lastet
+        description: 'Datoen oppdraget ble lastet inn i Oppdragssystemet. Hentes fra t_oppdrag tidspkt_reg'
+      - name: antall_oppdrag
+        description: 'Antall oppdrag'
