@@ -9,6 +9,7 @@ def dbt_operator(
     dbt_command: str,
     env: str,
     repo: str = "navikt/utsikt-dataprodukt",
+    allowlist=["github.com"],
     slack_channel: str = "#utsikt-ops",
     retries: int = 2,
     branch: str = "main",
