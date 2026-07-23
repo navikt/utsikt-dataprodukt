@@ -24,6 +24,7 @@ def dbt_operator(
         dag=dag,
         name=name,
         repo=repo,
+        allowlist=allowlist,
         script_path=script_path,
         slack_channel=slack_channel,
         extra_envs=extra_envs,
