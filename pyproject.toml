@@ -5,8 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "dbt-bigquery==1.11.2",
-    "dbt-core==1.11.6", 
+    "dbt-bigquery==1.12.0",
+    "dbt-core==1.12.0", 
 ]
 
 [tool.ruff]
@@ -18,7 +18,7 @@ exclude = [
 [dependency-groups]
 dev = [
     "loguru>=0.7.3",
-    "ruff>=0.15.18",
+    "ruff>=0.16.0",
     "sqlfluff>=4.2.2",
     "sqlfluff-templater-dbt>=4.2.0",
     "toml-to-requirements>=0.3.0",
