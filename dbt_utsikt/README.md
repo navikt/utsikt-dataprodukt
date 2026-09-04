@@ -1,17 +1,22 @@
 # Feilretting av dbt-løpet
-Per i dag har vi to feil som kan forekomme. Her kommer symtomene og fiksen.
+Per i dag har vi én feil som kan forekomme. Observert 3-4 ganger i året
 
-## Duplikater i fak_stoppnivaer gjør at fak_stoppstatus feiler
-Dette forekommer pga manuell patching i databasen som endrer en rad i `t_vent_stoppnivaa`, inkludert tidspkt_reg. Dermed får vi duplikat i våre tabeller som gjør at fak_stoppstatus feiler med feilmelding:
+## run_stoppstatus_snapshot feiler med DuplicatedRowsException
+Dette betyr at `tidspkt reg` er det samme for mer enn en statusendring i stoppstatus, og skaper problemer for snapshot-logikken, som baserer seg på at `beregnings_id` + `stoppnivaa_id` + `tidspkt_reg` er unikt i tabellen `t_vent_stoppstatus`. Dette skal heller egentlig ikke skje, men vi har observert det.
 
-> Database Error in model fak_stoppstatus (models/marts/fak/fak_stoppstatus.sql)
-UPDATE/MERGE must match at most one source row for each target row
+### Fix
+Fix er å er å legge til et mikrosekund på den siste (sjekker lopenr) statusen, sånn at alle statusendringer på samme beregning og stoppnivå får unikt tidspkt_reg. Det er mulig feil status (feil rekkefølge) er allerede lagt inn i stoppstatus_snapshot, og man må slette disse radene. Det er ok å slette alle rader relatert til samme beregnings_id, de blir kopiert inn på nytt når man kjører [run_stoppstatus_snapshot](https://github.com/navikt/utsikt-dataprodukt/blob/egne_dataset/dbt_utsikt/run_stoppstatus_snapshot.py). 
 
-Quick fix er å slette duplikater i `fak_stoppnivaer` og `t_vent_stoppnivaa`. En bedre fix er å endre incremental strategy i `fak_stoppnivaer`.
+1. Legge til mikrosekund ved å kjøre skriptet [update_tidspkt_reg_stoppstatus](https://github.com/navikt/utsikt-dataprodukt/blob/egne_dataset/queries/update_tidspkt_reg_stoppstatus.sql). Dette ligger også under queries i vårt bq prosjekt.
 
-## tidspkt reg det samme for mer enn en statusendring i stoppstatus
-Dette skaper problemer for snapshot-logikken, som baserer seg på at `beregnings_id` + `stoppnivaa_id` + `tidspkt_reg` er unikt i tabellen `t_vent_stoppstatus`. 
+2. Sjekke hvilken kombinasjon av `beregning_id` og `stoppniva_id` som ikke kan bli 
+inserta ved å kjøre 
+> SELECT * FROM `utsikt-prod-2dfe.venteregister.int_min_kombo_til_snapshot`
 
-Dette skal heller egentlig ikke skje, men vi har observert det. Quick fix er å legge til et mikrosekund på den siste (sjekker lopenr) statusen. Dette kan gjøres ved å kjøre skriptet [update_tidspkt_reg_stoppstatus](https://github.com/navikt/utsikt-dataprodukt/blob/egne_dataset/queries/update_tidspkt_reg_stoppstatus.sql). 
+3. Slette rader relatert til disse `beregning_id` og `stoppniva_id`:
+> delete from `utsikt-prod-2dfe.venteregister.stoppstatus_snapshot`
+where beregning_id = x
+and stoppniva_id in (y,z)
 
-Det er mulig feil status (feil rekkefølge) er allerede lagt inn i stoppstatus_snapshot, så det er mulig man må slette denne raden. Det er ok å slette alle rader relatert til samme beregnings_id, de blir kopiert inn på nytt når man kjører [run_stoppstatus_snapshot](https://github.com/navikt/utsikt-dataprodukt/blob/egne_dataset/dbt_utsikt/run_stoppstatus_snapshot.py)
+4. Kjøre python-scriptet `run_stoppstatus_snapshot` igjen. Fra Airflow kan man trykke `clear` status på den feilende jobben, og den vil kjøre igjen.
+
