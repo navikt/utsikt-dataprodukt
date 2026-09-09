@@ -1,17 +1,11 @@
-from datetime import datetime
-from airflow import DAG
-from airflow.models import Variable
-from dataverk_airflow import python_operator
-from airflow_dbt_operator import dbt_operator
 
-# Hent miljøvariabler
-env = Variable.get("ENV")
+from dbt.cli.main import dbtRunner, dbtRunnerResult
 
-default_args = {
-    "owner": "utsikt",
-    "description": "utsikt_dataprodukt",
-    "depends_on_past": False,
-}
+dbt = dbtRunner()
+
+
+result = dbt.invoke()
+
 
 with DAG(
     dag_id="utsikt_dataprodukt",
@@ -54,5 +48,3 @@ with DAG(
         env=env,
         retries=1,
     )
-
-dbt_source_freshness >> run_stoppstatus_snapshot >> dbt_run >> dbt_test
