@@ -1,8 +1,15 @@
-.idea
+/.idea
 target/
 dbt_packages/
 logs/
 .user.yml
 /.DS_Store
-
 __pycache__
+/.flyte
+/.venv
+/.ruff_cache
+
+requirements.txt
+uv.lock
+pyproject.toml
+.python-version

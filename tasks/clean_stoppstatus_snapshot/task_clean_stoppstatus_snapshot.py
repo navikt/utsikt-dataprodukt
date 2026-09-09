@@ -1,7 +1,7 @@
-import os
-
 from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
+
+from task_environment import python_bq_environment, trigger
 
 
 class BQConnector:
@@ -41,13 +41,10 @@ def get_project_id() -> str:
 
     return project_id
 
-def main():
 
+@python_bq_environment.task(triggers=trigger, entrypoint=True)
+def main():
     project_id = get_project_id()
     client = BQConnector(project_id=project_id)
     query = get_query(project_id=project_id)
     client.run_query(query)
-
-
-if __name__ == "__main__":
-    main()
