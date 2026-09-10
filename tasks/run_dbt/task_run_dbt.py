@@ -1,7 +1,7 @@
 
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
-# cron_string = "0 6 * * 1-5"
+from task_enviroment import dbt_environment, trigger
 
 class DuplicatedRowsException(BaseException):
     def __init__(self, msg):
@@ -37,11 +37,13 @@ def dbt_test_if_more_rows() -> bool:
     return test.success
 
 
+@dbt_environment.task
 def dbt_source_freshness()-> None:
     commands = ["source", "freshness"]
     run_dbt_run_commands(commands=commands)
 
 
+@dbt_environment.task
 def dbt_run_stoppstatus_snapshot() -> None:
     counter = 0
     limit = 10
@@ -60,17 +62,21 @@ def dbt_run_stoppstatus_snapshot() -> None:
         error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
         raise DuplicatedRowsException(error_message)
 
-
+@dbt_environment.task
 def dbt_run() -> None:
     commands = ["run"]
     run_dbt_run_commands(commands=commands)
 
 
+@dbt_environment.task
 def dbt_test() -> None:
     commands = ["test","--exclude", "test_antall_rader_til_snapshot"]
     run_dbt_run_commands(commands=commands)
 
 
-
+@dbt_environment.task(entrypoint=True, triggers=trigger)
 def main():
-    pass
+    dbt_source_freshness()
+    dbt_run_stoppstatus_snapshot()
+    dbt_run()
+    dbt_test()
