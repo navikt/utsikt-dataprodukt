@@ -23,7 +23,7 @@ dbt_folder_path = Path("../../dbt_utsikt")
 image = flyte.Image.from_base(image_uri=image_uri).clone(registry=registry, name=image_name, extendable=True)
 image = image.with_env_vars(env_vars)
 image = image.with_requirements(requirements_path, index_url=index_url)
-image = image.with_source_folder(src=dbt_folder_path)
+image = image.with_source_folder(src=dbt_folder_path, copy_contents_only=True)
 
 trigger_name = "python_bq_environment_trigger"
 trigger_cron = flyte.Cron("0 6 * * 1-5")

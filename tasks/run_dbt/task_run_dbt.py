@@ -80,3 +80,6 @@ def main():
     dbt_run_stoppstatus_snapshot()
     dbt_run()
     dbt_test()
+
+if __name__ == "__main__":
+    main()

@@ -1,14 +1,18 @@
-/.idea
+# Dbt
 target/
 dbt_packages/
 logs/
 .user.yml
+
+# Editor
 /.DS_Store
 __pycache__
-/.flyte
-/.venv
+/.idea
 /.ruff_cache
+/.flyte
 
+# Run environment
+/.venv
 requirements.txt
 uv.lock
 pyproject.toml
