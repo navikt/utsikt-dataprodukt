@@ -1,50 +1,76 @@
 
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
-dbt = dbtRunner()
+# cron_string = "0 6 * * 1-5"
+
+class DuplicatedRowsException(BaseException):
+    def __init__(self, msg):
+        super().__init__(msg)
+
+def run_dbt_run_commands(commands: list[str]) -> None:
+    dbt_base_commands = ["--no-use-colors", "--log-format-file", "json"]
+    runner = dbtRunner()
+    results: dbtRunnerResult = runner.invoke(args=dbt_base_commands + commands)
+
+    if results.exception:
+        raise results.exception
+
+    if not results.success:
+        raise results.exception
+
+def dbt_snapshot_stoppstatus() -> None:
+    commands = ["snapshot","--select", "stoppstatus_snapshot"]
+    run_dbt_run_commands(commands=commands)
+
+def dbt_run_int_model() -> None:
+    commands = ["run", "--select", "int_min_kombo_til_snapshot", "--quiet"]
+    run_dbt_run_commands(commands=commands)
+
+def dbt_test_if_more_rows() -> bool:
+    commands = ["test", "--select", "test_antall_rader_til_snapshot"]
+    runner = dbtRunner()
+    results: dbtRunnerResult = runner.invoke(args=commands)
+
+    if results.exception:
+        raise results.exception
+
+    return test.success
 
 
-result = dbt.invoke()
+def dbt_source_freshness()-> None:
+    commands = ["source", "freshness"]
+    run_dbt_run_commands(commands=commands)
 
 
-with DAG(
-    dag_id="utsikt_dataprodukt",
-    start_date=datetime(2026, 3, 25),
-    schedule_interval="0 6 * * 1-5",  # Runs 6am UTC weekdays (7am Oslo time summer and 6am Oslo time winter)
-    catchup=False,
-    default_args=default_args,
-) as dag:
-    dbt_source_freshness = dbt_operator(
-        dag=dag,
-        name="dbt_source_freshness",
-        dbt_command="source freshness",
-        env=env,
-        retries=1,
-    )
-    run_stoppstatus_snapshot = python_operator(
-        dag=dag,
-        name="run_stoppstatus_snapshot",
-        startup_timeout_seconds=60 * 10,
-        repo="navikt/utsikt-dataprodukt",
-        script_path="dbt_utsikt/run_stoppstatus_snapshot.py",
-        extra_envs={"TARGET_ENV": env},
-        retries=1,
-        python_version="3.13",
-        use_uv_pip_install=True,
-        requirements_path="requirements.txt",
-        slack_channel="#utsikt-ops",
-    )
-    dbt_run = dbt_operator(
-        dag=dag,
-        name="dbt_run",
-        dbt_command="run",
-        env=env,
-        retries=1,
-    )
-    dbt_test = dbt_operator(
-        dag=dag,
-        name="dbt_test",
-        dbt_command="test --exclude test_antall_rader_til_snapshot",
-        env=env,
-        retries=1,
-    )
+def dbt_run_stoppstatus_snapshot() -> None:
+    counter = 0
+    limit = 10
+
+    dbt_run_int_model()
+
+    more_rows = dbt_test_if_more_rows()
+
+    while more_rows and counter < limit:
+        dbt_run_stoppstatus_snapshot()
+        dbt_run_int_model()
+        more_rows = dbt_test_if_more_rows()
+        counter += 1
+
+    if more_rows and loop_counter > loop_limit:
+        error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
+        raise DuplicatedRowsException(error_message)
+
+
+def dbt_run() -> None:
+    commands = ["run"]
+    run_dbt_run_commands(commands=commands)
+
+
+def dbt_test() -> None:
+    commands = ["test","--exclude", "test_antall_rader_til_snapshot"]
+    run_dbt_run_commands(commands=commands)
+
+
+
+def main():
+    pass
