@@ -9,7 +9,7 @@
 
 - installer uv
 - opprett en venv ```uv venv```
-- installer avhengigheter. De finner du [tasks/run_dbt/requirements.txt)](tasks/run_dbt/requirements.txt)
+- installer avhengigheter. De finner du [tasks/run_dbt/requirements.txt](tasks/run_dbt/requirements.txt)
 og installerer de slik ```uv pip install -r requirements.txt```
 -  For å kjøre dbt lokalt må du stå i mappen [dbt_utsikt](dbt_utsikt) også må du kjøre 
 ```uv run python ../tasks/run_dbt/task_run_dbt.py```
