@@ -1,4 +1,3 @@
-
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
 from task_enviroment import dbt_environment, trigger
@@ -16,7 +15,7 @@ def run_dbt_run_commands(commands: list[str]) -> None:
         raise results.exception
 
     if not results.success:
-        raise results.exception
+        raise Exception(results.result)
 
 def dbt_snapshot_stoppstatus() -> None:
     commands = ["snapshot","--select", "stoppstatus_snapshot"]
@@ -34,7 +33,7 @@ def dbt_test_if_more_rows() -> bool:
     if results.exception:
         raise results.exception
 
-    return test.success
+    return results.success
 
 
 @dbt_environment.task
@@ -53,12 +52,12 @@ def dbt_run_stoppstatus_snapshot() -> None:
     more_rows = dbt_test_if_more_rows()
 
     while more_rows and counter < limit:
-        dbt_run_stoppstatus_snapshot()
+        dbt_snapshot_stoppstatus()
         dbt_run_int_model()
         more_rows = dbt_test_if_more_rows()
         counter += 1
 
-    if more_rows and loop_counter > loop_limit:
+    if more_rows and counter > limit:
         error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
         raise DuplicatedRowsException(error_message)
 

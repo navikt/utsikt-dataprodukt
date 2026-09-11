@@ -3,7 +3,7 @@ import flyte
 from pathlib import Path
 
 environment_name = "python_bq_environment"
-service_account = "python_bq_sa"
+service_account = "python-bq-sa"
 
 
 image_uri="europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"

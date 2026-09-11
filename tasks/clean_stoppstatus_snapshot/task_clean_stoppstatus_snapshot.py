@@ -1,3 +1,5 @@
+import os
+
 from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
 
@@ -48,3 +50,6 @@ def main():
     client = BQConnector(project_id=project_id)
     query = get_query(project_id=project_id)
     client.run_query(query)
+
+if __name__ == "__main__":
+    main()
