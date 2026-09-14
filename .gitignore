@@ -13,7 +13,4 @@ __pycache__
 
 # Run environment
 /.venv
-requirements.txt
-uv.lock
-pyproject.toml
-.python-version
+
