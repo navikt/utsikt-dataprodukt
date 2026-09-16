@@ -74,11 +74,8 @@ def dbt_test() -> None:
 
 
 @dbt_environment.task(entrypoint=True, triggers=trigger)
-def main():
+def run_dbt_utsikt():
     dbt_source_freshness()
     dbt_run_stoppstatus_snapshot()
     dbt_run()
     dbt_test()
-
-if __name__ == "__main__":
-    main()
