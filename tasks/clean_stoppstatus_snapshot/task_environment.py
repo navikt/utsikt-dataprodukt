@@ -27,6 +27,17 @@ trigger_name = "python_bq_environment_trigger"
 trigger_cron = flyte.Cron("0 0 * * 0")
 trigger = flyte.Trigger(name=trigger_name, automation=trigger_cron)
 
-python_bq_environment = flyte.TaskEnvironment(name=environment_name, service_account=service_account, image=image)
+# Secrets
+secret_target_env_key = "TARGET_ENV"
+secret_target_env = flyte.Secret(key=secret_target_env_key)
+
+secrets: list[flyte.Secret] = [secret_target_env]
+
+
+# Task Environment
+python_bq_environment = flyte.TaskEnvironment(name=environment_name,
+                                              service_account=service_account,
+                                              secrets=secrets,
+                                              image=image)
 
 

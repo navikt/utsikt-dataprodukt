@@ -32,5 +32,14 @@ trigger_name = "dbt_environment_trigger"
 trigger_cron = flyte.Cron("0 6 * * 1-5")
 trigger = flyte.Trigger(name=trigger_name, automation=trigger_cron)
 
+# Secrets
+secret_target_env_key = "TARGET_ENV"
+secret_target_env = flyte.Secret(key=secret_target_env_key)
+
+secrets: list[flyte.Secret] = [secret_target_env]
+
 # Task Environment
-dbt_environment = flyte.TaskEnvironment(name=environment_name, service_account=service_account, image=image)
+dbt_environment = flyte.TaskEnvironment(name=environment_name,
+                                        service_account=service_account,
+                                        secrets=secrets,
+                                        image=image)
