@@ -1,15 +1,40 @@
-# TO DO
+# Union
+For å sette opp og få tilgang til Union, les NADA sin 
+[dokumentasjon](https://docs.knada.io/analyse/union/oppsett/). 
 
-- [ ] Mounte hemmelighet som spesifiserer hvilket prosjekt dbt skal kjøre mot. Se task [run_dbt](/tasks/run_dbt)
-- [ ] Dokumentere
+## Projekt struktur
+- [dbt_utsikt](dbt_utsikt) innholder et dbt prosjekt som transformerer tabeller i big query. 
+For å kjøre dbt kommandoer, må du stå i denne mappen.
+
+- [queries](queries) inneholder nyttige SQL-spørringer.
 
 
+- [task](tasks) innholder python-kode som skal kjøres som en union task, 
+python-kode som deklarerer kjøretidsmiljøet til tasker og avhengigheter. 
+Hver task burde ha sin egen undermappe, med minst tre filer:
 
-# Kjøremiljø for å kjøre dbt lokalt
+  - **<task_navn>.py** skal inneholde python-kode som skal kjøres.
+  - **<task_environment_navn>.py** skal inneholde python-kode som deklarerer kjøretidsmiljøet til tasken.
+  - **requirements.txt** inneholder python-avhengigheter
 
-- installer uv
-- opprett en venv ```uv venv```
-- installer avhengigheter. De finner du [tasks/run_dbt/requirements.txt](tasks/run_dbt/requirements.txt)
-og installerer de slik ```uv pip install -r requirements.txt```
--  For å kjøre dbt lokalt må du stå i mappen [dbt_utsikt](dbt_utsikt) også må du kjøre 
-```uv run python ../tasks/run_dbt/task_run_dbt.py```
+  Slik at 
+```
+tasks/
+├── <task_1>/
+│   ├── <task_navn>.py
+│   ├── <task_environment_navn>.py
+│   └── requirements.txt
+│
+├── <task_2>/
+    ├── <task_navn>.py
+    ├── <task_environment_navn>.py
+    └── requirements.txt
+
+```
+
+## Lokalt miljø
+
+
+## Deploy en task
+
+
