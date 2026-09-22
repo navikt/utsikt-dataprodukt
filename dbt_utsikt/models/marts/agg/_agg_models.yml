@@ -1,150 +1,177 @@
 version: 2
 
 models:
-  - name: agg_belop_per_fagomrade_maned
-    description: 'Bruttobeløp per fagområde og måned.'
-    columns:
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: belop_brutto
-        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
-      - name: maned_dato
-        description: 'første dato i måneden aggregeringen gjelder for'
   - name: agg_beregninger_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag'
+    description: ''
     columns:
       - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+        description: ''
       - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+        description: ''
       - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+        description: ''
       - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
+        description: ''
       - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
+        description: ''
       - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
+        description: ''
       - name: status_avsluttet_dato
-        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
+        description: ''
       - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+        description: ''
       - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
+        description: ''
       - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag'
-    columns:
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
-      - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag'
-    columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
-      - name: status_avsluttet_dato
-        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
-      - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
-      - name: gjeldende_flagg
-        description: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_p4_per_fagomrade_ytelse_dag
-    description: 'Antall beregninger hvor faggruppen er relatert til P4. Gruppert på fagområde, ytelse og dag'
-    columns:
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: ytelse
-        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_per_faggruppe_dag
-    description: 'Antall beregninger per faggruppe per beregnet dato'
-    columns:
-      - name: faggruppe_kode
-        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
+        description: ''
   - name: agg_beregninger_per_fagomrade_dag
-    description: 'Antall beregninger per fagområde per beregnet dato'
+    description: ''
     columns:
       - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
+        description: ''
       - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
+        description: ''
       - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
+        description: ''
       - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_per_ventestatus_dag
-    description: 'Antall beregninger per ventestatus per beregnet dato'
+        description: ''
+  - name: agg_beregninger_per_faggruppe_dag
+    description: ''
     columns:
+      - name: faggruppe_kode
+        description: ''
+      - name: faggruppe_navn
+        description: ''
       - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+        description: ''
       - name: antall_beregninger
-        description: 'Antall beregninger'
+        description: ''
+  - name: agg_beregninger_per_ventestatus_varighet_fagomrade_enhet
+    description: ''
+    columns:
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: ventestatus_kode
+        description: ''
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: ''
+      - name: enhet_behandler
+        description: ''
+      - name: ytelse
+        description: ''
+      - name: gjeldende_flagg
+        description: ''
+      - name: status_registrert_dato
+        description: ''
       - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+        description: ''
+      - name: varighet_dager
+        description: ''
+      - name: antall_beregninger
+        description: ''
+  - name: agg_belop_per_fagomrade_maned
+    description: ''
+    columns:
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: ''
+      - name: maned_dato
+        description: ''
+      - name: belop_brutto
+        description: ''
+  - name: agg_beregninger_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
+    description: ''
+    columns:
+      - name: ventestatus_kode
+        description: ''
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: ''
+      - name: status_registrert_dato
+        description: ''
+      - name: status_avsluttet_dato
+        description: ''
+      - name: varighet_dager
+        description: ''
+      - name: gjeldende_flagg
+        description: ''
+      - name: antall_beregninger
+        description: ''
+  - name: agg_manuelle_beregninger_per_maned
+    description: ''
+    columns:
+      - name: mnd
+        description: ''
+      - name: manuelt_antall
+        description: ''
+      - name: totalt_antall
+        description: ''
+      - name: prosent_manuelt
+        description: ''
   - name: agg_oppdrag_per_ytelse_kilde_dag
-    description: 'Antall oppdrag per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.'
+    description: ''
     columns:
       - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+        description: ''
       - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
+        description: ''
       - name: faggruppe_kode
-        description: 'Kode for faggruppe. En faggruppe består av flere fagområder hvor man ønsker en samlet felles skatt- og trekkberegning. F.eks. PEN for pensjonsrelaterte ytelser'
+        description: ''
       - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
+        description: ''
       - name: ytelse
-        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
+        description: ''
       - name: kildesystem
-        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+        description: ''
       - name: dato_oppdrag_lastet
-        description: 'Datoen oppdraget ble lastet inn i Oppdragssystemet. Hentes fra t_oppdrag tidspkt_reg'
+        description: ''
       - name: antall_oppdrag
-        description: 'Antall oppdrag'
+        description: ''
+  - name: agg_beregninger_per_ytelse_enhet_dag
+    description: ''
+    columns:
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: ''
+      - name: ytelse
+        description: ''
+      - name: enhet_behandler
+        description: ''
+      - name: lastet_dato_kilde
+        description: ''
+      - name: antall_beregninger
+        description: ''
+  - name: agg_beregninger_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
+    description: ''
+    columns:
+      - name: ventestatus_beskrivelse
+        description: ''
+      - name: ventestatus_kode
+        description: ''
+      - name: fagomrade_kode
+        description: ''
+      - name: fagomrade_navn
+        description: ''
+      - name: faggruppe_navn
+        description: ''
+      - name: status_registrert_dato
+        description: ''
+      - name: handteres_manuelt_flagg
+        description: ''
+      - name: varighet_dager
+        description: ''
+      - name: antall_beregninger
+        description: ''

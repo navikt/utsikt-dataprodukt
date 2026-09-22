@@ -48,7 +48,8 @@ ref_fak_stoppnivaer as (
         stoppniva_id,
         fagomrade_kode,
         fagomrade_navn,
-        faggruppe_navn
+        faggruppe_navn,
+        enhet_behandler
     from {{ ref('fak_stoppnivaer') }}
 
 ),
@@ -69,6 +70,7 @@ join_stoppnivaer as (
         ref_fak_stoppnivaer.fagomrade_kode,
         ref_fak_stoppnivaer.fagomrade_navn,
         ref_fak_stoppnivaer.faggruppe_navn,
+        ref_fak_stoppnivaer.enhet_behandler,
         current_timestamp() as lastet_tid
     from join_manuell_handtering
     left join ref_fak_stoppnivaer
@@ -89,6 +91,7 @@ final as (
         fagomrade_kode,
         fagomrade_navn,
         faggruppe_navn,
+        enhet_behandler,
         gyldig_fom_tid,
         gyldig_til_tid,
         lastet_tid_kilde,

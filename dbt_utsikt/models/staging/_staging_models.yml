@@ -75,6 +75,8 @@ models:
           - eldre_enn_to_ar_gammelt
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: enhet_behandler
+        description: ''
   - name: stg_db2os__stoppnivaer_detaljer
     description: ''
     columns:
