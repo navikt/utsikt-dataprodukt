@@ -41,8 +41,8 @@ trigger = flyte.Trigger(name=trigger_name, automation=trigger_cron)
 secret_target_env_key = "TARGET_ENV"
 secret_target_env = flyte.Secret(key=secret_target_env_key)
 
-secret_slack_token_key = "slack_token"
-secret_slack_token = flyte.Secret(key=secret_slack_token_key)
+secret_slack_token_key = "slack-token"
+secret_slack_token = flyte.Secret(key=secret_slack_token_key, as_env_var="SLACK_TOKEN")
 
 secrets: list[flyte.Secret] = [secret_target_env, secret_slack_token]
 

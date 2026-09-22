@@ -10,7 +10,7 @@ def send_slack_notification(message: str) -> None:
     """
     Send en melding til #utsikt-ops på Slack.
     """
-    token = os.environ["slack_token"]
+    token = os.environ["SLACK_TOKEN"]
     url = "http://slack.com/api/chat.postMessage"
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     payload = {"channel": "#utsikt-ops", "text": message}
