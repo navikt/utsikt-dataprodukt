@@ -102,7 +102,7 @@ models:
       - name: lastet_tid
         description: 'Tidsstempel for når raden er lastet inn i tabellen'
       - name: enhet_behandler
-        description: ''
+        description: 'Enhet som behandler stoppnivået. 4819 for NØP og 8020 for NØS'
   - name: fak_stoppnivaer_detaljer
     description: 'Stoppnivåer brytt ned med flere detaljer'
     columns:
@@ -159,7 +159,7 @@ models:
       - name: gyldig_til_tid
         description: 'tidspunkt når raden er gyldig til'
       - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke (se modell int_stoppstatuskoder_manuell_handtering for detaljer)'
       - name: lastet_tid
         description: 'Tidsstempel for når raden er lastet inn i tabellen'
       - name: fagomrade_kode
@@ -169,4 +169,4 @@ models:
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
       - name: enhet_behandler
-        description: ''
+        description: 'Enhet som behandler stoppnivået. 4819 for NØP og 8020 for NØS'

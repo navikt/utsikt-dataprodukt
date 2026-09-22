@@ -28,7 +28,7 @@ sette_manuelle_koder as (
                     'RETN',
                     'RETU'
                 )
-                then 1
+                then 1 --denne listen med ventestatuskoder som må håndteres manuelt kommer originalt fra Steinar Hansen
             else 0
         end as handteres_manuelt
     from ref_stg_db2os__stoppstatuskoder

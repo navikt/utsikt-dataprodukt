@@ -76,7 +76,7 @@ models:
       - name: fagomrade_kode
         description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
       - name: enhet_behandler
-        description: ''
+        description: 'Enhet som behandler stoppnivået. 4819 for NØP og 8020 for NØS'
   - name: stg_db2os__stoppnivaer_detaljer
     description: ''
     columns:
@@ -110,7 +110,7 @@ models:
       - name: ventestatus_kode
         description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
       - name: lopenummer
-        description: ''
+        description: 'Løpenummer for raden i tabellen'
       - name: lastet_tid_kilde
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
         data_tests:

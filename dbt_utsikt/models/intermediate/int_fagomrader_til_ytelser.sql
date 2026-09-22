@@ -45,6 +45,7 @@ derive_ytelse as (
             when fagomrade_navn like '%Foreldrepenger%'
                 then 'Foreldrepenger'
             else 'Annet'
+            -- Denne er manuelt utledet basert på fagområdets navn med litt hjelp fra Trine. Denne må videreutvikles og verifiseres.
         end as ytelse
     from ref_stg_db2os__fagomrader
 ),
