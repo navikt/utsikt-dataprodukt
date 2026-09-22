@@ -10,7 +10,7 @@ def send_slack_notification(message: str) -> None:
     """
     Send en melding til #utsikt-ops på Slack.
     """
-    token = os.environ["SLACK_TOKEN"]
+    token = os.environ["slack_token"]
     url = "http://slack.com/api/chat.postMessage"
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     payload = {"channel": "#utsikt-ops", "text": message}
@@ -60,7 +60,12 @@ def dbt_test_if_more_rows() -> bool:
 @dbt_environment.task
 def dbt_source_freshness() -> None:
     commands = ["source", "freshness"]
-    run_dbt_run_commands(commands=commands)
+    try:
+        run_dbt_run_commands(commands=commands)
+    except Exception as error_message:
+        msg = f"Feil i dbt source freshness: {error_message}"
+        send_slack_notification(message=msg)
+        raise Exception(msg)
 
 
 @dbt_environment.task
