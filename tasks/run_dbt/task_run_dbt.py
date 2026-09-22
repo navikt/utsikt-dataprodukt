@@ -1,10 +1,28 @@
+import requests
+import os
+
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
 from task_enviroment import dbt_environment, trigger
 
+
+def send_slack_notification(message: str) -> None:
+    """
+    Send en melding til #utsikt-ops på Slack.
+    """
+    token = os.environ["SLACK_TOKEN"]
+    url = "http://slack.com/api/chat.postMessage"
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    payload = {"channel": "#utsikt-ops", "text": message}
+
+    response = requests.post(url=url, headers=headers, json=payload)
+    response.raise_for_status()
+
+
 class DuplicatedRowsException(BaseException):
     def __init__(self, msg):
         super().__init__(msg)
+
 
 def run_dbt_run_commands(commands: list[str]) -> None:
     dbt_base_commands = ["--no-use-colors", "--log-format-file", "json"]
@@ -17,13 +35,16 @@ def run_dbt_run_commands(commands: list[str]) -> None:
     if not results.success:
         raise Exception(results.result)
 
+
 def dbt_snapshot_stoppstatus() -> None:
-    commands = ["snapshot","--select", "stoppstatus_snapshot"]
+    commands = ["snapshot", "--select", "stoppstatus_snapshot"]
     run_dbt_run_commands(commands=commands)
+
 
 def dbt_run_int_model() -> None:
     commands = ["run", "--select", "int_min_kombo_til_snapshot", "--quiet"]
     run_dbt_run_commands(commands=commands)
+
 
 def dbt_test_if_more_rows() -> bool:
     commands = ["test", "--select", "test_antall_rader_til_snapshot"]
@@ -37,7 +58,7 @@ def dbt_test_if_more_rows() -> bool:
 
 
 @dbt_environment.task
-def dbt_source_freshness()-> None:
+def dbt_source_freshness() -> None:
     commands = ["source", "freshness"]
     run_dbt_run_commands(commands=commands)
 
@@ -61,6 +82,7 @@ def dbt_run_stoppstatus_snapshot() -> None:
         error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
         raise DuplicatedRowsException(error_message)
 
+
 @dbt_environment.task
 def dbt_run() -> None:
     commands = ["run"]
@@ -69,7 +91,7 @@ def dbt_run() -> None:
 
 @dbt_environment.task
 def dbt_test() -> None:
-    commands = ["test","--exclude", "test_antall_rader_til_snapshot"]
+    commands = ["test", "--exclude", "test_antall_rader_til_snapshot"]
     run_dbt_run_commands(commands=commands)
 
 
