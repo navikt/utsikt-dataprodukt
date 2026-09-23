@@ -1,0 +1,127 @@
+import requests
+import os
+
+from dbt.cli.main import dbtRunner, dbtRunnerResult
+
+from task_enviroment import dbt_environment, trigger
+
+
+def send_slack_notification(message: str) -> None:
+    """
+    Send en melding til #utsikt-ops på Slack.
+    """
+    token = os.environ["SLACK_TOKEN"]
+    url = "http://slack.com/api/chat.postMessage"
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    payload = {"channel": "#utsikt-ops", "text": message}
+
+    response = requests.post(url=url, headers=headers, json=payload)
+    response.raise_for_status()
+
+
+class DuplicatedRowsException(BaseException):
+    def __init__(self, msg):
+        super().__init__(msg)
+
+
+def run_dbt_run_commands(commands: list[str]) -> None:
+    dbt_base_commands = ["--no-use-colors", "--log-format-file", "json"]
+    runner = dbtRunner()
+    results: dbtRunnerResult = runner.invoke(args=dbt_base_commands + commands)
+
+    if results.exception:
+        raise results.exception
+
+    if not results.success:
+        raise Exception(results.result)
+
+
+def dbt_snapshot_stoppstatus() -> None:
+    commands = ["snapshot", "--select", "stoppstatus_snapshot"]
+    run_dbt_run_commands(commands=commands)
+
+
+def dbt_run_int_model() -> None:
+    commands = ["run", "--select", "int_min_kombo_til_snapshot", "--quiet"]
+    run_dbt_run_commands(commands=commands)
+
+
+def dbt_test_if_more_rows() -> bool:
+    commands = ["test", "--select", "test_antall_rader_til_snapshot"]
+    runner = dbtRunner()
+    results: dbtRunnerResult = runner.invoke(args=commands)
+
+    if results.exception:
+        raise results.exception
+
+    return results.success
+
+
+@dbt_environment.task
+def dbt_source_freshness() -> None:
+    commands = ["source", "freshness"]
+    try:
+        run_dbt_run_commands(commands=commands)
+    except Exception as error_message:
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt source freshness i {domain} domene! Sjekk logger i Union ❌"
+        send_slack_notification(message=slack_message)
+        raise Exception(error_message)
+
+
+@dbt_environment.task
+def dbt_run_stoppstatus_snapshot() -> None:
+    try:
+        counter = 0
+        limit = 10
+
+        dbt_run_int_model()
+
+        more_rows = dbt_test_if_more_rows()
+
+        while more_rows and counter < limit:
+            dbt_snapshot_stoppstatus()
+            dbt_run_int_model()
+            more_rows = dbt_test_if_more_rows()
+            counter += 1
+
+        if more_rows and counter > limit:
+            error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
+            raise DuplicatedRowsException(error_message)
+    except Exception as error_message:
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt run stoppstatus snapshot i {domain} domene! Sjekk logger i Union ❌"
+        send_slack_notification(message=slack_message)
+        raise Exception(error_message)
+
+
+@dbt_environment.task
+def dbt_run() -> None:
+    commands = ["run"]
+    try:
+        run_dbt_run_commands(commands=commands)
+    except Exception as error_message:
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt run i {domain} domene! Sjekk logger i Union ❌"
+        send_slack_notification(message=slack_message)
+        raise Exception(error_message)
+
+
+@dbt_environment.task
+def dbt_test() -> None:
+    commands = ["test", "--exclude", "test_antall_rader_til_snapshot"]
+    try:
+        run_dbt_run_commands(commands=commands)
+    except Exception as error_message:
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt test i {domain} domene! Sjekk logger i Union ❌"
+        send_slack_notification(message=slack_message)
+        raise Exception(error_message)
+
+
+@dbt_environment.task(entrypoint=True, triggers=trigger)
+def run_dbt_utsikt():
+    dbt_source_freshness()
+    dbt_run_stoppstatus_snapshot()
+    dbt_run()
+    dbt_test()

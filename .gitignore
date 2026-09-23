@@ -1,8 +1,16 @@
-.idea
+# Dbt
 target/
 dbt_packages/
 logs/
 .user.yml
-/.DS_Store
 
+# Editor
+/.DS_Store
 __pycache__
+/.idea
+/.ruff_cache
+/.flyte
+
+# Run environment
+/.venv
+
