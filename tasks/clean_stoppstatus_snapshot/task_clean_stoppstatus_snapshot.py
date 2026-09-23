@@ -69,8 +69,9 @@ def main():
         query = get_query(project_id=project_id)
         client.run_query(query)
     except Exception as error_message:
+        domain = os.environ["TARGET_ENV"]
         slack_message = (
-            "❌ Feil i clean stoppstatus snapshot jobb! Sjekk logger i Union ❌"
+            f"❌ Feil i clean stoppstatus snapshot jobb i {domain} domene! Sjekk logger i Union ❌"
         )
         send_slack_notification(message=slack_message)
         raise Exception(error_message)

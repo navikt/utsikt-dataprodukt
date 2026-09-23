@@ -63,7 +63,8 @@ def dbt_source_freshness() -> None:
     try:
         run_dbt_run_commands(commands=commands)
     except Exception as error_message:
-        slack_message = "❌ Feil i dbt source freshness! Sjekk logger i Union ❌"
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt source freshness i {domain} domene! Sjekk logger i Union ❌"
         send_slack_notification(message=slack_message)
         raise Exception(error_message)
 
@@ -88,9 +89,8 @@ def dbt_run_stoppstatus_snapshot() -> None:
             error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
             raise DuplicatedRowsException(error_message)
     except Exception as error_message:
-        slack_message = (
-            "❌ Feil i dbt run stoppstatus snapshot! Sjekk logger i Union ❌"
-        )
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt run stoppstatus snapshot i {domain} domene! Sjekk logger i Union ❌"
         send_slack_notification(message=slack_message)
         raise Exception(error_message)
 
@@ -101,7 +101,8 @@ def dbt_run() -> None:
     try:
         run_dbt_run_commands(commands=commands)
     except Exception as error_message:
-        slack_message = "❌ Feil i dbt run! Sjekk logger i Union ❌"
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt run i {domain} domene! Sjekk logger i Union ❌"
         send_slack_notification(message=slack_message)
         raise Exception(error_message)
 
@@ -112,7 +113,8 @@ def dbt_test() -> None:
     try:
         run_dbt_run_commands(commands=commands)
     except Exception as error_message:
-        slack_message = "❌ Feil i dbt test! Sjekk logger i Union ❌"
+        domain = os.environ["TARGET_ENV"]
+        slack_message = f"❌ Feil i dbt test i {domain} domene! Sjekk logger i Union ❌"
         send_slack_notification(message=slack_message)
         raise Exception(error_message)
 
