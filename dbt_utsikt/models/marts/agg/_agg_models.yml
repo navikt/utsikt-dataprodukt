@@ -8,92 +8,10 @@ models:
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
-      - name: belop_brutto
-        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
       - name: maned_dato
         description: 'første dato i måneden aggregeringen gjelder for'
-  - name: agg_beregninger_avsluttet_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med en ventestatus som ikke lenger er gjeldende (avsluttet). Gruppert på ventestatus, varighet, fagområde og dag'
-    columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
-      - name: status_avsluttet_dato
-        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_gjeldende_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med gjeldende ventestatus. Gruppert på ventestatus, varighet, fagområde og dag'
-    columns:
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
-      - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
-      - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_manuell_ventestatus_per_ventestatus_varighet_fagomrade_dag
-    description: 'Antall beregninger med en ventestatus som betyr at stoppnivået må/har måttet behandles manuellt i økonomilinja. Gruppert på ventestatus, varighet, fagområde og dag'
-    columns:
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: status_registrert_dato
-        description: 'Dato ventestatusen ble registrert'
-      - name: status_avsluttet_dato
-        description: 'Dato ventestatusen ble avsluttet (dvs fikk en ny status)'
-      - name: varighet_dager
-        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
-      - name: gjeldende_flagg
-        description: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_p4_per_fagomrade_ytelse_dag
-    description: 'Antall beregninger hvor faggruppen er relatert til P4. Gruppert på fagområde, ytelse og dag'
-    columns:
-      - name: fagomrade_navn
-        description: 'Navn/beskrivelse på fagområde'
-      - name: fagomrade_kode
-        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
-      - name: faggruppe_navn
-        description: 'Navn/beskrivelse på faggruppe'
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: ytelse
-        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
+      - name: belop_brutto
+        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
@@ -105,30 +23,61 @@ models:
         description: 'Datoen beregningen er utført i Oppdragssystemet.'
       - name: antall_beregninger
         description: 'Antall beregninger'
-  - name: agg_beregninger_per_fagomrade_dag
-    description: 'Antall beregninger per fagområde per beregnet dato'
+  - name: agg_beregninger_per_ventestatus_varighet_fagomrade_enhet
+    description: 'Antall beregninger per ventestatus, varighet, fagområde og enhet. Også gruppert på gjeldende_flagg og handteres_manuelt_flagg'
     columns:
+      - name: ventestatus_beskrivelse
+        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
+      - name: ventestatus_kode
+        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
       - name: fagomrade_navn
         description: 'Navn/beskrivelse på fagområde'
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
-  - name: agg_beregninger_per_ventestatus_dag
-    description: 'Antall beregninger per ventestatus per beregnet dato'
-    columns:
-      - name: beregnet_dato
-        description: 'Datoen beregningen er utført i Oppdragssystemet.'
-      - name: ventestatus_kode
-        description: 'Kode for ventestatus. F.eks OVFO (for Overført til UR)'
-      - name: ventestatus_beskrivelse
-        description: 'Beskrivelse av ventestatuskode, eks Overført til UR'
-      - name: antall_beregninger
-        description: 'Antall beregninger'
+      - name: enhet_behandler
+        description: 'Enhet som behandler stoppnivået. 4819 for NØP og 8020 for NØS'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet (int_fagomrader_til_ytelser)'
+      - name: gjeldende_flagg
+        description: 'Flagg som tilsier om ventestatusen på stoppnivået er gjeldende/åpen'
+      - name: status_registrert_dato
+        description: 'Dato ventestatusen ble registrert'
       - name: handteres_manuelt_flagg
-        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke'
+        description: 'Flagg som tilsier om ventestatusen må håndteres manuelt eller ikke (se modell int_stoppstatuskoder_manuell_handtering for detaljer)'
+      - name: varighet_dager
+        description: 'Varighet i antall dager for hvor lenge ventestatusen har vært gyldig for gitt beregning og stoppnivå'
+      - name: antall_beregninger
+        description: 'Antall beregninger'
+  - name: agg_beregninger_per_ytelse_enhet_dag
+    description: 'Antall beregninger gruppert på fagområde, ytelse, enhet behandler og dag'
+    columns:
+      - name: fagomrade_kode
+        description: 'En kode som angir selve ytelsen som beregningen gjelder, f.eks. AAP for arbeidsavklaringspenger'
+      - name: fagomrade_navn
+        description: 'Navn/beskrivelse på fagområde'
+      - name: faggruppe_navn
+        description: 'Navn/beskrivelse på faggruppe'
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet (int_fagomrader_til_ytelser)'
+      - name: enhet_behandler
+        description: 'Enhet som behandler stoppnivået. 4819 for NØP og 8020 for NØS'
+      - name: lastet_dato_kilde
+        description: 'Datoen for når raden er lastet inn i kildetabellen.'
+      - name: antall_beregninger
+        description: 'Antall beregninger'
+  - name: agg_manuelle_beregninger_per_maned
+    description: 'Antall og andel manuelle beregninger per måned.'
+    columns:
+      - name: mnd
+        description: 'Måned beregningen er registrert, trunkert til den første dagen i måneden'
+      - name: manuelt_antall
+        description: 'Antall manuelle beregninger'
+      - name: totalt_antall
+        description: 'Totalt antall beregninger'
+      - name: prosent_manuelt
+        description: 'Prosentandel manuelle beregninger'
   - name: agg_oppdrag_per_ytelse_kilde_dag
     description: 'Antall oppdrag per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.'
     columns:
@@ -141,7 +90,7 @@ models:
       - name: faggruppe_navn
         description: 'Navn/beskrivelse på faggruppe'
       - name: ytelse
-        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet'
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet (int_fagomrader_til_ytelser)'
       - name: kildesystem
         description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
       - name: dato_oppdrag_lastet
