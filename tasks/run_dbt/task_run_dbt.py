@@ -1,18 +1,17 @@
 import dbt_functions
 
 from task_enviroment import dbt_environment, trigger
-from slack_functions import slack_notification_on_fail
+from slack_functions import flyte_task
 
 
-@dbt_environment.task
-@slack_notification_on_fail
+@flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_source_freshness() -> None:
     commands = ["source", "freshness"]
     dbt_functions.run_dbt_run_commands(commands=commands)
+    raise Exception("Luis tester stuff")
 
 
-@dbt_environment.task
-@slack_notification_on_fail
+@flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_run_stoppstatus_snapshot() -> None:
     counter = 0
     limit = 10
@@ -32,15 +31,13 @@ def dbt_run_stoppstatus_snapshot() -> None:
 
 
 
-@dbt_environment.task
-@slack_notification_on_fail
+@flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_run() -> None:
     commands = ["run"]
     dbt_functions.run_dbt_run_commands(commands=commands)
 
 
-@dbt_environment.task
-@slack_notification_on_fail
+@flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_test() -> None:
     commands = ["test", "--exclude", "test_antall_rader_til_snapshot"]
     dbt_functions.run_dbt_run_commands(commands=commands)
@@ -52,3 +49,4 @@ def run_dbt_utsikt():
     dbt_run_stoppstatus_snapshot()
     dbt_run()
     dbt_test()
+
