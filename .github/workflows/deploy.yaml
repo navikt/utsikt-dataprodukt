@@ -15,8 +15,8 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
     with:
-      flyte_task_file: tasks/run_dbt/task_run_dbt.py
-      dependency_file: tasks/run_dbt/requirements.txt
+      flyte_task_file: ./tasks/run_dbt/task_run_dbt.py
+      dependency_file: ./tasks/run_dbt/requirements.txt
       union_project: utsikt
       union-domain: production
 
@@ -26,7 +26,7 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
     with:
-      flyte_task_file: tasks/clean_stoppstatus_snapshot/task_clean_stoppstatus_snapshot.py
-      dependency_file: tasks/clean_stoppstatus_snapshot/requirements.txt
+      flyte_task_file: ./tasks/clean_stoppstatus_snapshot/task_clean_stoppstatus_snapshot.py
+      dependency_file: ./tasks/clean_stoppstatus_snapshot/requirements.txt
       union_project: utsikt
       union-domain: production
