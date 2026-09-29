@@ -9,10 +9,11 @@ def dbt_source_freshness() -> None:
     commands = ["source", "freshness"]
     dbt_functions.run_dbt_run_commands(commands=commands)
 
+
 @flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_run_stoppstatus_snapshot() -> None:
     counter = 0
-    limit = 10
+    limit = 9
 
     dbt_functions.dbt_run_int_model()
     more_rows = dbt_functions.dbt_test_if_more_rows()
@@ -20,13 +21,12 @@ def dbt_run_stoppstatus_snapshot() -> None:
     while more_rows and counter < limit:
         dbt_functions.dbt_snapshot_stoppstatus()
         dbt_functions.dbt_run_int_model()
-        more_rows =  dbt_functions.dbt_test_if_more_rows()
+        more_rows = dbt_functions.dbt_test_if_more_rows()
         counter += 1
 
         if more_rows and counter > limit:
             error_message = "Det er fortsatt rader igjen - sjekk duplikat tidspkt_reg. Vurder å kjøre skriptet"
             raise dbt_functions.DuplicatedRowsException(error_message)
-
 
 
 @flyte_task(task_environment=dbt_environment, notify_on_failure=True)
