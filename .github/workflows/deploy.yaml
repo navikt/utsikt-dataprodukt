@@ -17,7 +17,7 @@ jobs:
     with:
       flyte-task-file: ./tasks/run_dbt/task_run_dbt.py
       dependency-file: ./tasks/run_dbt/requirements.txt
-      union_project: utsikt
+      union-project: utsikt
       union-domain: production
 
   deploy_task_clean_stoppstatus_snapshot:
