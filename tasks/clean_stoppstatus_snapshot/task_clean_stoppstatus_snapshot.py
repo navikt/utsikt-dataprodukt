@@ -11,6 +11,7 @@ def get_query(project_id: str) -> str:
 
     return sql
 
+
 def get_project_id() -> str:
     target = os.getenv("TARGET_ENV", "dev")
     if target == "prod":
@@ -20,12 +21,14 @@ def get_project_id() -> str:
 
     return project_id
 
+
 @flyte_task(task_environment=python_bq_environment, notify_on_failure=True)
 def task_delete_rows() -> None:
     project_id = get_project_id()
     client = BQConnector(project_id=project_id)
     query = get_query(project_id=project_id)
     client.run_query(query)
+
 
 @python_bq_environment.task(triggers=trigger, entrypoint=True)
 def main():
