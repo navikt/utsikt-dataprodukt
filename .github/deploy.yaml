@@ -1,0 +1,32 @@
+name: deploy union tasks to production
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tasks/**'
+      - 'dbt_utsikt/**'
+  workflow_dispatch:
+
+jobs:
+  deploy_task_run_dbt:
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
+    with:
+      flyte_task_file: tasks/run_dbt/task_run_dbt.py
+      dependency_file: tasks/run_dbt/requirements.txt
+      union_project: utsikt
+      union-domain: production
+
+  deploy_task_clean_stoppstatus_snapshot:
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
+    with:
+      flyte_task_file: tasks/clean_stoppstatus_snapshot/task_clean_stoppstatus_snapshot.py
+      dependency_file: tasks/clean_stoppstatus_snapshot/requirements.txt
+      union_project: utsikt
+      union-domain: production
