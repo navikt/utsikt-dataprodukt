@@ -40,8 +40,23 @@ opp lokalt miljø.
 ```
 uv sync
 ```
-
 Dette antar at du har uv installert.
-## Deploy en task
+
+For å kunne deploye tasker til union så trenger man en config-fil. Den kan lages ved hjelp av følgende kommando:
+
+```
+flyte create config --endpoint union.data.nav.no --org union-nav --project utsikt --domain development --builder remote
+```
+
+For å sjekke at alt fungerer som det skal, kjør følgende:
+```
+flyte get project
+```
+Du skal få opp en liste med union-prosjekter som du har tilgang til, og du får opp vellykket autentisering i nettleseren.
+
+## Deploy en task til development
+1. Naviger deg til der tasken er: `cd tasks/<task_1>`
+2. `flyte deploy --all <task_navn>.py`
+3. Nå kan du besøke [utsikt union development](https://union.data.nav.no/v2/domain/development/project/utsikt) og sjekke at den har blitt deploya 
 
 
