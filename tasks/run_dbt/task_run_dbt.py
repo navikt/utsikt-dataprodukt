@@ -8,8 +8,6 @@ from slack_functions import flyte_task
 def dbt_source_freshness() -> None:
     commands = ["source", "freshness"]
     dbt_functions.run_dbt_run_commands(commands=commands)
-    raise Exception("Luis tester stuff")
-
 
 @flyte_task(task_environment=dbt_environment, notify_on_failure=True)
 def dbt_run_stoppstatus_snapshot() -> None:

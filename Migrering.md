@@ -32,9 +32,16 @@ tasks/
 
 ```
 
-## Lokalt miljø
+## Lokalt Flyte miljø
 
+Vi bruker [uv](https://docs.astral.sh/uv/getting-started/installation/) for å konfigurere og sette
+opp lokalt miljø.
 
+```
+uv sync
+```
+
+Dette antar at du har uv installert.
 ## Deploy en task
 
 
