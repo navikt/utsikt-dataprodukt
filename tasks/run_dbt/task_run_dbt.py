@@ -49,4 +49,3 @@ def run_dbt_utsikt():
     dbt_run_stoppstatus_snapshot()
     dbt_run()
     dbt_test()
-
