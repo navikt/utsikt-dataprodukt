@@ -25,7 +25,7 @@ def flyte_task(task_environment: TaskEnvironment, notify_on_failure: bool = True
         def wrapped():
             try:
                 return task()
-            except Exception as error_message:
+            except Exception as error:
                 if notify_on_failure:
                     task_name = task.__name__
                     domain = os.environ["TARGET_ENV"]
@@ -34,7 +34,7 @@ def flyte_task(task_environment: TaskEnvironment, notify_on_failure: bool = True
                     )
                     send_slack_notification(message=slack_message)
 
-                raise Exception(error_message)
+                raise Exception(error)
 
         return task_environment.task(wrapped)
 
