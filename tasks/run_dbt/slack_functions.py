@@ -1,7 +1,7 @@
 import requests
 import os
 
-from typing import Callable
+from collections.abc import Callable
 from flyte import TaskEnvironment
 from functools import wraps
 
@@ -16,7 +16,7 @@ def send_slack_notification(message: str) -> None:
 
 
 def flyte_task(task_environment: TaskEnvironment, notify_on_failure: bool = True):
-    def decorator(task: Callable):
+    def decorator(task: Callable[[], None]):
         @wraps(task)
         def wrapped():
             try:
