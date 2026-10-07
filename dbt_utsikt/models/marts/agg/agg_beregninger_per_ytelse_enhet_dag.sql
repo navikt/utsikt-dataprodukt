@@ -1,4 +1,4 @@
---agg_beregninger_p4_per_fagomrade_ytelse_dag
+--agg_beregninger_per_ytelse_enhet_dag
 with
 
 ref_fak_stoppnivaer as (
