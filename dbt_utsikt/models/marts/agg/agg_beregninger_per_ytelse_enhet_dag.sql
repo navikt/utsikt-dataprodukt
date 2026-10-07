@@ -15,7 +15,8 @@ ref_fak_stoppnivaer as (
 ref_int_fagomrader_med_tilhorende_faggrupper as (
     select
         fagomrade_kode,
-        ytelse
+        ytelse,
+        manuell_postering_flagg
     from {{ ref('int_fagomrader_med_tilhorende_faggrupper') }}
 ),
 
@@ -33,7 +34,6 @@ derive_enhet_behandler as (
         date(lastet_tid_kilde) as lastet_dato_kilde
     from ref_fak_stoppnivaer
 ),
-
 
 dist_beregning_fagomrade as (
     select distinct
@@ -54,7 +54,8 @@ join_ytelse as (
         dist_beregning_fagomrade.faggruppe_navn,
         dist_beregning_fagomrade.enhet_behandler,
         dist_beregning_fagomrade.lastet_dato_kilde,
-        ref_int_fagomrader_med_tilhorende_faggrupper.ytelse
+        ref_int_fagomrader_med_tilhorende_faggrupper.ytelse,
+        ref_int_fagomrader_med_tilhorende_faggrupper.manuell_postering_flagg
     from dist_beregning_fagomrade
     left join
         ref_int_fagomrader_med_tilhorende_faggrupper
@@ -69,9 +70,10 @@ count_beregninger as (
         faggruppe_navn,
         lastet_dato_kilde,
         ytelse,
+        manuell_postering_flagg,
         count(beregning_id) as antall_beregninger
     from join_ytelse
-    group by enhet_behandler, fagomrade_kode, fagomrade_navn, faggruppe_navn, lastet_dato_kilde, ytelse
+    group by enhet_behandler, fagomrade_kode, fagomrade_navn, faggruppe_navn, lastet_dato_kilde, ytelse, manuell_postering_flagg
 ),
 
 final as (
@@ -80,6 +82,7 @@ final as (
         fagomrade_navn,
         faggruppe_navn,
         ytelse,
+        manuell_postering_flagg,
         enhet_behandler,
         lastet_dato_kilde,
         antall_beregninger
