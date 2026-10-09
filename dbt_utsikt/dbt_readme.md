@@ -38,6 +38,9 @@ dbt run --select <modell_navn> --target prod --full-refresh
 ## Oppdatere dbt-dokumentasjonen
 Se [docs_readme.md](docs/docs_readme.md) for informasjon om hvordan man oppdaterer dokumentasjonen.
 
+## Stoppstatus snapshot
+Siden dette er et litt komplisert oppsett, har vi laget en egen [confluence-side](https://confluence.adeo.no/spaces/TOB/pages/780356568/dbt+snapshot+stoppstatus) som dokumenterer dette.
+
 ## Feilretting av dbt-løpet
 Per i dag har vi én feil som kan forekomme. Observert 3-4 ganger i året
 
