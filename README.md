@@ -1,45 +1,17 @@
 # utsikt-dataprodukt
-Team utsikt sitt dbt-prosjekt for å transformere data i utbetalingsseksjonen.
+Team utsikt sitt prosjekt for å produsere dataprodukter i utbetalingsseksjonen. [dbt](https://docs.getdbt.com/docs/local/connect-data-platform/bigquery-setup?version=2) er brukt som verktøy for å transformere data i BigQuery, og [union](https://www.union.ai/) er brukt for å skedulere kjøringen av jobber.
 
-## Kjøremiljø
-For å sette opp et lokalt `.venv`-miljø, kjør kommandoen `uv sync`.
+## Struktur
+- [dbt_utsikt](dbt_utsikt) innholder et dbt prosjekt som transformerer tabeller i BigQuery. 
+For å kjøre dbt kommandoer, må du stå i denne mappen. Les mer om denne mappa her: [dbt_readme.md](dbt_utsikt/dbt_readme.md)
 
-For å sette miljø dev eller prod kjør kommandoen `export TARGET_ENV=dev`
+- [queries](queries) inneholder nyttige SQL-spørringer.
 
-For å kjøre dbt-jobben, kjør `uv run dbt run` fra mappa `dbt_utsikt`.
+- [task](tasks) innholder oppsett for å skedulere jobber med Union. Les mer om taskene og Union-oppsettet i [union_readme.md](union_readme.md).
 
-dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i tillegg kjøre:
+## Henvendelser
+Spørsmål knyttet til koden eller repositoryet kan stilles som issues her på GitHub
 
-`gcloud auth application-default login`
-
-Airflow (og foreløpig dependabot) krever en `requirements.txt`-fil, og denne kan genereres ved å kjøre 
-
-`toml-to-req --toml-file pyproject.toml`
-
-Her bruker vi pakka [toml-to-requirements](https://pypi.org/project/toml-to-requirements/).
-
-### sqlfluff
-Vi bruker pakka [sqlfluff](https://docs.sqlfluff.com/en/stable/index.html) for å formattere sql-koden. For å installere:
-
-`uv add --dev sqlfluff sqlfluff-templater-dbt`
-
-For å linte dbt-modeller, kjør `sqlfluff lint models/`
-
-## Oppdatere pakker
-Dependabot støtter enda ikke uv helt, derfor har vi følgende oppskrift dersom man får en pull request av dependabot:
-1. Kjøre `uv sync --upgrade`
-2. Kjøre `toml-to-req --toml-file pyproject.toml`
-
-
-## Oppdatere dokumentasjon
-Team utsikt har 
-[dokumentasjon av dbt-kodebasen](https://dbt.ansatt.nav.no/docs/utsikt/utsikt-dataprodukt/index.html#!/overview) som er autogenerert og interaktiv. For å oppdatere kolonnekommentarer og tabellbeskrivelser må følgende gjøres:
-
-1. Fyll ut kommentarer i filen `docs/comments_custom.yml`
-2. Kjør kommando `python docs/generate_comments_from_sql.py`
-    Dette er et skript som genererer `.yml`-filer med kommentarer hentet fra `docs/comments_custom.yml` og `docs/comments_source.yml`. Det er viktig at sql-koden til modeller ender med en `final as (`, for det er her kolonnenavnene hentes fra. Creds til Brynjar som har laget dette skriptet.
-3. Kjør kommando `dbt docs generate`
-4. Kjør kommando `python docs/publish_docs.py` som publiserer docen.
-
-Voilá!
+### For Nav-ansatte
+Interne henvendelser kan sendes via Slack i kanalen #team-utsikt.
 

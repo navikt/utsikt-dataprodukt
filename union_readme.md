@@ -2,14 +2,7 @@
 For å sette opp og få tilgang til Union, les NADA sin 
 [dokumentasjon](https://docs.knada.io/analyse/union/oppsett/). 
 
-## Projekt struktur
-- [dbt_utsikt](dbt_utsikt) innholder et dbt prosjekt som transformerer tabeller i big query. 
-For å kjøre dbt kommandoer, må du stå i denne mappen.
-
-- [queries](queries) inneholder nyttige SQL-spørringer.
-
-
-- [task](tasks) innholder python-kode som skal kjøres som en union task, 
+[task](tasks)-mappa innholder python-kode som skal kjøres som en union task, 
 python-kode som deklarerer kjøretidsmiljøet til tasker og avhengigheter. 
 Hver task burde ha sin egen undermappe, med minst tre filer:
 
@@ -31,6 +24,14 @@ tasks/
     └── requirements.txt
 
 ```
+
+## Tasker og kjøreplan
+
+### dbt-tasken
+Tasken i `tasks/run_dbt` kjører source freshness, behandler nye stoppstatusrader for snapshotet, kjører dbt-modellene og tester dem. Den er planlagt til å kjøre mandag til fredag kl. 06:00.
+
+### Opprydding av stoppstatus-snapshot
+Tasken i `tasks/clean_stoppstatus_snapshot` sletter rader fra `stoppstatus_snapshot` der `lastet_tid_kilde` er eldre enn 730 dager. Den er planlagt til å kjøre hver søndag kl. 00:00. De andre fakta-tabellene våre er partisjonert med partition_expiration_days=730, men dette går ikke med `stoppstatus_snapshot`, og må derfor settes opp manuelt.
 
 ## Lokalt Flyte miljø
 
