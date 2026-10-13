@@ -67,6 +67,8 @@ models:
         description: 'Datoen for når raden er lastet inn i kildetabellen.'
       - name: antall_beregninger
         description: 'Antall beregninger'
+      - name: manuell_postering_flagg
+        description: 'Flagg som indikerer om posteringen er gjort manuelt. Utledet fra fagområde.'
   - name: agg_manuelle_beregninger_per_maned
     description: 'Antall og andel manuelle beregninger per måned.'
     columns:

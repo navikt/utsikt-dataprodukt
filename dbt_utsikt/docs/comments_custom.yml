@@ -72,6 +72,7 @@ custom_column_comments:
             manuelt_antall: 'Antall manuelle beregninger',
             totalt_antall: 'Totalt antall beregninger',
             prosent_manuelt: 'Prosentandel manuelle beregninger',
+            manuell_postering_flagg: 'Flagg som indikerer om posteringen er gjort manuelt. Utledet fra fagområde.'
         }
         ,
 
