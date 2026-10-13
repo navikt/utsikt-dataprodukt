@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "dbt-bigquery>=1.12.0",
-    "dbt-core-experimental-parser==2.0.0a4"
+    "dbt-core-experimental-parser==2.0.5"
 ]
 
 [tool.ruff]
@@ -22,6 +22,6 @@ dev = [
     "sqlfluff>=4.3.0",
     "sqlfluff-templater-dbt>=4.3.0",
     "toml-to-requirements>=0.3.0",
-    "dbt-core-experimental-parser==2.0.0a4",
+    "dbt-core-experimental-parser==2.0.5",
     "flyte>=2.7.2",
 ]
