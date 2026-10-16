@@ -1,0 +1,46 @@
+import flyte
+
+from pathlib import Path
+
+environment_name = "dbt_docs_environment"
+service_account = "dbt-sa"
+
+
+image_uri = ("europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base")
+registry = "europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images"
+
+env_vars = {"UV_KEYRING_PROVIDER": "subprocess"}
+
+requirements_path = Path("requirements.txt")
+index_url = (
+    "https://oauth2accesstoken@"
+    "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
+)
+
+
+image_name = "dbt_docs_image"
+dbt_folder_path = Path("../../dbt_utsikt")
+
+
+# Build image
+image = flyte.Image.from_base(image_uri=image_uri).clone(
+    registry=registry, name=image_name, extendable=True
+)
+image = image.with_env_vars(env_vars)
+image = image.with_requirements(requirements_path, index_url=index_url)
+image = image.with_source_folder(src=dbt_folder_path, copy_contents_only=True)
+
+
+# Secrets
+secret_target_env_key = "TARGET_ENV"
+secret_target_env = flyte.Secret(key=secret_target_env_key)
+
+secret_slack_token_key = "slack-token"
+secret_slack_token = flyte.Secret(key=secret_slack_token_key, as_env_var="SLACK_TOKEN")
+
+secrets: list[flyte.Secret] = [secret_target_env, secret_slack_token]
+
+# Task Environment
+dbt_docs_environment = flyte.TaskEnvironment(
+    name=environment_name, service_account=service_account, secrets=secrets, image=image
+)
