@@ -48,7 +48,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: navikt/union-deploy/.github/workflows/run.yaml@v1
+    uses: navikt/union-deploy/.github/workflows/run.yaml@run-v1
     with:
       union-project: utsikt
       union-domain: production
