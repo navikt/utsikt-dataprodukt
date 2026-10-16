@@ -4,6 +4,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/deploy.yaml'
       - 'tasks/**'
       - 'dbt_utsikt/**'
   workflow_dispatch:
@@ -13,7 +14,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
       flyte-task-file: ./tasks/run_dbt/task_run_dbt.py
       dependency-file: ./tasks/run_dbt/requirements.txt
@@ -24,9 +25,32 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v1
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
       flyte-task-file: ./tasks/clean_stoppstatus_snapshot/task_clean_stoppstatus_snapshot.py
       dependency-file: ./tasks/clean_stoppstatus_snapshot/requirements.txt
       union-project: utsikt
       union-domain: production
+
+  deploy_task_generate_docs:
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
+    with:
+      flyte-task-file: ./tasks/dbt_docs/task_dbt_docs.py
+      dependency-file: ./tasks/dbt_docs/requirements.txt
+      union-project: utsikt
+      union-domain: production
+
+  run_task_generate_docs:
+    needs: deploy_task_generate_docs
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/run.yaml@v1
+    with:
+      union-project: utsikt
+      union-domain: production
+      task-environment: dbt_docs_environment
+      task-name: dbt_docs_environment.main
