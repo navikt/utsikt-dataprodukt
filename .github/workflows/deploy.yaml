@@ -16,8 +16,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      flyte-task-file: ./tasks/run_dbt/task_run_dbt.py
-      dependency-file: ./tasks/run_dbt/requirements.txt
+      working-directory: ./tasks/run_dbt/
+      flyte-task-file: task_run_dbt.py
+      dependency-file: requirements.txt
       union-project: utsikt
       union-domain: production
 
@@ -27,8 +28,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      flyte-task-file: ./tasks/clean_stoppstatus_snapshot/task_clean_stoppstatus_snapshot.py
-      dependency-file: ./tasks/clean_stoppstatus_snapshot/requirements.txt
+      working-directory: ./tasks/clean_stoppstatus_snapshot
+      flyte-task-file: task_clean_stoppstatus_snapshot.py
+      dependency-file: clean_stoppstatus_snapshot/requirements.txt
       union-project: utsikt
       union-domain: production
 
@@ -38,8 +40,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      flyte-task-file: ./tasks/dbt_docs/task_dbt_docs.py
-      dependency-file: ./tasks/dbt_docs/requirements.txt
+      working-directory: ./tasks/dbt_docs/
+      flyte-task-file: task_dbt_docs.py
+      dependency-file: requirements.txt
       union-project: utsikt
       union-domain: production
 
