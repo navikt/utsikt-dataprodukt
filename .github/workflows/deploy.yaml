@@ -30,7 +30,7 @@ jobs:
     with:
       working-directory: ./tasks/clean_stoppstatus_snapshot
       flyte-task-file: task_clean_stoppstatus_snapshot.py
-      dependency-file: clean_stoppstatus_snapshot/requirements.txt
+      dependency-file: requirements.txt
       union-project: utsikt
       union-domain: production
 
