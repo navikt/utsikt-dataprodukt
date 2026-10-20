@@ -6,7 +6,9 @@ environment_name = "dbt_docs_environment"
 service_account = "dbt-sa"
 
 
-image_uri = ("europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base")
+image_uri = (
+    "europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images/flyte:3.13-base"
+)
 registry = "europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images"
 
 env_vars = {"UV_KEYRING_PROVIDER": "subprocess"}
@@ -19,7 +21,7 @@ index_url = (
 
 
 image_name = "dbt_docs_image"
-dbt_folder_path = Path("../../dbt_utsikt")
+dbt_folder_path = Path("../../dbt_venteregister")
 
 
 # Build image

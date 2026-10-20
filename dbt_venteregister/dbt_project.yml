@@ -1,8 +1,8 @@
-name: 'dbt_utsikt'
+name: 'dbt_venteregister'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'dbt_utsikt'
+profile: 'dbt_venteregister'
 flags:
   send_anonymous_usage_stats: False
 
@@ -21,7 +21,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 # Configuring models
 models:
-  dbt_utsikt:
+  dbt_venteregister:
     # Config indicated by + and applies to all files under models/example/
     # Farger valgt fra her: https://aksel.nav.no/grunnleggende/styling/design-tokens#h042525372dcd
     staging:
@@ -47,11 +47,11 @@ models:
           node_color: '#8269A2' #lilla
 
 snapshots:
-  dbt_utsikt:
+  dbt_venteregister:
     +docs:
       node_color: '#e6b400' #gul
 
 data_tests:
-  dbt_utsikt:
+  dbt_venteregister:
     +docs:
       node_color: '#cc79a7' #rosa

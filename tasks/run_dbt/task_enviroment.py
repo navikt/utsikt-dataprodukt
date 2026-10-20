@@ -21,7 +21,7 @@ index_url = (
 
 
 image_name = "dbt_image"
-dbt_folder_path = Path("../../dbt_utsikt")
+dbt_folder_path = Path("../../dbt_venteregister")
 
 
 # Build image

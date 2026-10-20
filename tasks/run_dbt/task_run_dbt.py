@@ -42,7 +42,7 @@ def dbt_test() -> None:
 
 
 @dbt_environment.task(entrypoint=True, triggers=trigger)
-def run_dbt_utsikt():
+def run_dbt_venteregister():
     dbt_source_freshness()
     dbt_run_stoppstatus_snapshot()
     dbt_run()

@@ -242,7 +242,7 @@ def run_yml_update_in_dir(*, models_path: str):
 
 
 def generate_comments_from_sql(
-    *, models_path="dbt_utsikt/models", docs_path="dbt_utsikt/docs"
+    *, models_path="dbt_venteregister/models", docs_path="dbt_venteregister/docs"
 ) -> None:
     def find_project_root(current_path):
         while (
@@ -333,7 +333,7 @@ def generate_comments_from_sql(
             "get_comments_from_oracle(\n"
             '    project_id="spenn-prod-23e0",\n'
             '    secret_name="", # skriv python servicebruker fra din komponent og kjør den fil\n'
-            '    sources_yml_path="dbt_utsikt/models/sources.yml",\n'
+            '    sources_yml_path="dbt_venteregister/models/sources.yml",\n'
             ")"
         )
         try:
@@ -466,9 +466,9 @@ def generate_comments_from_sql(
                         ):
                             logger.info(f"Endrer beskrivelse for {c_name} i {t_name}")
                             oppdatert_desc = column_descriptions[c_name]
-                            yml["models"][i]["columns"][c][
-                                "description"
-                            ] = oppdatert_desc
+                            yml["models"][i]["columns"][c]["description"] = (
+                                oppdatert_desc
+                            )
 
         # Write each YAML-file
         with open(f, "w", encoding="utf-8") as file:

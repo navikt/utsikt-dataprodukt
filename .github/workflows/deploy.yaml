@@ -6,7 +6,7 @@ on:
     paths:
       - '.github/workflows/deploy.yaml'
       - 'tasks/**'
-      - 'dbt_utsikt/**'
+      - 'dbt_venteregister/**'
   workflow_dispatch:
 
 jobs:

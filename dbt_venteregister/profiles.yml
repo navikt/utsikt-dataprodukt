@@ -1,4 +1,4 @@
-dbt_utsikt:
+dbt_venteregister:
   target: "{{env_var('TARGET_ENV', 'dev')}}"
   outputs:
     dev:

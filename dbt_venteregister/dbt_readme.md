@@ -1,7 +1,7 @@
 ## Lokalt oppsett
 For å sette opp et lokalt `.venv`-miljø, kjør kommandoen `uv sync`. Aktiver python-miljøet med `source .venv/bin/activate`.
 
-For å kjøre dbt-jobben, kjør `dbt run` fra mappa `dbt_utsikt`.
+For å kjøre dbt-jobben, kjør `dbt run` fra mappa `dbt_venteregister`.
 
 dbt er satt opp til å bruke oauth som innlogging til bigquery, så man må i tillegg kjøre:
 

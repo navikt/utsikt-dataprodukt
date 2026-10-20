@@ -8,7 +8,7 @@ Ved spørsmål ta kontakt på Slack i kanalen **`#team-utsikt`**.
 
 På venstresiden er en meny som viser **Sources** og **Projects**.
 **Sources** er alle kildene som blir brukt i prosjektet, og viser alle tabeller med tilhørende kolonner som blir brukt.
-**Projects**, nærmere bestemt `dbt_utsikt` under **Projects**, viser alle modellene som blir brukt i prosjektet.
+**Projects**, nærmere bestemt `dbt_venteregister` under **Projects**, viser alle modellene som blir brukt i prosjektet.
 I **Projects** kan du navigere til modellene og finne metadata, SQL-kode og avhengigheter til andre modeller.
 
 
@@ -26,7 +26,7 @@ I **Projects** kan du navigere til modellene og finne metadata, SQL-kode og avhe
     Lineagen viser dataflyten i prosjektet mellom modellene, som typisk er views. 
 
 Hvis du er inne på en spesifikk modell, så starter lineagen der. 
-For å se hele så trykk først på mappen `dbt_utsikt` under **Projects**, og deretter lineage-knappen.
+For å se hele så trykk først på mappen `dbt_venteregister` under **Projects**, og deretter lineage-knappen.
 
 
 ## Modeller i dbt
