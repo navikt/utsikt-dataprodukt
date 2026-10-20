@@ -1,4 +1,4 @@
-dbt_venteregister:
+dbt_reskontro:
   target: "{{env_var('TARGET_ENV', 'dev')}}"
   outputs:
     dev:
