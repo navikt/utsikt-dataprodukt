@@ -615,7 +615,7 @@ wheels = [
 
 [[package]]
 name = "flyte"
-version = "2.10.0"
+version = "2.12.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
@@ -643,12 +643,12 @@ dependencies = [
     { name = "toml" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d5/43/3885e5f8d7d6666f9be325ffce1462bbfdf0d9a2f030cdd52a48d123bfef/flyte-2.10.0-py3-none-any.whl", hash = "sha256:fc214368560d96feae63d0053fe16c010398a5d2b5e35a42a4cbf17cd4edc968", size = 1117690, upload-time = "2026-09-22T04:51:53.278Z" },
+    { url = "https://files.pythonhosted.org/packages/59/1e/06e807c0c26ed3971159523c7b07a761011d28c862a4ded948a6ab1663b7/flyte-2.12.0-py3-none-any.whl", hash = "sha256:edf632f0dde469dd7cb9abc2cfb9a37d4dc76d66067155952b257ccb99bc6e6c", size = 1189294, upload-time = "2026-10-19T03:16:06.763Z" },
 ]
 
 [[package]]
 name = "flyteidl2"
-version = "2.0.49"
+version = "2.0.51"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "googleapis-common-protos" },
@@ -657,7 +657,19 @@ dependencies = [
     { name = "protovalidate" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f1/25/7c12ba5da25f330bd3cfb0f3a080ab3c1ac1732e4ab9bfd31ff703a2999c/flyteidl2-2.0.49-py3-none-any.whl", hash = "sha256:1cd310650d97a0ad4b808c3eb4e58082dbf9362af23256e5bb5a1245dbb04032", size = 382779, upload-time = "2026-09-18T23:39:20.017Z" },
+    { url = "https://files.pythonhosted.org/packages/d0/5f/2963aac9be16b72b781a2091b8d23f0811640f35782dbce482247b5bf7d7/flyteidl2-2.0.51-py3-none-any.whl", hash = "sha256:aadc618101408d7b488baac9d6ec9debfc50788e578c8520d6eaa59b8958c888", size = 385315, upload-time = "2026-10-08T00:21:31.78Z" },
+]
+
+[[package]]
+name = "flyteplugins-dbt"
+version = "2.12.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dbt-core" },
+    { name = "flyte" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/14/c8/071c6e6521833c24d91afdcd3b79d5745a67b017e9469f0a4173a0239345/flyteplugins_dbt-2.12.0-py3-none-any.whl", hash = "sha256:f5375ea8a11a4ab195360cf6dd05db571fe034c9c5270c271d184db8c4adf9a5", size = 8754, upload-time = "2026-10-19T03:10:32.159Z" },
 ]
 
 [[package]]
@@ -1324,6 +1336,19 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ba/4e/13783aa7c17414d7186c72c49bc718366f75e49f0ea58d4f81cb63ac3187/msgpack-1.2.2-cp315-cp315t-win32.whl", hash = "sha256:8c6321a414f8b4a8dc43976b2fa8349156434ca9adedd9a187b796f7e1d3d3fc", size = 71790, upload-time = "2026-08-27T10:03:43.715Z" },
     { url = "https://files.pythonhosted.org/packages/5e/9d/1d02994c7ae2603c98100984428ff0f67443572133bc18eca6058f732c1b/msgpack-1.2.2-cp315-cp315t-win_amd64.whl", hash = "sha256:6f53285f20d592ed309ee19e509cc4c77a3bda1db02ad67e8a0949bb227a5a6d", size = 78766, upload-time = "2026-08-27T10:03:45.036Z" },
     { url = "https://files.pythonhosted.org/packages/60/54/89ed16e6f966a050dc78b0e94a545025211b07ce9f4bdfe07dff70c03fc2/msgpack-1.2.2-cp315-cp315t-win_arm64.whl", hash = "sha256:a378e12ccc06d76efde115caf4073b7e5ff3cc18291d1341f9e65fb882e3f754", size = 71819, upload-time = "2026-08-27T10:03:46.375Z" },
+]
+
+[[package]]
+name = "nav-union"
+version = "0.1.13"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "flyte" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fd/16/b969895cd69a7bf714ebeaa632da139446e02fb775c065af349d38f82d95/nav_union-0.1.13.tar.gz", hash = "sha256:1e97006225e364b32e86693923b96135c0b8bfc0b4f2ab68694236b27ebe314e", size = 2649, upload-time = "2026-10-09T07:56:34.814Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/27/fc/3f19b8b85fe1fd7cda302c2c72f24018d20656a9aaae6124dc8bc2f8d9e6/nav_union-0.1.13-py3-none-any.whl", hash = "sha256:8b180894177f5c6547df3253d1032801fccb9ed86269cc8cae8459129ddadcf8", size = 3706, upload-time = "2026-10-09T07:56:33.537Z" },
 ]
 
 [[package]]
@@ -2262,8 +2287,8 @@ name = "secretstorage"
 version = "3.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cryptography", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
-    { name = "jeepney", marker = "sys_platform != 'emscripten' and sys_platform != 'win32'" },
+    { name = "cryptography" },
+    { name = "jeepney" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/1c/03/e834bcd866f2f8a49a85eaff47340affa3bfa391ee9912a952a1faa68c7b/secretstorage-3.5.0.tar.gz", hash = "sha256:f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be", size = 19884, upload-time = "2025-11-23T19:02:53.191Z" }
 wheels = [
@@ -2501,6 +2526,8 @@ source = { virtual = "." }
 dependencies = [
     { name = "dbt-bigquery" },
     { name = "dbt-core-experimental-parser" },
+    { name = "flyteplugins-dbt" },
+    { name = "nav-union" },
     { name = "requests" },
 ]
 
@@ -2519,13 +2546,15 @@ dev = [
 requires-dist = [
     { name = "dbt-bigquery", specifier = ">=1.12.0" },
     { name = "dbt-core-experimental-parser", specifier = "==2.0.0a4" },
+    { name = "flyteplugins-dbt", specifier = ">=2.12.0" },
+    { name = "nav-union", specifier = ">=0.1.13" },
     { name = "requests", specifier = ">=2.34.2" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "dbt-core-experimental-parser", specifier = "==2.0.0a4" },
-    { name = "flyte", specifier = ">=2.7.2" },
+    { name = "flyte", specifier = "==2.12.0" },
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "ruff", specifier = ">=0.16.1" },
     { name = "sqlfluff", specifier = ">=4.3.0" },
