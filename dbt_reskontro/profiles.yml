@@ -1,0 +1,16 @@
+dbt_venteregister:
+  target: "{{env_var('TARGET_ENV', 'dev')}}"
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: utsikt-dev-3609
+      dataset: reskontro 
+      threads: 4 
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: utsikt-prod-2dfe
+      dataset: reskontro 
+      threads: 4
