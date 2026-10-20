@@ -1,8 +1,14 @@
-# Dbt
-target/
-dbt_packages/
-logs/
-.user.yml
+# Dbt venteregister
+dbt_venteregister/target/
+dbt_venteregister/dbt_packages/
+dbt_venteregister/logs/
+dbt_venteregister/.user.yml
+
+# Dbt reskontro
+dbt_reskontro/target/
+dbt_reskontro/dbt_packages/
+dbt_reskontro/logs/
+dbt_reskontro/.user.yml
 
 # Editor
 /.DS_Store
