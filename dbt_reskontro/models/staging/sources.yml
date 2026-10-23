@@ -1,0 +1,8 @@
+sources:
+    - name: UR
+      description: Tabeller fra
+      database:
+      schema: UR
+      tables:
+          - name: v_kontoplan
+          - name: v_oppdragskode
