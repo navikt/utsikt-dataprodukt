@@ -1,6 +1,6 @@
 select
-    hovedkontonr as hovedkonto_nummer,
-    underkontonr as underkonto_nummer,
+    hovedkontonr as hovedkonto_nr,
+    underkontonr as underkonto_nr,
     oebs_artskonto,
     kontonavn_oebs as oebs_kontonavn,
     bevilgningskonto,
