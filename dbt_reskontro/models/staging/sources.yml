@@ -6,3 +6,5 @@ sources:
       tables:
           - name: v_kontoplan
           - name: v_oppdragskode
+          - name: v_saldo_avregn
+          - name: v_saldo_detalj
