@@ -1,23 +1,24 @@
-name: deploy union tasks to production
+name: deploy venteregister union tasks to production
 on:
   push:
     branches:
       - main
     paths:
-      - '.github/workflows/deploy.yaml'
-      - 'tasks/**'
+      - '.github/workflows/deploy_venteregister.yaml'
+      - 'tasks/dbt_venteregister/**'
       - 'dbt_venteregister/**'
   workflow_dispatch:
 
 jobs:
-  deploy_task_run_dbt:
+
+  deploy_task_run_dbt_venteregister:
     permissions:
       contents: read
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      working-directory: ./tasks/run_dbt/
-      flyte-task-file: task_run_dbt.py
+      working-directory: ./tasks/run_dbt_venteregister/
+      flyte-task-file: task_run_dbt_venteregister.py
       dependency-file: requirements.txt
       union-project: utsikt
       union-domain: production

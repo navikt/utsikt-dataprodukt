@@ -1,0 +1,23 @@
+name: deploy reskontro union tasks to production
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/deploy_reskontro.yaml'
+      - 'tasks/run_dbt_reskontro/**'
+      - 'dbt_reskontro/**'
+  workflow_dispatch:
+
+jobs:
+  deploy_task_run_dbt_reskontro:
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
+    with:
+      working-directory: ./tasks/run_dbt_reskontro/
+      flyte-task-file: task_run_dbt_reskontro.py
+      dependency-file: requirements.txt
+      union-project: utsikt
+      union-domain: production
