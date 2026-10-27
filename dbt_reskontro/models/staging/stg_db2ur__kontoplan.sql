@@ -9,5 +9,4 @@ select
     kode_uttrekk,
     ray_fom,
     lopenr
-
 from {{ source('UR', 'v_kontoplan') }}

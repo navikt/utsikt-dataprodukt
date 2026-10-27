@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: stg_db2ur__kontoplan
+    description: ''
+    columns:
+      - name: hovedkonto_nr
+        description: 'Hovedkontonummeret i UR.'
+      - name: underkonto_nr
+        description: 'Underkontonummeret i UR.'
+      - name: oebs_artskonto
+        description: 'Kobling til regnskapet i OEBS. (Ikke alltid utfylt, kan mangle.)'
+      - name: oebs_kontonavn
+        description: 'Tilhørende kontnavn i OEBS. (Ikke alltid utfylt, kan mangle.)'
+      - name: bevilgningskonto
+        description: '. (Ikke alltid utfylt, kan mangle.)'
+      - name: hovedkonto_navn
+        description: 'Navnet på tilhørende hovedkonto.'
+      - name: underkonto_navn
+        description: 'Navnet på tilhørende underkonto.'
+      - name: kode_uttrekk
+        description: '.'
+      - name: ray_fom
+        description: 'viser om det er en ytelse som skal til RAY.'
+      - name: lopenr
+        description: 'Må alltid settes til 9999 ved spørringer (annet løpenr er historikk/feil).'
+  - name: stg_db2ur__oppdragskode
+    description: ''
+    columns:
+      - name: oppdrag_nr
+        description: 'Koden for oppdrag.'
+      - name: oppdrag_kode
+        description: 'Kode for oppdrag, eks GS (for oppdragsnavnet Gravferdsstønad)'
+      - name: oppdrag_navn
+        description: 'Oppdragsnavnet som tilhører oppdrag kode, eks Gravferdsstønad for kode GS.'
+  - name: stg_db2ur__saldo_avregn
+    description: ''
+    columns:
+      - name: valutert_ur_dato
+        description: 'Datoen saldoen var valutert.'
+      - name: hovedkonto_nr
+        description: 'Hovedkontonummeret i UR.'
+      - name: underkonto_nr
+        description: 'Underkontonummeret i UR.'
+      - name: antall_mottakere
+        description: 'Antall mottakere.'
+      - name: sum_debet
+        description: 'Summen av debet for posteringene i UR.'
+      - name: sum_kredit
+        description: 'Summen av kredit for posteringene i UR.'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden ble lastet fra kilden.'
+      - name: oppdatert_tid_kilde
+        description: 'Tidspunktet for når raden sist ble oppdatert i kilden.'
+  - name: stg_db2ur__saldo_detalj
+    description: ''
+    columns:
+      - name: postert_ur_dato
+        description: 'Datoen posteringen ble gjort i UR.'
+      - name: hovedkonto_nr
+        description: 'Hovedkontonummeret i UR.'
+      - name: underkonto_nr
+        description: 'Underkontonummeret i UR.'
+      - name: oppdrag_nr
+        description: 'Koden for oppdrag.'
+      - name: antall_mottakere
+        description: 'Antall mottakere.'
+      - name: sum_debet
+        description: 'Summen av debet for posteringene i UR.'
+      - name: sum_kredit
+        description: 'Summen av kredit for posteringene i UR.'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden ble lastet fra kilden.'
+      - name: oppdatert_tid_kilde
+        description: 'Tidspunktet for når raden sist ble oppdatert i kilden.'

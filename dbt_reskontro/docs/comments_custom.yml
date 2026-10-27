@@ -1,0 +1,34 @@
+{
+custom_table_descriptions:
+        {
+        },
+
+custom_column_comments:
+        {
+        antall_mottakere: "Antall mottakere.",
+        bevilgningskonto: ". (Ikke alltid utfylt, kan mangle.)",
+        postert_ur_dato: "Datoen posteringen ble gjort i UR.",
+        valutert_ur_dato: "Datoen saldoen var valutert.",
+        hovedkonto_navn: "Navnet på tilhørende hovedkonto.",
+        hovedkonto_nr: "Hovedkontonummeret i UR.",
+        oppdrag_kode: "Kode for oppdrag, eks GS (for oppdragsnavnet Gravferdsstønad)",
+        oppdrag_nr: "Koden for oppdrag.",
+        kode_uttrekk: ".",
+        oebs_kontonavn: "Tilhørende kontnavn i OEBS. (Ikke alltid utfylt, kan mangle.)",
+        lopenr: "Må alltid settes til 9999 ved spørringer (annet løpenr er historikk/feil).",
+        oebs_artskonto: "Kobling til regnskapet i OEBS. (Ikke alltid utfylt, kan mangle.)",
+        oppdrag_navn: "Oppdragsnavnet som tilhører oppdrag kode, eks Gravferdsstønad for kode GS.",
+        ray_fom: "viser om det er en ytelse som skal til RAY.",
+        registrert: "Tidspunktet for når raden ble registrert i UR.",
+        sist_oppdatert: "Tidspunktet for når raden sist ble oppdatert i UR.",
+        sum_debet: "Summen av debet for posteringene i UR.",
+        sum_kredit: "Summen av kredit for posteringene i UR.",
+        underkonto_navn: "Navnet på tilhørende underkonto.",
+        underkonto_nr: "Underkontonummeret i UR.",
+        lastet_tid_kilde: "Tidspunktet for når raden ble lastet fra kilden.",
+        oppdatert_tid_kilde: "Tidspunktet for når raden sist ble oppdatert i kilden.",
+        lastet_tid: "Tidspunktet for når raden ble lastet inn i databasen.",
+        pk_saldo_postert: "Primærnøkkelen for saldo postert. Består av kombinasjonen av hovedkonto_nr, underkonto_nr, oppdrag_nr og postert_ur_dato.",
+        }
+
+}

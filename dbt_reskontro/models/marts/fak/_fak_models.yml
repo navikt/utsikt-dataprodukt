@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fak_saldo_postert
+    description: ''
+    columns:
+      - name: pk_saldo_postert
+        description: ''
+      - name: postert_ur_dato
+        description: ''
+      - name: hovedkonto_nr
+        description: ''
+      - name: underkonto_nr
+        description: ''
+      - name: hovedkonto_navn
+        description: ''
+      - name: underkonto_navn
+        description: ''
+      - name: oppdrag_nr
+        description: ''
+      - name: oppdrag_kode
+        description: ''
+      - name: oppdrag_navn
+        description: ''
+      - name: antall_mottakere
+        description: ''
+      - name: sum_debet
+        description: ''
+      - name: sum_kredit
+        description: ''
+      - name: lastet_tid_kilde
+        description: ''
+      - name: oppdatert_tid_kilde
+        description: ''
+      - name: lastet_tid
+        description: ''

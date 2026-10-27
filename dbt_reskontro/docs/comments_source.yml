@@ -1,0 +1,31 @@
+{
+    source_table_descriptions: {
+        stg_v_kontoplan: "Staging av UR.v_kontoplan, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_v_oppdragskode: "Staging av UR.v_oppdragskode, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_v_saldo_avregn: "Staging av UR.v_saldo_avregn, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+        stg_v_saldo_detalj: "Staging av UR.v_saldo_detalj, med original beskrivelse: (Ingen modellbeskrivelse i BigQuery).",
+    },
+
+    source_column_comments: {
+        antall_mottakere: "Antall mottakere.",
+        bevilgningskonto: ". (Ikke alltid utfylt, kan mangle.)",
+        dato_postert_ur: "Datoen posteringen ble gjort i UR.",
+        dato_valutert_ur: "Datoen saldoen var valutert.",
+        hovedkonto_navn: "Navnet på tilhørende hovedkonto.",
+        hovedkontonr: "Hovedkontonummeret i UR.",
+        kode_oppdrag: "Kode for oppdrag, eks 'GS' (for oppdragsnavnet 'Gravferdsstønad')",
+        kode_oppdrag_num: "Koden for oppdrag.",
+        kode_uttrekk: ".",
+        kontonavn_oebs: "Tilhørende kontnavn i OEBS. (Ikke alltid utfylt, kan mangle.)",
+        lopenr: "Må alltid settes til 9999 ved spørringer (annet løpenr er historikk/feil).",
+        oebs_artskonto: "Kobling til regnskapet i OEBS. (Ikke alltid utfylt, kan mangle.)",
+        oppdragsnavn: "Oppdragsnavnet som tilhører oppdrag kode, eks 'Gravferdsstønad' for kode 'GS'.",
+        ray_fom: "viser om det er en ytelse som skal til RAY.",
+        registrert: "Tidspunktet for når raden ble registrert i UR.",
+        sist_oppdatert: "Tidspunktet for når raden sist ble oppdatert i UR.",
+        sum_debet: "Summen av debet for posteringene i UR.",
+        sum_kredit: "Summen av kredit for posteringene i UR.",
+        underkonto_navn_nb: "Navnet på tilhørende underkonto.",
+        underkontonr: "Underkontonummeret i UR.",
+    }
+}

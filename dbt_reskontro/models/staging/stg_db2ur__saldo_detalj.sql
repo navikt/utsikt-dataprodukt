@@ -8,5 +8,4 @@ select
     parse_numeric(sum_kredit) as sum_kredit,
     timestamp(registrert, 'Europe/Oslo') as lastet_tid_kilde,
     timestamp(sist_oppdatert, 'Europe/Oslo') as oppdatert_tid_kilde
-
 from {{ source('UR', 'v_saldo_detalj') }}
