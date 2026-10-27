@@ -1,6 +1,7 @@
 from flyteplugins.dbt import DbtNodeResult, DbtTask
 import os
 import requests
+import logging
 import asyncio
 
 from task_environment import dbt_docs_reskontro_environment as dbt_environment
@@ -37,7 +38,13 @@ dbt_run = DbtTask(
 
 @dbt_environment.task(entrypoint=True)
 async def run_dbt_docs_reskontro():
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+
+    logger.info("Generating docs....")
     await dbt_run.aio(command="docs generate")
+
+    logger.info("Publishing docs....")
     await asyncio.to_thread(
         publish_docs,
         url="http://dbt.intern.nav.no/docs/utsikt/",
