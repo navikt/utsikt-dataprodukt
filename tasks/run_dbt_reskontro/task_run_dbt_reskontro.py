@@ -11,4 +11,4 @@ dbt_run = DbtTask(
 
 @dbt_environment.task(entrypoint=True, triggers=trigger)
 async def run_dbt_reskontro() -> list[DbtNodeResult]:
-     return await dbt_run.aio(command="run")
+    return await dbt_run.aio(command="run")
