@@ -4,9 +4,10 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/deploy_reskontro.yaml'
-      - 'tasks/run_dbt_reskontro/**'
-      - 'dbt_reskontro/**'
+      - ".github/workflows/deploy_reskontro.yaml"
+      - "tasks/run_dbt_reskontro/**"
+      - "tasks/dbt_docs_reskontro/**"
+      - "dbt_reskontro/**"
   workflow_dispatch:
 
 jobs:
@@ -21,3 +22,27 @@ jobs:
       dependency-file: requirements.txt
       union-project: utsikt
       union-domain: production
+
+  deploy_task_dbt_docs_reskontro:
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
+    with:
+      working-directory: ./tasks/dbt_docs_reskontro/
+      flyte-task-file: task_dbt_docs_reskontro.py
+      dependency-file: requirements.txt
+      union-project: utsikt
+      union-domain: production
+
+  run_task_dbt_docs_reskontro:
+    needs: deploy_task_dbt_docs_reskontro
+    permissions:
+      contents: read
+      id-token: write
+    uses: navikt/union-deploy/.github/workflows/run.yaml@run-v1
+    with:
+      union-project: utsikt
+      union-domain: production
+      task-environment: dbt_docs_reskontro_environment
+      task-name: dbt_docs_reskontro_environment.run_dbt_docs_reskontro
