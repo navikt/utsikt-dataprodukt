@@ -5,32 +5,32 @@ models:
     description: ''
     columns:
       - name: pk_saldo_postert
-        description: ''
+        description: 'Primærnøkkelen for saldo postert. Består av kombinasjonen av hovedkonto_nr, underkonto_nr, oppdrag_nr og postert_ur_dato.'
       - name: postert_ur_dato
-        description: ''
+        description: 'Datoen posteringen ble gjort i UR.'
       - name: hovedkonto_nr
-        description: ''
+        description: 'Hovedkontonummeret i UR.'
       - name: underkonto_nr
-        description: ''
+        description: 'Underkontonummeret i UR.'
       - name: hovedkonto_navn
-        description: ''
+        description: 'Navnet på tilhørende hovedkonto.'
       - name: underkonto_navn
-        description: ''
+        description: 'Navnet på tilhørende underkonto.'
       - name: oppdrag_nr
-        description: ''
+        description: 'Koden for oppdrag.'
       - name: oppdrag_kode
-        description: ''
+        description: 'Kode for oppdrag, eks GS (for oppdragsnavnet Gravferdsstønad)'
       - name: oppdrag_navn
-        description: ''
+        description: 'Oppdragsnavnet som tilhører oppdrag kode, eks Gravferdsstønad for kode GS.'
       - name: antall_mottakere
-        description: ''
+        description: 'Antall mottakere.'
       - name: sum_debet
-        description: ''
+        description: 'Summen av debet for posteringene i UR.'
       - name: sum_kredit
-        description: ''
+        description: 'Summen av kredit for posteringene i UR.'
       - name: lastet_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden ble lastet fra kilden.'
       - name: oppdatert_tid_kilde
-        description: ''
+        description: 'Tidspunktet for når raden sist ble oppdatert i kilden.'
       - name: lastet_tid
-        description: ''
+        description: 'Tidspunktet for når raden ble lastet inn i databasen.'
