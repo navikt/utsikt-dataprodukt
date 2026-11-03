@@ -7,6 +7,7 @@ on:
       - ".github/workflows/deploy_venteregister.yaml"
       - "tasks/run_dbt_venteregister/**"
       - "tasks/dbt_docs_venteregister/**"
+      - "tasks/requirements/**"
       - "dbt_venteregister/**"
   workflow_dispatch:
 

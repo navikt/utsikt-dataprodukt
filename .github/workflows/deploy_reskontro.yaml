@@ -7,6 +7,7 @@ on:
       - ".github/workflows/deploy_reskontro.yaml"
       - "tasks/run_dbt_reskontro/**"
       - "tasks/dbt_docs_reskontro/**"
+      - "tasks/requirements/requirements_dbt.txt"
       - "dbt_reskontro/**"
   workflow_dispatch:
 
