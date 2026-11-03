@@ -13,7 +13,7 @@ registry = "europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images"
 
 env_vars = {"UV_KEYRING_PROVIDER": "subprocess"}
 
-requirements_path = Path("requirements.txt")
+requirements_path = Path("../requirements/requirements_dbt.txt")
 index_url = (
     "https://oauth2accesstoken@"
     "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
