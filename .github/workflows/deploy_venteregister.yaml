@@ -4,14 +4,13 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/deploy_venteregister.yaml'
-      - 'tasks/run_dbt_venteregister/**'
-      - 'tasks/dbt_docs_venteregister/**'
-      - 'dbt_venteregister/**'
+      - ".github/workflows/deploy_venteregister.yaml"
+      - "tasks/run_dbt_venteregister/**"
+      - "tasks/dbt_docs_venteregister/**"
+      - "dbt_venteregister/**"
   workflow_dispatch:
 
 jobs:
-
   deploy_task_run_dbt_venteregister:
     permissions:
       contents: read
@@ -20,7 +19,7 @@ jobs:
     with:
       working-directory: ./tasks/run_dbt_venteregister/
       flyte-task-file: task_run_dbt_venteregister.py
-      dependency-file: requirements.txt
+      dependency-file: ../requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 
@@ -32,7 +31,7 @@ jobs:
     with:
       working-directory: ./tasks/clean_stoppstatus_snapshot
       flyte-task-file: task_clean_stoppstatus_snapshot.py
-      dependency-file: requirements.txt
+      dependency-file: ../requirements/requirements_python.txt
       union-project: utsikt
       union-domain: production
 
@@ -44,7 +43,7 @@ jobs:
     with:
       working-directory: ./tasks/dbt_docs_venteregister/
       flyte-task-file: task_dbt_docs.py
-      dependency-file: requirements.txt
+      dependency-file: ../requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 
