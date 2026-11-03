@@ -1,5 +1,4 @@
 dbt-bigquery==1.12.1
-dbt-core-experimental-parser==2.0.8
 flyte==2.12.2
 flyteplugins-dbt==2.12.2
 nav-union==0.1.14
