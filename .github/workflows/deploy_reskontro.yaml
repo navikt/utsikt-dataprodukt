@@ -19,7 +19,7 @@ jobs:
     with:
       working-directory: ./tasks/run_dbt_reskontro/
       flyte-task-file: task_run_dbt_reskontro.py
-      dependency-file: requirements.txt
+      dependency-file: ../requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 
@@ -31,7 +31,7 @@ jobs:
     with:
       working-directory: ./tasks/dbt_docs_reskontro/
       flyte-task-file: task_dbt_docs_reskontro.py
-      dependency-file: requirements.txt
+      dependency-file: ../requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 
