@@ -26,3 +26,14 @@ updates:
       gh:
         patterns:
           - "*"
+
+  - package-ecosystem: "pip"
+    directory: "/tasks/requirements"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 3
+    groups:
+      pip:
+        patterns:
+          - "*"
