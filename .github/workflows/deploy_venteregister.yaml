@@ -43,9 +43,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      working-directory: ./tasks/dbt_docs_venteregister/
-      flyte-task-file: task_dbt_docs.py
-      dependency-file: ../requirements/requirements_dbt.txt
+      working-directory: ./tasks/
+      flyte-task-file: task_dbt_docs_venteregister.py
+      dependency-file: requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 
@@ -58,5 +58,5 @@ jobs:
     with:
       union-project: utsikt
       union-domain: production
-      task-environment: dbt_docs_environment
-      task-name: dbt_docs_environment.main
+      task-environment: dbt_venteregister_environment
+      task-name: dbt_venteregister_environment.run_dbt_docs_venteregister
