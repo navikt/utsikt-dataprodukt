@@ -75,19 +75,6 @@ wheels = [
 ]
 
 [[package]]
-name = "asyncssh"
-version = "2.24.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "cryptography" },
-    { name = "typing-extensions" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/0f/c5/41a0d5477865c48cee65050586092dc3ba3fc1c52e29b47fba08d3a44581/asyncssh-2.24.1.tar.gz", hash = "sha256:efcd36e9b35f79873535b06444a7c9b0a3c61d97081b208c7fdd3fd8a40f1eca", size = 558085, upload-time = "2026-10-04T02:48:24.913Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/07/e5/8bc721f04ff545c5a84c9c23fbf788fbb56960bb57a86c6366bc35be0f66/asyncssh-2.24.1-py3-none-any.whl", hash = "sha256:fc560b4f43be0f0c602d184783e5e3876f5d24d933a25359d86e5a50a5f46fe5", size = 382514, upload-time = "2026-10-04T02:48:23.676Z" },
-]
-
-[[package]]
 name = "attrs"
 version = "26.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -620,13 +607,12 @@ wheels = [
 
 [[package]]
 name = "flyte"
-version = "2.12.0"
+version = "2.12.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
     { name = "aiolimiter" },
     { name = "async-lru" },
-    { name = "asyncssh" },
     { name = "click" },
     { name = "cloudpickle" },
     { name = "connectrpc" },
@@ -648,12 +634,12 @@ dependencies = [
     { name = "toml" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/59/1e/06e807c0c26ed3971159523c7b07a761011d28c862a4ded948a6ab1663b7/flyte-2.12.0-py3-none-any.whl", hash = "sha256:edf632f0dde469dd7cb9abc2cfb9a37d4dc76d66067155952b257ccb99bc6e6c", size = 1189294, upload-time = "2026-10-19T03:16:06.763Z" },
+    { url = "https://files.pythonhosted.org/packages/09/98/fe974aef97e7bdb110d7b0c231f5173383c11da565ae751c37bad077ff96/flyte-2.12.2-py3-none-any.whl", hash = "sha256:1b90101f2435b0bccd50065d0f204bf72eec7b2571d57c78ecf14862e334a3e6", size = 1211791, upload-time = "2026-10-30T02:02:07.468Z" },
 ]
 
 [[package]]
 name = "flyteidl2"
-version = "2.0.51"
+version = "2.0.53"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "googleapis-common-protos" },
@@ -662,7 +648,7 @@ dependencies = [
     { name = "protovalidate" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/5f/2963aac9be16b72b781a2091b8d23f0811640f35782dbce482247b5bf7d7/flyteidl2-2.0.51-py3-none-any.whl", hash = "sha256:aadc618101408d7b488baac9d6ec9debfc50788e578c8520d6eaa59b8958c888", size = 385315, upload-time = "2026-10-08T00:21:31.78Z" },
+    { url = "https://files.pythonhosted.org/packages/30/c5/f71f7f6c06144437c4c089f0b505df4215d824d4296b5a358ec8e05d16a3/flyteidl2-2.0.53-py3-none-any.whl", hash = "sha256:61a1fc68dd2e590104b402082dd509aa1dc64870271ff978c0cc12fd799a8c34", size = 387747, upload-time = "2026-10-27T04:35:17.151Z" },
 ]
 
 [[package]]
@@ -2731,7 +2717,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "flyte", specifier = "==2.12.0" },
+    { name = "flyte", specifier = "==2.12.2" },
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "ruff", specifier = ">=0.16.1" },
     { name = "sqlfluff", specifier = ">=4.5.0" },
