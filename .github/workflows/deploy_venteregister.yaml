@@ -7,6 +7,7 @@ on:
       - ".github/workflows/deploy_venteregister.yaml"
       - "tasks/run_dbt_venteregister/**"
       - "tasks/dbt_docs_venteregister/**"
+      - "task_clean_stoppstatus_snapshot.py"
       - "tasks/requirements/**"
       - "dbt_venteregister/**"
   workflow_dispatch:
@@ -30,9 +31,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      working-directory: ./tasks/clean_stoppstatus_snapshot
+      working-directory: ./tasks/
       flyte-task-file: task_clean_stoppstatus_snapshot.py
-      dependency-file: ../requirements/requirements_python.txt
+      dependency-file: requirements/requirements_python.txt
       union-project: utsikt
       union-domain: production
 

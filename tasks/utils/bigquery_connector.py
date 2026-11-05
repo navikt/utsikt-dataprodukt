@@ -1,5 +1,5 @@
-from google.cloud import bigquery
 from google.api_core.exceptions import BadRequest
+from google.cloud import bigquery
 
 
 class BQConnector:

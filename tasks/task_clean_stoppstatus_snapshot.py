@@ -1,8 +1,13 @@
 import os
 
-from bigquery_connector import BQConnector
-from task_environment import python_bq_environment, trigger
-from slack_functions import flyte_task
+import flyte
+from nav_union.slack import flyte_task
+from task_environments.python_bq_environment import python_bq_environment
+from utils.bigquery_connector import BQConnector
+
+trigger_name = "python_bq_environment_trigger"
+trigger_cron = flyte.Cron("0 0 * * 0")
+trigger = flyte.Trigger(name=trigger_name, automation=trigger_cron)
 
 
 def get_query(project_id: str) -> str:
@@ -22,7 +27,11 @@ def get_project_id() -> str:
     return project_id
 
 
-@flyte_task(task_environment=python_bq_environment, notify_on_failure=True)
+@flyte_task(
+    task_environment=python_bq_environment,
+    channel_name="utsikt-ops",
+    notify_on_failure=True,
+)
 def task_delete_rows() -> None:
     project_id = get_project_id()
     client = BQConnector(project_id=project_id)
