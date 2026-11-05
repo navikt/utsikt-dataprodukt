@@ -9,6 +9,7 @@ on:
       - "tasks/task_dbt_docs_venteregister.py"
       - "tasks/task_clean_stoppstatus_snapshot.py"
       - "tasks/requirements/**"
+      - "tasks/utils/**"
       - "dbt_venteregister/**"
   workflow_dispatch:
 
