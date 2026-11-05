@@ -1,8 +1,10 @@
 import logging
 
-from task_environment import dbt_docs_environment
+from task_environments.dbt_venteregister_environment import (
+    dbt_venteregister_environment,
+)
 from dbt_functions import run_dbt_run_commands, publish_docs
-from slack_functions import flyte_task
+from nav_union.slack import flyte_task
 
 
 def generate_dbt_docs():
@@ -16,7 +18,9 @@ def publish_dbt_docs():
     publish_docs(url=url, dbt_project_name=dbt_project_name)
 
 
-@flyte_task(dbt_docs_environment, notify_on_failure=True)
+@flyte_task(
+    dbt_venteregister_environment, channel_name="utsikt-ops", notify_on_failure=True
+)
 def generate_and_publish_docs():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
@@ -28,7 +32,6 @@ def generate_and_publish_docs():
     logger.info("Done!")
 
 
-
-@dbt_docs_environment.task(entrypoint=True)
-def main():
+@dbt_venteregister_environment.task(entrypoint=True)
+def run_dbt_docs_venteregister():
     generate_and_publish_docs()

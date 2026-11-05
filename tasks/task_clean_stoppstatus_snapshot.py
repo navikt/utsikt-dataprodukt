@@ -40,5 +40,5 @@ def task_delete_rows() -> None:
 
 
 @python_bq_environment.task(triggers=trigger, entrypoint=True)
-def main():
+def clean_stoppstatus_snapshot():
     task_delete_rows()

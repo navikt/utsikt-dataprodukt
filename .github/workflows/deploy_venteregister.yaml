@@ -5,9 +5,9 @@ on:
       - main
     paths:
       - ".github/workflows/deploy_venteregister.yaml"
-      - "tasks/run_dbt_venteregister/**"
-      - "tasks/dbt_docs_venteregister/**"
-      - "task_clean_stoppstatus_snapshot.py"
+      - "tasks/task_run_dbt_venteregister.py"
+      - "tasks/task_dbt_docs_venteregister.py"
+      - "tasks/task_clean_stoppstatus_snapshot.py"
       - "tasks/requirements/**"
       - "dbt_venteregister/**"
   workflow_dispatch:
@@ -19,9 +19,9 @@ jobs:
       id-token: write
     uses: navikt/union-deploy/.github/workflows/deploy.yaml@v2
     with:
-      working-directory: ./tasks/run_dbt_venteregister/
+      working-directory: ./tasks/
       flyte-task-file: task_run_dbt_venteregister.py
-      dependency-file: ../requirements/requirements_dbt.txt
+      dependency-file: requirements/requirements_dbt.txt
       union-project: utsikt
       union-domain: production
 

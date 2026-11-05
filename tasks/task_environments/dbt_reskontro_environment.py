@@ -2,7 +2,7 @@ import flyte
 
 from pathlib import Path
 
-environment_name = "dbt_reskontro"
+environment_name = "dbt_reskontro_environment"
 service_account = "dbt-sa"
 
 
@@ -13,15 +13,15 @@ registry = "europe-west1-docker.pkg.dev/nav-data-images-prod/nav-union-images"
 
 env_vars = {"UV_KEYRING_PROVIDER": "subprocess"}
 
-requirements_path = Path("../requirements/requirements_dbt.txt")
+requirements_path = Path("requirements/requirements_dbt.txt")
 index_url = (
     "https://oauth2accesstoken@"
     "europe-west1-python.pkg.dev/nav-data-images-prod/pypi/simple/"
 )
 
 
-image_name = "dbt_image"
-dbt_folder_path = Path("../../dbt_reskontro")
+image_name = "dbt_docs_reskontro_image"
+dbt_folder_path = Path("../dbt_reskontro")
 
 
 # Build image
@@ -32,10 +32,6 @@ image = image.with_env_vars(env_vars)
 image = image.with_requirements(requirements_path, index_url=index_url)
 image = image.with_source_folder(src=dbt_folder_path, copy_contents_only=True)
 
-# Trigger
-trigger_name = "dbt_reskontro_trigger"
-trigger_cron = flyte.Cron("0 6 * * 1-5")
-trigger = flyte.Trigger(name=trigger_name, automation=trigger_cron)
 
 # Secrets
 secret_target_env_key = "TARGET_ENV"
@@ -47,6 +43,6 @@ secret_slack_token = flyte.Secret(key=secret_slack_token_key, as_env_var="SLACK_
 secrets: list[flyte.Secret] = [secret_target_env, secret_slack_token]
 
 # Task Environment
-dbt_environment = flyte.TaskEnvironment(
+dbt_reskontro_environment = flyte.TaskEnvironment(
     name=environment_name, service_account=service_account, secrets=secrets, image=image
 )

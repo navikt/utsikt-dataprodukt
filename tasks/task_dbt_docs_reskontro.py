@@ -1,10 +1,10 @@
-from flyteplugins.dbt import DbtNodeResult, DbtTask
-import os
-import requests
-import logging
 import asyncio
+import logging
+import os
 
-from task_environment import dbt_docs_reskontro_environment as dbt_environment
+import requests
+from flyteplugins.dbt import DbtTask
+from task_environments.dbt_reskontro_environment import dbt_reskontro_environment
 
 
 def publish_docs(url: str, dbt_project_name: str):
@@ -32,11 +32,11 @@ def read_docs_file(path: str) -> bytes:
 dbt_run = DbtTask(
     name="dbt-docs-reskontro",
     report=True,
-    task_environment=dbt_environment,
+    task_environment=dbt_reskontro_environment,
 )
 
 
-@dbt_environment.task(entrypoint=True)
+@dbt_reskontro_environment.task(entrypoint=True)
 async def run_dbt_docs_reskontro():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
