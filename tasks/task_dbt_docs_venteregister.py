@@ -3,7 +3,7 @@ import logging
 from task_environments.dbt_venteregister_environment import (
     dbt_venteregister_environment,
 )
-from dbt_functions import run_dbt_run_commands, publish_docs
+from utils.dbt_functions import run_dbt_run_commands, publish_docs
 from nav_union.slack import flyte_task
 
 
