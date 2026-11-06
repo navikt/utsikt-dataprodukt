@@ -1,3 +1,5 @@
+import os
+
 import requests
 from dbt.cli.main import dbtRunner, dbtRunnerResult
 
@@ -42,9 +44,15 @@ def dbt_test_if_more_rows() -> bool:
 
 def publish_docs(url: str, dbt_project_name: str):
     url = url + dbt_project_name
-    files = ["target/manifest.json", "target/catalog.json", "target/index.html"]
+    file_paths = ["target/manifest.json", "target/catalog.json", "target/index.html"]
 
-    multipart_form_data = {file: (file, read_docs_file(path=file)) for file in files}
+    multipart_form_data = {}
+
+    for file_path in file_paths:
+        file_content = read_docs_file(path=file_path)
+        file_name = os.path.basename(file_path)
+
+        multipart_form_data[file_name] = (file_name, file_content)
 
     res = requests.put(url, files=multipart_form_data)
     res.raise_for_status()
