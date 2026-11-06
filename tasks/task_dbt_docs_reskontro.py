@@ -1,52 +1,29 @@
-import asyncio
 import logging
-import os
 
-import requests
-from flyteplugins.dbt import DbtTask
+from nav_union.slack import flyte_task
 from task_environments.dbt_reskontro_environment import dbt_reskontro_environment
+from utils.dbt_functions import publish_docs, run_dbt_run_commands
 
 
-def publish_docs(url: str, dbt_project_name: str):
-    url = url + dbt_project_name
-    file_paths = ["target/manifest.json", "target/catalog.json", "target/index.html"]
-
-    multipart_form_data = {}
-
-    for file_path in file_paths:
-        file_content = read_docs_file(path=file_path)
-        file_name = os.path.basename(file_path)
-
-        multipart_form_data[file_name] = (file_name, file_content)
-
-    res = requests.put(url, files=multipart_form_data)
-    res.raise_for_status()
-
-
-def read_docs_file(path: str) -> bytes:
-    with open(path, "rb") as file:
-        content = file.read()
-    return content
-
-
-dbt_run = DbtTask(
-    name="dbt-docs-reskontro",
-    report=True,
-    task_environment=dbt_reskontro_environment,
+@flyte_task(
+    dbt_reskontro_environment, channel_name="utsikt-ops", notify_on_failure=True
 )
-
-
-@dbt_reskontro_environment.task(entrypoint=True)
-async def run_dbt_docs_reskontro():
+def generate_and_publish_docs():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
-    logger.info("Generating docs....")
-    await dbt_run.aio(command="docs generate")
+    logger.info("Generating docs...")
+    run_dbt_run_commands(commands=["docs", "generate"])
 
-    logger.info("Publishing docs....")
-    await asyncio.to_thread(
-        publish_docs,
+    logger.info("Publishing docs...")
+    publish_docs(
         url="http://dbt.intern.nav.no/docs/utsikt/",
         dbt_project_name="dbt_reskontro",
     )
+
+    logger.info("Done!")
+
+
+@dbt_reskontro_environment.task(entrypoint=True)
+def run_dbt_docs_reskontro():
+    generate_and_publish_docs()
