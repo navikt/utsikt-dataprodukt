@@ -8,6 +8,7 @@ on:
       - "tasks/task_run_dbt_reskontro.py"
       - "tasks/task_dbt_docs_reskontro.py"
       - "tasks/requirements/requirements_dbt.txt"
+      - "tasks/utils/**"
       - "dbt_reskontro/**"
   workflow_dispatch:
 
