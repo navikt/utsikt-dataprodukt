@@ -2,9 +2,10 @@ from pathlib import Path
 
 import flyte
 from nav_union.utils import default_image
+from service_accounts import ServiceAccounts
 
 environment_name = "python_bq_environment"
-service_account = "python-bq-sa"
+service_account = ServiceAccounts.PYTHON_BQ_SA
 
 image = default_image()
 

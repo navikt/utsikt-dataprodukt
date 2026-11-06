@@ -2,8 +2,10 @@ import flyte
 
 from pathlib import Path
 
+from service_accounts import ServiceAccounts
+
 environment_name = "dbt_reskontro_environment"
-service_account = "dbt-sa"
+service_account = ServiceAccounts.DBT_SA
 
 
 image_uri = (
