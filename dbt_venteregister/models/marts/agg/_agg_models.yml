@@ -12,6 +12,19 @@ models:
         description: 'første dato i måneden aggregeringen gjelder for'
       - name: belop_brutto
         description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
+  - name: agg_beregnet_belop_per_ytelse_kilde_dag
+    description: 'Beregnet beløp per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.'
+    columns:
+      - name: ytelse
+        description: 'Kode for ytelse hentet fra kobling mellom fagområde og ytelse, manuelt utledet (int_fagomrader_til_ytelser)'
+      - name: kildesystem
+        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+      - name: lastet_dato_kilde
+        description: 'Datoen for når raden er lastet inn i kildetabellen.'
+      - name: belop_brutto
+        description: 'Brutto beløp for stoppnivået. Regnet ut ved å summere beløp fra stoppnivaer_detaljer where linje_id > 0'
+      - name: antall_beregninger
+        description: 'Antall beregninger'
   - name: agg_beregninger_per_faggruppe_dag
     description: 'Antall beregninger per faggruppe per beregnet dato'
     columns:
