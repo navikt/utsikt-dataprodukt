@@ -12,6 +12,7 @@ custom_table_descriptions:
             fak_stoppstatus: 'Faktatabell med stoppstatuser fra venteregisteret',
             fak_stoppnivaer_detaljer: 'Stoppnivåer brytt ned med flere detaljer',
             fak_oppdrag: 'Faktatabell med oppdrag fra Oppdragssystemet',
+            fak_oppdrag_kilde: 'Faktatabell med kildesystem for oppdragene. Denne tabellen inneholder full historikk',
         # agg models
             agg_belop_per_fagomrade_maned: 'Bruttobeløp per fagområde og måned.',
             agg_beregninger_per_faggruppe_dag: 'Antall beregninger per faggruppe per beregnet dato',
@@ -19,6 +20,7 @@ custom_table_descriptions:
             agg_beregninger_per_ytelse_enhet_dag: 'Antall beregninger gruppert på fagområde, ytelse, enhet behandler og dag',
             agg_manuelle_beregninger_per_maned: 'Antall og andel manuelle beregninger per måned.',
             agg_oppdrag_per_ytelse_kilde_dag: 'Antall oppdrag per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.',
+            agg_beregnet_belop_per_ytelse_kilde_dag: 'Beregnet beløp per ytelse, kildesystem og dag. Ytelse hentes fra kobling mellom fagområde og ytelse. Kildesystem hentes fra oppdrag_id i stoppnivå.',
         },
 
 custom_column_comments:

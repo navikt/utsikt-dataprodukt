@@ -49,6 +49,19 @@ models:
         description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
       - name: lastet_tid
         description: 'Tidsstempel for når raden er lastet inn i tabellen'
+  - name: fak_oppdrag_kilde
+    description: 'Faktatabell med kildesystem for oppdragene. Denne tabellen inneholder full historikk'
+    columns:
+      - name: pk_oppdrag
+        description: 'Primærnøkkel for oppdrag. Hash av oppdrag_id'
+      - name: oppdrag_id
+        description: 'Identifikator på utbetalingsoppdraget, unik identifikator som Oppdragssystemet oppretter når man mottar ett vedtak til utbetaling fra fagsystem.'
+      - name: kildesystem
+        description: 'Kildesystem hentet fra kode_komponent i t_oppdrag_kilde'
+      - name: lastet_tid_kilde
+        description: 'Tidspunktet for når raden er lastet inn i kildetabellen.'
+      - name: lastet_tid
+        description: 'Tidsstempel for når raden er lastet inn i tabellen'
   - name: fak_stoppnivaer
     description: 'Faktatabell med stoppnivåer fra venteregisteret'
     columns:
